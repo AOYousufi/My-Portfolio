@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "./Home.css";
-
+import profilePic from "../assets/IMG_7932 (3).jpg";
 function Home() {
   return (
     <section className="home-container">
@@ -13,7 +13,7 @@ function Home() {
         transition={{ duration: 1 }}
       >
         <img
-          src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
+          src={profilePic}
           alt="Ahmad Ozair Yousufi"
           className="profile-pic"
         />
