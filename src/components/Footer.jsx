@@ -1,32 +1,19 @@
 import React from "react";
-import { Box, Typography, Link } from "@mui/material";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <Box
-      sx={{
-        backgroundColor: "#0f1115",
-        color: "#00fff7",
-        py: 3,
-        textAlign: "center",
-        borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-        mt: 4,
-      }}
-    >
-      <Typography variant="body2" sx={{ mb: 1 }}>
+    <footer className="footer">
+      <p className="footer-text">
         © {new Date().getFullYear()} Ahmad Ozair Yousufi. All rights reserved.
-      </Typography>
-      <Typography variant="body2">
-        <Link
-          href="mailto:ozairyousufi1400@gmail.com"
-          underline="hover"
-          sx={{ color: "#00fff7" }}
-        >
+      </p>
+      <p className="footer-text">
+        <a href="mailto:ozairyousufi1400@gmail.com" className="footer-link">
           ozairyousufi1400@gmail.com
-        </Link>{" "}
+        </a>{" "}
         | Stone, UK
-      </Typography>
-    </Box>
+      </p>
+    </footer>
   );
 }
 

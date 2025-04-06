@@ -1,0 +1,92 @@
+.projects-container {
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+}
+
+.projects-header h1 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 255, 247, 0.5);
+}
+
+.project-title {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.project-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid #00fff7;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn.learn-more {
+  background: #00fff7;
+  color: #0f2027;
+}
+
+.btn.learn-more:hover,
+.btn.learn-more:focus {
+  box-shadow: 0 0 15px #00fff7;
+  outline: none;
+}
+
+.btn:focus {
+  outline: 3px solid #ffffff;
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 20px 10px;
+  }
+  .projects-header h1 {
+    font-size: 1.8rem;
+  }
+  .project-title {
+    font-size: 1.3rem;
+  }
+  .project-description {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,56 @@
+.work-experience-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.3);
+}
+.work-experience-header h1 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+.work-experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.work-experience-item {
+  padding: 20px;
+  border: 1px solid rgba(0, 255, 247, 0.3);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.work-experience-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.5);
+}
+.work-experience-role {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+.work-experience-details {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .work-experience-container {
+    padding: 20px 10px;
+  }
+  .work-experience-header h1 {
+    font-size: 1.8rem;
+  }
+  .work-experience-role {
+    font-size: 1.3rem;
+  }
+  .work-experience-details {
+    font-size: 0.9rem;
+  }
+}

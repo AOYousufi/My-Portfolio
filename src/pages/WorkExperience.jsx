@@ -1,39 +1,40 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Box,
-} from "@mui/material";
+import "./WorkExperience.css";
+
+const workExperienceData = [
+  {
+    role: "Unitemps – Website Developer",
+    location: "Stoke-on-Trent, UK",
+    period: "Feb 2025 - March 2025",
+    description:
+      "Created wireframes, attended weekly meetings, and ensured brand consistency.",
+  },
+  {
+    role: "Marks & Spencer – Customer Service Assistant",
+    location: "Stone, UK",
+    period: "Dec 2024 - Feb 2025",
+    description:
+      "Collaborated with colleagues to meet operational goals and managed task prioritisation.",
+  },
+];
 
 function WorkExperience() {
   return (
-    <Container sx={{ py: { xs: 4, sm: 6 }, px: { xs: 2, sm: 4 } }}>
-      <Typography
-        variant="h4"
-        sx={{ mb: 4, fontSize: { xs: "1.8rem", sm: "2.2rem" } }}
-      >
-        Work Experience
-      </Typography>
-      <Box>
-        <List>
-          <ListItem sx={{ mb: 2 }}>
-            <ListItemText
-              primary="Unitemps – Website Developer"
-              secondary="Stoke-on-Trent, UK (Feb 2025 - March 2025) – Created wireframes, attended weekly meetings, and ensured brand consistency."
-            />
-          </ListItem>
-          <ListItem sx={{ mb: 2 }}>
-            <ListItemText
-              primary="Marks & Spencer – Customer Service Assistant"
-              secondary="Stone, UK (Dec 2024 - Feb 2025) – Collaborated with colleagues to meet operational goals and managed task prioritisation."
-            />
-          </ListItem>
-        </List>
-      </Box>
-    </Container>
+    <section className="work-experience-container">
+      <header className="work-experience-header">
+        <h1>Work Experience</h1>
+      </header>
+      <ul className="work-experience-list">
+        {workExperienceData.map((item, idx) => (
+          <li key={idx} className="work-experience-item">
+            <h2 className="work-experience-role">{item.role}</h2>
+            <p className="work-experience-details">
+              {item.location} ({item.period}) – {item.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 

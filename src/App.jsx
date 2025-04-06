@@ -5,7 +5,6 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -15,37 +14,84 @@ import NCNews from "./pages/NCNews";
 import MyPlants from "./pages/MyPlants";
 import Education from "./pages/Education";
 import WorkExperience from "./pages/WorkExperience";
-import "./App.css";
 
-const AnimatedRoutes = () => {
+function AnimatedRoutes() {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route
-          path="/projects/virtual-exhibition"
-          element={<VirtualExhibition />}
-        />
-        <Route path="/projects/nc-news" element={<NCNews />} />
-        <Route path="/projects/my-plants" element={<MyPlants />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/work-experience" element={<WorkExperience />} />
-      </Routes>
-    </AnimatePresence>
+    <Routes location={location} key={location.pathname}>
+      <Route
+        path="/"
+        element={
+          <section id="home">
+            <Home />
+          </section>
+        }
+      />
+      <Route
+        path="/projects"
+        element={
+          <section id="projects">
+            <Projects />
+          </section>
+        }
+      />
+      <Route
+        path="/projects/virtual-exhibition"
+        element={
+          <section id="virtual-exhibition">
+            <VirtualExhibition />
+          </section>
+        }
+      />
+      <Route
+        path="/projects/nc-news"
+        element={
+          <section id="nc-news">
+            <NCNews />
+          </section>
+        }
+      />
+      <Route
+        path="/projects/my-plants"
+        element={
+          <section id="my-plants">
+            <MyPlants />
+          </section>
+        }
+      />
+      <Route
+        path="/education"
+        element={
+          <section id="education">
+            <Education />
+          </section>
+        }
+      />
+      <Route
+        path="/work-experience"
+        element={
+          <section id="work-experience">
+            <WorkExperience />
+          </section>
+        }
+      />
+    </Routes>
   );
-};
+}
 
 function App() {
   return (
     <Router>
       <div className="app-wrapper">
-        <Navbar />
+        <header>
+          <Navbar />
+        </header>
         <main className="main-content">
           <AnimatedRoutes />
         </main>
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </Router>
   );

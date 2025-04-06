@@ -1,0 +1,85 @@
+.project-detail-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.3);
+}
+.project-detail-header h1 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+.project-detail-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.project-detail-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 2px solid #00fff7;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+.btn.contained {
+  background: #00fff7;
+  color: #0f2027;
+}
+.btn.outlined {
+  background: transparent;
+  color: #00fff7;
+}
+.btn.contained:hover,
+.btn.contained:focus,
+.btn.outlined:hover,
+.btn.outlined:focus {
+  box-shadow: 0 0 15px #00fff7;
+  outline: none;
+}
+.project-detail-footer {
+  text-align: center;
+}
+.back-link {
+  color: #00fff7;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.back-link:hover,
+.back-link:focus {
+  color: #ff00c8;
+  outline: none;
+}
+@media (max-width: 768px) {
+  .project-detail-container {
+    padding: 20px 10px;
+  }
+  .project-detail-header h1 {
+    font-size: 1.8rem;
+  }
+  .project-detail-content p {
+    font-size: 0.9rem;
+  }
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    margin: 0 5px;
+  }
+  .back-link {
+    font-size: 0.9rem;
+  }
+}
