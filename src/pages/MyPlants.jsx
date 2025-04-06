@@ -1,58 +1,51 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  Link as MuiLink,
-  Button,
-} from "@mui/material";
 import { Link } from "react-router-dom";
+import "./MyPlants.css";
 
 function MyPlants() {
   return (
-    <Container sx={{ py: { xs: 4, sm: 6 }, px: { xs: 2, sm: 4 } }}>
-      <Typography
-        variant="h4"
-        sx={{ mb: 4, fontSize: { xs: "1.8rem", sm: "2.2rem" } }}
-      >
-        My-Plants
-      </Typography>
-      <Box sx={{ mb: 3 }}>
-        <Typography variant="body1" paragraph>
+    <section className="project-detail-container">
+      <header className="project-detail-header">
+        <h1>My-Plants</h1>
+      </header>
+      <article className="project-detail-content">
+        <p>
           Collaboratively developed a plant care app using React Native and
           Express/MongoDB. Features include user login, reminders, and plant
           tracking through a scalable API architecture.
-        </Typography>
-        <Typography variant="subtitle1">
+        </p>
+        <p>
           <strong>Technologies Used:</strong> React Native, Express, MongoDB.
-        </Typography>
-        <Typography variant="subtitle1">
+        </p>
+        <p>
           <strong>Skills Gained:</strong> Mobile App Development, API
           Architecture, Collaborative Development.
-        </Typography>
-      </Box>
-      <Box sx={{ mb: 3 }}>
-        <Button
-          variant="contained"
+        </p>
+      </article>
+      <div className="project-detail-buttons">
+        <a
+          className="btn contained"
           href="https://github.com/ozairyousufi/my-plants"
           target="_blank"
-          sx={{ m: 1 }}
+          rel="noopener noreferrer"
         >
           GitHub Repo
-        </Button>
-        <Button
-          variant="outlined"
+        </a>
+        <a
+          className="btn outlined"
           href="https://myplants.demo"
           target="_blank"
-          sx={{ m: 1 }}
+          rel="noopener noreferrer"
         >
           Live Demo
-        </Button>
-      </Box>
-      <MuiLink component={Link} to="/projects" sx={{ color: "#00fff7" }}>
-        ← Back to Projects
-      </MuiLink>
-    </Container>
+        </a>
+      </div>
+      <footer className="project-detail-footer">
+        <Link className="back-link" to="/projects">
+          ← Back to Projects
+        </Link>
+      </footer>
+    </section>
   );
 }
 

@@ -1,59 +1,52 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  Link as MuiLink,
-  Button,
-} from "@mui/material";
 import { Link } from "react-router-dom";
+import "./NCNews.css";
 
 function NCNews() {
   return (
-    <Container sx={{ py: { xs: 4, sm: 6 }, px: { xs: 2, sm: 4 } }}>
-      <Typography
-        variant="h4"
-        sx={{ mb: 4, fontSize: { xs: "1.8rem", sm: "2.2rem" } }}
-      >
-        NC-News
-      </Typography>
-      <Box sx={{ mb: 3 }}>
-        <Typography variant="body1" paragraph>
+    <section className="project-detail-container">
+      <header className="project-detail-header">
+        <h1>NC-News</h1>
+      </header>
+      <article className="project-detail-content">
+        <p>
           Built a full-stack news app featuring article browsing, voting,
           commenting, and user authentication using React on the front-end and
           Express/Node.js with PostgreSQL on the back-end.
-        </Typography>
-        <Typography variant="subtitle1">
+        </p>
+        <p>
           <strong>Technologies Used:</strong> React, Node.js, Express,
           PostgreSQL.
-        </Typography>
-        <Typography variant="subtitle1">
+        </p>
+        <p>
           <strong>Skills Gained:</strong> Full-stack Development, RESTful API
           Integration, Database Management.
-        </Typography>
-      </Box>
-      <Box sx={{ mb: 3 }}>
-        <Button
-          variant="contained"
+        </p>
+      </article>
+      <div className="project-detail-buttons">
+        <a
+          className="btn contained"
           href="https://github.com/ozairyousufi/nc-news"
           target="_blank"
-          sx={{ m: 1 }}
+          rel="noopener noreferrer"
         >
           GitHub Repo
-        </Button>
-        <Button
-          variant="outlined"
+        </a>
+        <a
+          className="btn outlined"
           href="https://ncnews.demo"
           target="_blank"
-          sx={{ m: 1 }}
+          rel="noopener noreferrer"
         >
           Live Demo
-        </Button>
-      </Box>
-      <MuiLink component={Link} to="/projects" sx={{ color: "#00fff7" }}>
-        ← Back to Projects
-      </MuiLink>
-    </Container>
+        </a>
+      </div>
+      <footer className="project-detail-footer">
+        <Link className="back-link" to="/projects">
+          ← Back to Projects
+        </Link>
+      </footer>
+    </section>
   );
 }
 

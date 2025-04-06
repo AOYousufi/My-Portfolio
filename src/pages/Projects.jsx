@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-} from "@mui/material";
 import { Link } from "react-router-dom";
+import "./Projects.css";
 
 const projects = [
   {
@@ -33,35 +25,26 @@ const projects = [
 
 function Projects() {
   return (
-    <Container sx={{ py: { xs: 4, sm: 6 }, px: { xs: 2, sm: 4 } }}>
-      <Typography
-        variant="h4"
-        sx={{ mb: 4, fontSize: { xs: "1.8rem", sm: "2.2rem" } }}
-      >
-        Projects
-      </Typography>
-      <Grid container spacing={4}>
+    <section className="projects-container">
+      <header className="projects-header">
+        <h1>Projects</h1>
+      </header>
+      <div className="projects-grid">
         {projects.map((project, index) => (
-          <Grid item xs={12} md={4} key={index}>
-            <Card
-              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
-            >
-              <CardContent>
-                <Typography variant="h5" gutterBottom>
-                  {project.title}
-                </Typography>
-                <Typography variant="body2">{project.description}</Typography>
-              </CardContent>
-              <CardActions sx={{ mt: "auto" }}>
-                <Button size="small" component={Link} to={project.path}>
-                  Learn More
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
+          <article key={index} className="project-card">
+            <div className="project-content">
+              <h2 className="project-title">{project.title}</h2>
+              <p className="project-description">{project.description}</p>
+            </div>
+            <footer className="project-actions">
+              <Link to={project.path} className="btn learn-more">
+                Learn More
+              </Link>
+            </footer>
+          </article>
         ))}
-      </Grid>
-    </Container>
+      </div>
+    </section>
   );
 }
 

@@ -1,0 +1,81 @@
+/* Container and header styling */
+.education-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.3);
+}
+
+.education-header h1 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Education list styling */
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Education item styling */
+.education-item {
+  padding: 20px;
+  border: 1px solid rgba(0, 255, 247, 0.3);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.5);
+}
+
+/* Typography styling */
+.education-institution {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.education-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.education-period {
+  font-style: italic;
+  color: #00fff7;
+}
+
+.education-details {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .education-container {
+    padding: 20px 10px;
+  }
+  .education-header h1 {
+    font-size: 1.8rem;
+  }
+  .education-institution {
+    font-size: 1.3rem;
+  }
+  .education-title {
+    font-size: 1rem;
+  }
+  .education-details {
+    font-size: 0.9rem;
+  }
+}
