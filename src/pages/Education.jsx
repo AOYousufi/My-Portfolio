@@ -7,21 +7,21 @@ const educationData = [
     title: "Undergraduate – Software Development BSc (Hons)",
     period: "09/2024 – 06/2028",
     details:
-      "Engaging in a comprehensive curriculum covering algorithms, web development, data science, and software engineering principles. Collaborating on industry projects and practical labs to build a strong foundation in modern programming languages and technologies.",
+      "Currently enrolled in a comprehensive degree programme covering full-stack development, data structures, algorithms, web and mobile development, software architecture, and database systems. Regularly engage in practical labs and collaborative group projects that simulate real-world industry scenarios. Building strong foundations in modern technologies, design patterns, and agile project delivery.",
   },
   {
     institution: "Northcoders",
     title: "Junior Software Developer",
     period: "06/2024 – 08/2024",
     details:
-      "Participated in a full-stack development programme focusing on building web applications using React and Node.js. Emphasised Agile practices, test-driven development, and version control. Contributed to real-world projects, enhancing skills in database management and software deployment.",
+      "Completed an intensive full-time software development bootcamp, specialising in full-stack JavaScript development. Designed and built responsive web and mobile applications using React, React Native, Node.js, Express, and PostgreSQL. Applied Test Driven Development (TDD) principles using Jest and Supertest to ensure robust, maintainable code. Collaborated daily in Agile teams using pair programming, Git version control, GitHub, and Scrum practices including stand-ups, sprints, and retrospectives. Led and contributed to real-world projects from planning through to deployment, gaining strong experience in problem-solving, clean code practices, RESTful API design, backend logic, and frontend responsiveness. Gained confidence in debugging, branching strategies, database modelling, and communicating effectively within technical teams.",
   },
   {
     institution: "Rana University",
     title: "Bachelor’s in Software Engineering (unfinished)",
     period: "01/2022 – 06/2023",
     details:
-      "Completed core modules in software design, algorithms, and system architecture. Gained practical insights into collaborative project work and industry-standard practices. Although the degree was not completed, valuable knowledge and skills in software engineering fundamentals were developed.",
+      "Completed key modules in software development fundamentals, including algorithm design, object-oriented programming, and system analysis. Participated in team-based projects focusing on problem-solving and application design. Though the programme was not completed due to relocation, it provided a strong technical and academic foundation that supports my ongoing development as a software engineer.",
   },
 ];
 
