@@ -3,6 +3,13 @@ import "./WorkExperience.css";
 
 const workExperienceData = [
   {
+    role: "Tech Returners- Freelance Consultant",
+    location: "Remote",
+    period: "Feb 2025 - March 2025",
+    description:
+      "Developed a full-stack web application using React, Node.js, Express, and MongoDB. Implemented RESTful APIs, integrated museum data, and deployed the application on netlify and Render.",
+  },
+  {
     role: "Unitemps – Website Developer",
     location: "Stoke-on-Trent, UK",
     period: "Feb 2025 - March 2025",

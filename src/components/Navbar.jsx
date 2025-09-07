@@ -38,6 +38,16 @@ function Navbar() {
               GitHub
             </a>
           </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/ahmad-ozair-yousufi-08b469326"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link"
+            >
+              LinkedIn
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
