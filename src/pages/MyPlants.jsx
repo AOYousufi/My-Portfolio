@@ -25,19 +25,11 @@ function MyPlants() {
       <div className="project-detail-buttons">
         <a
           className="btn contained"
-          href="https://github.com/ozairyousufi/my-plants"
+          href="https://github.com/AOYousufi/my-plants"
           target="_blank"
           rel="noopener noreferrer"
         >
           GitHub Repo
-        </a>
-        <a
-          className="btn outlined"
-          href="https://myplants.demo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Live Demo
         </a>
       </div>
       <footer className="project-detail-footer">
