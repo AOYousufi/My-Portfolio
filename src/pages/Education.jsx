@@ -23,6 +23,13 @@ const educationData = [
     details:
       "Completed key modules in software development fundamentals, including algorithm design, object-oriented programming, and system analysis. Participated in team-based projects focusing on problem-solving and application design. Though the programme was not completed due to relocation, it provided a strong technical and academic foundation that supports my ongoing development as a software engineer.",
   },
+  {
+    institution: "Faqir Frozi High School",
+    title: "Secondary Education (Equivalent to GCSEs)",
+    period: "01/2017 – 06/2020",
+    details:
+      "Achieved strong academic results across core subjects including Mathematics, Science, and English. Developed critical thinking and problem-solving skills through coursework and examinations. Participated in extracurricular activities that enhanced teamwork and leadership abilities.",
+  },
 ];
 
 function Education() {
