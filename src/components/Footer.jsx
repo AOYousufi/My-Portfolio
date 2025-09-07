@@ -11,7 +11,7 @@ function Footer() {
         <a href="mailto:ozairyousufi1400@gmail.com" className="footer-link">
           ozairyousufi1400@gmail.com
         </a>{" "}
-        | Stone, UK
+        |UK
       </p>
     </footer>
   );
