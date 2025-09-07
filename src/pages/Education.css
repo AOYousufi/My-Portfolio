@@ -1,7 +1,7 @@
-.education-container {
+.section-container {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 28px;
   padding: 40px 20px;
   background: rgba(0, 0, 0, 0.75);
   color: #ffffff;
@@ -9,7 +9,7 @@
   box-shadow: 0 0 15px rgba(0, 255, 247, 0.3);
 }
 
-.education-header h1 {
+.section-header h1 {
   font-family: "Roboto Mono", monospace;
   font-size: 2.2rem;
   margin-bottom: 30px;
@@ -17,22 +17,26 @@
   text-align: center;
 }
 
-.education-list {
+.section-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.education-item {
+.card {
   padding: 20px;
   border: 1px solid rgba(0, 255, 247, 0.3);
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.education-item:hover {
+.card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 15px rgba(0, 255, 247, 0.5);
+}
+
+.accent-period {
+  font-style: italic;
+  color: #00fff7;
 }
 
 .education-institution {
@@ -41,36 +45,58 @@
   margin-bottom: 10px;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
 }
-
 .education-title {
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
-
-.education-period {
-  font-style: italic;
-  color: #00fff7;
-}
-
 .education-details {
   font-size: 1rem;
   line-height: 1.6;
 }
 
+.certifications-title {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+.certifications-issuer {
+  font-size: 1.1rem;
+}
+
 @media (max-width: 768px) {
-  .education-container {
+  .section-container {
     padding: 20px 10px;
   }
-  .education-header h1 {
+  .section-header h1 {
     font-size: 1.8rem;
   }
-  .education-institution {
+  .education-institution,
+  .certifications-title {
     font-size: 1.3rem;
   }
-  .education-title {
+  .education-title,
+  .certifications-issuer {
     font-size: 1rem;
   }
   .education-details {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 15px;
+  }
+  .education-institution,
+  .certifications-title {
+    font-size: 1.1rem;
+  }
+  .education-title,
+  .certifications-issuer {
+    font-size: 0.9rem;
+  }
+  .education-details {
+    font-size: 0.85rem;
   }
 }

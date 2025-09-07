@@ -32,25 +32,51 @@ const educationData = [
   },
 ];
 
+const certificationsData = [
+  {
+    title: "IT Help Desk Support Training",
+    issuer: "Rana University",
+    date: "Completed: 06/2020",
+  },
+];
 function Education() {
   return (
-    <section className="education-container">
-      <header className="education-header">
-        <h1>Education</h1>
-      </header>
-      <div className="education-list">
-        {educationData.map((edu, idx) => (
-          <article key={idx} className="education-item">
-            <h2 className="education-institution">{edu.institution}</h2>
-            <p className="education-title">
-              {edu.title}{" "}
-              <span className="education-period">({edu.period})</span>
-            </p>
-            <p className="education-details">{edu.details}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+    <>
+      <section className="section-container education-container">
+        <header className="section-header">
+          <h1>Education</h1>
+        </header>
+
+        <div className="section-list">
+          {educationData.map((edu, idx) => (
+            <article key={idx} className="card education-item">
+              <h2 className="education-institution">{edu.institution}</h2>
+              <p className="education-title">
+                {edu.title} <span className="accent-period">{edu.period}</span>
+              </p>
+              <p className="education-details">{edu.details}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-container certifications-container">
+        <header className="section-header">
+          <h1>Certifications</h1>
+        </header>
+
+        <div className="section-list">
+          {certificationsData.map((cert, idx) => (
+            <article key={idx} className="card certifications-item">
+              <h2 className="certifications-title">{cert.title}</h2>
+              <p className="certifications-issuer">
+                {cert.issuer} <span className="accent-period">{cert.date}</span>
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 
