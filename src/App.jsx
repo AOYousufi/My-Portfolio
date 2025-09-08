@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,6 +13,7 @@ import NCNews from "./pages/NCNews";
 import MyPlants from "./pages/MyPlants";
 import Education from "./pages/Education";
 import WorkExperience from "./pages/WorkExperience";
+import "./App.css";
 
 function AnimatedRoutes() {
   const location = useLocation();
