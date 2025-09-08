@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import profilePic from "../assets/IMG_7932 (3).jpg";
+import profilePic from "../assets/IMG_7669.jpg";
 function Home() {
   return (
     <section className="home-container">
