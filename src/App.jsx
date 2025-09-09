@@ -13,6 +13,7 @@ import NCNews from "./pages/NCNews";
 import MyPlants from "./pages/MyPlants";
 import Education from "./pages/Education";
 import WorkExperience from "./pages/WorkExperience";
+import Contact from "./pages/Contact";
 import "./App.css";
 
 function AnimatedRoutes() {
@@ -75,6 +76,8 @@ function AnimatedRoutes() {
           </section>
         }
       />
+
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }
