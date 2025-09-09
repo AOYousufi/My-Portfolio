@@ -48,6 +48,11 @@ function Navbar() {
               LinkedIn
             </a>
           </li>
+          <li>
+            <Link to="/contact" className="nav-link">
+              Contact
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

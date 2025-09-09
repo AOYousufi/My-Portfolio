@@ -1,7 +1,5 @@
-
-
-Function Contact() {
-    return (
+function Contact() {
+  return (
     <section id="contact">
       <div className="contact-container">
         <header className="contact-header">
@@ -15,7 +13,9 @@ Function Contact() {
           </p>
           <p>
             You can contact me via email at{" "}
-            <a href="mailto:ozairyousufi1400@gmail.com">ozairyousufi1400@gmail.com</a>
+            <a href="mailto:ozairyousufi1400@gmail.com">
+              ozairyousufi1400@gmail.com
+            </a>
           </p>
         </div>
       </div>
