@@ -1,13 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   return (
     <header className="navbar">
       <nav className="navbar-container">
         <div className="navbar-brand">Ahmad Ozair Yousufi</div>
-        <ul className="navbar-links">
+
+        <button
+          className="menu-toggle"
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="primary-navigation"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span className="menu-bar" />
+          <span className="menu-bar" />
+          <span className="menu-bar" />
+        </button>
+
+        <ul
+          id="primary-navigation"
+          className={`navbar-links ${open ? "is-open" : ""}`}
+        >
           <li>
             <Link to="/" className="nav-link">
               Home
