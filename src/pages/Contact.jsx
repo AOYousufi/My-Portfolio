@@ -1,5 +1,4 @@
-// Contact.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Contact.css";
 
 function Contact() {
