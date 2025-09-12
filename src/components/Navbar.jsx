@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
+import Logo from "../assets/Logo in Blue, Gray, and Teal.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,9 @@ function Navbar() {
   return (
     <header className="navbar">
       <nav className="navbar-container">
-        <div className="navbar-brand">Ahmad Ozair Yousufi</div>
+        <div className="navbar-brand">
+          <img src={Logo} alt="AHMAD OZAIR YOUSUFI" />
+        </div>
 
         <button
           className="menu-toggle"

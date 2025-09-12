@@ -73,6 +73,19 @@
   color: #ff00c8;
   outline: none;
 }
+.navbar-brand img {
+  height: 100px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 247, 0.4));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(0, 255, 247, 0.8));
+}
 
 @media (max-width: 992px) {
   .navbar-container {
