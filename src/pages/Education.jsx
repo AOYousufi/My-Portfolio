@@ -35,7 +35,7 @@ const educationData = [
 const certificationsData = [
   {
     title: "IT Help Desk Support Training",
-    issuer: "Rana University",
+    issuer: "Rana University Afg",
     date: "Completed: 06/2020",
   },
 ];
