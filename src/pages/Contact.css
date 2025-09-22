@@ -57,7 +57,7 @@
   transform: scaleX(1);
 }
 
-.btn {
+.contact-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -74,29 +74,29 @@
     border-color 0.2s ease;
 }
 
-.btn:focus {
+.contact-btn:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 255, 247, 0.35);
 }
 
-.btn-primary {
+.contact-btn-primary {
   background: linear-gradient(
     180deg,
     rgba(0, 255, 247, 0.2),
     rgba(0, 255, 247, 0.05)
   );
 }
-.btn-primary:hover {
+.contact-btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 255, 247, 0.25);
   border-color: rgba(0, 255, 247, 0.55);
 }
 
-.btn-ghost {
+.contact-btn-ghost {
   background: rgba(255, 255, 255, 0.02);
   margin-left: 10px;
 }
-.btn-ghost:hover {
+.contact-btn-ghost:hover {
   transform: translateY(-2px);
   border-color: rgba(0, 255, 247, 0.55);
 }
@@ -124,7 +124,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn,
+  .contact-btn,
   .card,
   .contact-link::after {
     transition: none;
@@ -138,11 +138,11 @@
 }
 
 @media (max-width: 480px) {
-  .btn {
+  .contact-btn {
     height: 42px;
     width: 100%;
   }
-  .btn-ghost {
+  .contact-btn-ghost {
     margin-left: 0;
   }
   .contact-meta {
