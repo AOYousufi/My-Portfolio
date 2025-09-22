@@ -59,7 +59,7 @@ p {
   flex-wrap: wrap;
 }
 
-.btn {
+.home-btn {
   display: inline-block;
   padding: 10px 20px;
   font-family: "Roboto", sans-serif;
@@ -70,31 +70,31 @@ p {
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.filled {
+.home-btn--filled {
   background: #00fff7;
   color: #000000;
 }
 
-.filled:hover,
-.filled:focus {
+.home-btn--filled:hover,
+.home-btn--filled:focus {
   box-shadow: 0 0 15px #00fff7;
   outline: none;
 }
 
-.outline {
+.home-btn--outline {
   background: transparent;
   color: #00fff7;
 }
 
-.outline:hover,
-.outline:focus {
+.home-btn--outline:hover,
+.home-btn--outline:focus {
   background: #00fff7;
   color: #000000;
   box-shadow: 0 0 15px #00fff7;
   outline: none;
 }
 
-.btn:focus {
+.home-btn:focus {
   outline: 3px solid #ffffff;
 }
 

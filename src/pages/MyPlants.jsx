@@ -23,7 +23,7 @@ function MyPlants() {
       </article>
       <div className="project-detail-buttons">
         <a
-          className="btn contained"
+          className="my-plants-btn my-plants-btn--contained"
           href="https://github.com/AOYousufi/my-plants"
           target="_blank"
           rel="noopener noreferrer"

@@ -34,14 +34,14 @@ function Contact() {
 
           <div className="contact-row" role="group" aria-label="Email actions">
             <a
-              className="btn btn-primary"
+              className="contact-btn contact-btn-primary"
               href={`mailto:${email}`}
               aria-label="Send me an email"
             >
               Email me
             </a>
             <button
-              className="btn btn-ghost"
+              className="contact-btn contact-btn-ghost"
               type="button"
               onClick={handleCopy}
               aria-live="polite"

@@ -24,7 +24,7 @@
   text-align: center;
   margin-bottom: 20px;
 }
-.btn {
+.my-plants-btn {
   display: inline-block;
   padding: 10px 20px;
   margin: 0 10px;
@@ -35,18 +35,18 @@
   border: 2px solid #00fff7;
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
-.btn.contained {
+.my-plants-btn--contained {
   background: #00fff7;
   color: #0f2027;
 }
-.btn.outlined {
+.my-plants-btn--outlined {
   background: transparent;
   color: #00fff7;
 }
-.btn.contained:hover,
-.btn.contained:focus,
-.btn.outlined:hover,
-.btn.outlined:focus {
+.my-plants-btn--contained:hover,
+.my-plants-btn--contained:focus,
+.my-plants-btn--outlined:hover,
+.my-plants-btn--outlined:focus {
   box-shadow: 0 0 15px #00fff7;
   outline: none;
 }
@@ -74,7 +74,7 @@
   .project-detail-content p {
     font-size: 0.9rem;
   }
-  .btn {
+  .my-plants-btn {
     font-size: 0.9rem;
     padding: 8px 16px;
     margin: 0 5px;
