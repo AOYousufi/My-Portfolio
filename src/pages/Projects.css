@@ -50,7 +50,7 @@
   margin-bottom: 20px;
 }
 
-.btn {
+.projects-btn {
   display: inline-block;
   padding: 10px 20px;
   font-family: "Roboto", sans-serif;
@@ -61,18 +61,18 @@
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.btn.learn-more {
+.projects-btn--learn-more {
   background: #00fff7;
   color: #0f2027;
 }
 
-.btn.learn-more:hover,
-.btn.learn-more:focus {
+.projects-btn--learn-more:hover,
+.projects-btn--learn-more:focus {
   box-shadow: 0 0 15px #00fff7;
   outline: none;
 }
 
-.btn:focus {
+.projects-btn:focus {
   outline: 3px solid #ffffff;
 }
 

@@ -37,10 +37,10 @@ function Home() {
           keep learning, keep
         </p>
         <div className="home-buttons">
-          <Link to="/projects" className="btn filled">
+          <Link to="/projects" className="home-btn home-btn--filled">
             View Projects
           </Link>
-          <Link to="/education" className="btn outline">
+          <Link to="/education" className="home-btn home-btn--outline">
             Education
           </Link>
         </div>
