@@ -25,7 +25,7 @@ function VirtualExhibition() {
       </article>
       <div className="project-detail-buttons">
         <a
-          className="btn contained"
+          className="virtual-exhibition-btn virtual-exhibition-btn--contained"
           href="https://github.com/AOYousufi/Virtual-Exhibition"
           target="_blank"
           rel="noopener noreferrer"
@@ -33,7 +33,7 @@ function VirtualExhibition() {
           GitHub Repo
         </a>
         <a
-          className="btn outlined"
+          className="virtual-exhibition-btn virtual-exhibition-btn--outlined"
           href="https://mueseumexhibition.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"

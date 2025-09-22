@@ -36,7 +36,10 @@ function Projects() {
               <p className="project-description">{project.description}</p>
             </div>
             <footer className="project-actions">
-              <Link to={project.path} className="btn learn-more">
+              <Link
+                to={project.path}
+                className="projects-btn projects-btn--learn-more"
+              >
                 Learn More
               </Link>
             </footer>

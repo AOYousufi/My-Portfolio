@@ -24,7 +24,7 @@ function NCNews() {
       </article>
       <div className="project-detail-buttons">
         <a
-          className="btn contained"
+          className="nc-news-btn nc-news-btn--contained"
           href="https://github.com/AOYousufi/nc-news"
           target="_blank"
           rel="noopener noreferrer"
@@ -32,7 +32,7 @@ function NCNews() {
           GitHub Repo
         </a>
         <a
-          className="btn outlined"
+          className="nc-news-btn nc-news-btn--outlined"
           href="https://nc-news-sultan.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
