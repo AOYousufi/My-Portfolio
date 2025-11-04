@@ -23,7 +23,7 @@ function Home() {
           I’m Ahmad, a passionate Junior Software Engineer based in the UK.
           Currently studying Software Development BSc (Hons) at Staffordshire
           University, I bring hands-on experience in JavaScript, React, Node.js,
-          and SQL, with projects spanning full-stack web and mobile apps.
+          and SQL, with projects spanning full-stack web and mobile apps and many more.
           <br />
           <br />
           My background in business taught me leadership, problem-solving, and
