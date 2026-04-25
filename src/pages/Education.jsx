@@ -1,81 +1,116 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "../utils/gsap";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import "./Education.css";
 
-const educationData = [
+const EDUCATION = [
   {
     institution: "Staffordshire University",
-    title: "Undergraduate – Software Development BSc (Hons)",
-    period: "09/2024 – 06/2028",
+    title: "Software Development BSc (Hons)",
+    period: "Sep 2024 – Jun 2028",
     details:
-      "Currently enrolled in a comprehensive degree programme covering full-stack development, data structures, algorithms, web and mobile development, software architecture, and database systems. Regularly engage in practical labs and collaborative group projects that simulate real-world industry scenarios. Building strong foundations in modern technologies, design patterns, and agile project delivery.",
+      "Comprehensive degree covering full-stack development, data structures, algorithms, web & mobile, software architecture, and database systems. Building strong foundations through practical labs and Agile group projects.",
   },
   {
     institution: "Northcoders",
-    title: "Junior Software Developer",
-    period: "06/2024 – 08/2024",
+    title: "Junior Software Developer Bootcamp",
+    period: "Jun 2024 – Aug 2024",
     details:
-      "Completed an intensive full-time software development bootcamp, specialising in full-stack JavaScript development. Designed and built responsive web and mobile applications using React, React Native, Node.js, Express, and PostgreSQL. Applied Test Driven Development (TDD) principles using Jest and Supertest to ensure robust, maintainable code. Collaborated daily in Agile teams using pair programming, Git version control, GitHub, and Scrum practices including stand-ups, sprints, and retrospectives. Led and contributed to real-world projects from planning through to deployment, gaining strong experience in problem-solving, clean code practices, RESTful API design, backend logic, and frontend responsiveness. Gained confidence in debugging, branching strategies, database modelling, and communicating effectively within technical teams.",
+      "Intensive full-time bootcamp specialising in full-stack JavaScript. Built React, React Native, Node.js, Express, and PostgreSQL projects. Practiced TDD with Jest & Supertest, Agile sprints, pair programming, and Git workflows.",
   },
   {
     institution: "Rana University",
-    title: "Bachelor’s in Software Engineering (unfinished)",
-    period: "01/2022 – 06/2023",
+    title: "Software Engineering (unfinished)",
+    period: "Jan 2022 – Jun 2023",
     details:
-      "Completed key modules in software development fundamentals, including algorithm design, object-oriented programming, and system analysis. Participated in team-based projects focusing on problem-solving and application design. Though the programme was not completed due to relocation, it provided a strong technical and academic foundation that supports my ongoing development as a software engineer.",
+      "Completed modules in algorithm design, object-oriented programming, and system analysis. Programme interrupted by relocation — provided a solid technical foundation for ongoing development.",
   },
   {
     institution: "Faqir Frozi High School",
-    title: "Secondary Education (Equivalent to GCSEs)",
-    period: "01/2017 – 06/2020",
+    title: "Secondary Education (GCSE equivalent)",
+    period: "2017 – 2020",
     details:
-      "Achieved strong academic results across core subjects including Mathematics, Science, and English. Developed critical thinking and problem-solving skills through coursework and examinations. Participated in extracurricular activities that enhanced teamwork and leadership abilities.",
+      "Strong academic results across Mathematics, Science, and English. Developed critical thinking, problem-solving skills, and teamwork through coursework and extracurricular activities.",
   },
 ];
 
-const certificationsData = [
+const CERTIFICATIONS = [
   {
     title: "IT Help Desk Support Training",
     issuer: "Rana University Afg",
-    date: "Completed: 06/2020",
+    date: "Completed Jun 2020",
   },
 ];
+
 function Education() {
+  const containerRef = useRef(null);
+  const reducedMotion = useReducedMotion();
+
+  useGSAP(
+    () => {
+      if (reducedMotion) return;
+
+      gsap.from(".timeline-page-title", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        ease: "power3.out",
+        clearProps: "transform,opacity",
+        scrollTrigger: { trigger: ".timeline-page", start: "top 88%", once: true },
+      });
+
+      gsap.from(".timeline-card", {
+        opacity: 0,
+        y: 35,
+        stagger: 0.12,
+        duration: 0.65,
+        ease: "power3.out",
+        clearProps: "transform,opacity",
+        scrollTrigger: { trigger: ".timeline", start: "top 88%", once: true },
+      });
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <>
-      <section className="section-container education-container">
-        <header className="section-header">
-          <h1>Education</h1>
-        </header>
+    <div ref={containerRef}>
+      <section className="timeline-page">
+        <h1 className="timeline-page-title section-title">Education</h1>
+        <p className="timeline-page-subtitle">
+          My academic journey and qualifications.
+        </p>
 
-        <div className="section-list">
-          {educationData.map((edu, idx) => (
-            <article key={idx} className="card education-item">
-              <h2 className="education-institution">{edu.institution}</h2>
-              <p className="education-title">
-                {edu.title} <span className="accent-period">{edu.period}</span>
-              </p>
-              <p className="education-details">{edu.details}</p>
-            </article>
+        <div className="timeline">
+          {EDUCATION.map((edu, i) => (
+            <div key={i} className="timeline-item">
+              <div className="timeline-dot" />
+              <div className="timeline-card glass-card">
+                <span className="timeline-period">{edu.period}</span>
+                <h2 className="edu-institution">{edu.institution}</h2>
+                <p className="edu-title">{edu.title}</p>
+                <p className="edu-details">{edu.details}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ─── Certifications ─────────────────────────────────────────── */}
+        <h2 className="timeline-section-heading">Certifications</h2>
+        <div className="timeline">
+          {CERTIFICATIONS.map((cert, i) => (
+            <div key={i} className="timeline-item">
+              <div className="timeline-dot" />
+              <div className="timeline-card glass-card">
+                <span className="timeline-period">{cert.date}</span>
+                <h3 className="edu-institution">{cert.title}</h3>
+                <p className="edu-title" style={{ color: "var(--accent-blue)" }}>{cert.issuer}</p>
+              </div>
+            </div>
           ))}
         </div>
       </section>
-
-      <section className="section-container certifications-container">
-        <header className="section-header">
-          <h1>Certifications</h1>
-        </header>
-
-        <div className="section-list">
-          {certificationsData.map((cert, idx) => (
-            <article key={idx} className="card certifications-item">
-              <h2 className="certifications-title">{cert.title}</h2>
-              <p className="certifications-issuer">
-                {cert.issuer} <span className="accent-period">{cert.date}</span>
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-    </>
+    </div>
   );
 }
 
