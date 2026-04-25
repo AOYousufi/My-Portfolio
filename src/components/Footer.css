@@ -1,42 +1,59 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
-}
-
 .footer {
-  background-color: #0f1115;
-  color: #00fff7;
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 40px;
-  width: 100%;
+  background: rgba(5, 5, 16, 0.92);
+  border-top: 1px solid var(--glass-border);
+  padding: 1.5rem;
 }
 
-.footer-text {
-  margin: 5px 0;
-  font-size: 0.9rem;
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.footer-link {
-  color: #00fff7;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+.footer-copy {
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
 
-.footer-link:hover,
-.footer-link:focus {
-  color: #ff00c8;
+/* ─── Social Icons ───────────────────────────────────────────────────────── */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  transition: color var(--ease), border-color var(--ease), background var(--ease), transform var(--ease);
+}
+
+.footer-icon-link:hover,
+.footer-icon-link:focus-visible {
+  color: var(--accent-blue);
+  border-color: rgba(79, 142, 255, 0.3);
+  background: rgba(79, 142, 255, 0.08);
+  transform: translateY(-2px);
   outline: none;
+}
+
+.footer-icon-link svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
 }
