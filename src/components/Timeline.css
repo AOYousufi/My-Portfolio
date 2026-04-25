@@ -1,0 +1,127 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   SHARED TIMELINE LAYOUT
+   Imported by Education.css and WorkExperience.css
+══════════════════════════════════════════════════════════════════════════ */
+
+.timeline-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+.timeline-page-title {
+  margin-bottom: 0.5rem;
+}
+
+.timeline-page-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+/* ─── Vertical line + items ──────────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem; /* 40px — leaves room for dot + line */
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px; /* center of the dot column */
+  top: 8px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-blue) 0%,
+    var(--accent-violet) 60%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Dot — centred on the line at left: 9px from .timeline */
+.timeline-dot {
+  position: absolute;
+  left: -38px; /* item starts at 40px → dot left edge at 40-38=2px → center at 9px ✓ */
+  top: 1.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, var(--accent-cyan), var(--accent-blue));
+  box-shadow: 0 0 10px rgba(79, 142, 255, 0.6);
+  border: 2px solid var(--bg-base);
+  z-index: 1;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+.timeline-card {
+  padding: 1.5rem 1.75rem;
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+
+.timeline-card:hover {
+  transform: translateX(5px);
+  box-shadow: var(--glow-blue);
+  border-color: rgba(79, 142, 255, 0.28);
+}
+
+/* ─── Period badge ───────────────────────────────────────────────────────── */
+.timeline-period {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent-violet);
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  padding: 3px 10px;
+  border-radius: var(--radius-badge);
+}
+
+/* ─── Section divider ────────────────────────────────────────────────────── */
+.timeline-section-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 2.5rem 0 1.5rem;
+  padding-left: 0; /* inside the timeline padding context */
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .timeline-page {
+    padding: 4rem 1.25rem 5rem;
+  }
+
+  .timeline {
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    left: 7px;
+  }
+
+  .timeline-dot {
+    left: -30px;
+    width: 12px;
+    height: 12px;
+    top: 1.4rem;
+  }
+
+  .timeline-card {
+    padding: 1.25rem 1.25rem;
+  }
+}
