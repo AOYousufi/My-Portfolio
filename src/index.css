@@ -1,10 +1,164 @@
-html,
-body {
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+:root {
+  --bg-base:       #050510;
+  --bg-surface:    #0a0a1a;
+  --bg-elevated:   #0f0f22;
+
+  --accent-blue:   #4f8eff;
+  --accent-violet: #7c3aed;
+  --accent-cyan:   #00d4ff;
+
+  --text-primary:  #e8e8f0;
+  --text-muted:    #8888aa;
+
+  --glass-bg:      rgba(255, 255, 255, 0.04);
+  --glass-border:  rgba(255, 255, 255, 0.09);
+
+  --glow-blue:     0 0 28px rgba(79, 142, 255, 0.35);
+  --glow-violet:   0 0 28px rgba(124, 58, 237, 0.35);
+  --glow-cyan:     0 0 20px rgba(0, 212, 255, 0.40);
+
+  --radius-card:   14px;
+  --radius-badge:  999px;
+
+  --font-sans:     'Plus Jakarta Sans', system-ui, sans-serif;
+  --ease:          0.25s ease;
+  --ease-slow:     0.4s ease;
+}
+
+/* ─── Global Reset ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  width: 100%;
-  min-height: 100%;
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-blue) var(--bg-surface);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+/* ─── Custom Scrollbar (WebKit) ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-blue), var(--accent-violet));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6fa3ff, var(--accent-violet));
+}
+
+/* ─── Utility: Glassmorphism Card ────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ─── Utility: Tech / Skill Badge ────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-badge);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: rgba(79, 142, 255, 0.12);
+  border: 1px solid rgba(79, 142, 255, 0.30);
+  color: var(--accent-blue);
+  white-space: nowrap;
+}
+
+/* ─── Utility: Section Heading ───────────────────────────────────────────── */
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+}
+
+/* ─── Utility: Mesh Background Orbs ─────────────────────────────────────── */
+.mesh-bg {
+  position: relative;
+}
+
+.mesh-bg::before,
+.mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.mesh-bg::before {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(79, 142, 255, 0.18) 0%, transparent 70%);
+  top: -150px;
+  right: -150px;
+  opacity: 1;
+}
+
+.mesh-bg::after {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  opacity: 1;
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }
