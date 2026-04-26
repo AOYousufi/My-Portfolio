@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmad Ozair Yousufi</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: #090c18;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+}
+
+/* Starfield canvas sits behind everything */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ambient glow orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-1 {
+  width: min(60vw, 600px);
+  height: min(60vw, 600px);
+  top: -10%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(37,99,170,0.14) 0%, transparent 70%);
+}
+.orb-2 {
+  width: min(50vw, 500px);
+  height: min(50vw, 500px);
+  bottom: -10%;
+  left: -5%;
+  background: radial-gradient(circle, rgba(88,28,160,0.11) 0%, transparent 70%);
+}
+.orb-3 {
+  width: min(30vw, 300px);
+  height: min(30vw, 300px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(74,184,192,0.06) 0%, transparent 70%);
+}
+
+/* Scene */
+.scene {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Main row */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Text wrappers — overflow hidden, width driven by JS */
+.txt-wrap {
+  overflow: hidden;
+  width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.txt-wrap.left  { justify-content: flex-end; }
+.txt-wrap.right { justify-content: flex-start; }
+
+.txt-wrap span {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(22px, 4.5vw, 58px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+#left-txt  { color: #ffffff; padding-right: clamp(6px, 1vw, 12px); }
+#right-txt { color: #4ab8c0; padding-left:  clamp(6px, 1vw, 12px); }
+
+/* AY mark */
+#ay-mark {
+  flex-shrink: 0;
+  width:  clamp(52px, 8vw, 96px);
+  height: clamp(48px, 7.5vw, 90px);
+  filter: drop-shadow(0 0 12px rgba(74,184,192,0.4));
+  transition: filter 0.1s;
+}
+
+/* Underline bar */
+.bar {
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  margin-top: clamp(10px, 1.5vw, 16px);
+  background: linear-gradient(90deg, transparent 0%, #4ab8c0 30%, rgba(74,184,192,0.8) 50%, #4ab8c0 70%, transparent 100%);
+  opacity: 0;
+  position: relative;
+}
+
+/* Shimmer sweep on bar */
+.bar::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -40px;
+  width: 40px;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+  animation: shimmer 2s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes shimmer {
+  0%   { left: -40px; }
+  100% { left: 100%; }
+}
+
+/* Small subtitle that fades in when name is shown */
+.subtitle {
+  position: absolute;
+  bottom: clamp(-32px, -4vw, -42px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(9px, 1.2vw, 13px);
+  font-weight: 800;
+  letter-spacing: clamp(3px, 0.8vw, 8px);
+  color: rgba(74,184,192,0.6);
+  white-space: nowrap;
+  opacity: 0;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="scene">
+  <div class="loader">
+    <div class="txt-wrap left" id="left-wrap">
+      <span id="left-txt">Ahmad</span>
+    </div>
+
+    <!--
+      AY Mark — A on left, clear gap, Y on right
+      ViewBox 0 0 140 100
+      A : peak (40,10) | left foot (8,86) | right foot (72,86) | teal hook from left foot
+      Y : center (110,54) | top-L (92,12) | top-R (128,12) | stem (110,86)
+    -->
+    <svg id="ay-mark" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- A white strokes — no crossbar, matching original style -->
+      <path d="M8 86 L40 10 L72 86"
+            stroke="white" stroke-width="11"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Teal hook: left foot of A curves right into a rounded foot -->
+      <path d="M8 86 Q8 100 24 100 Q40 100 40 86"
+            stroke="#4ab8c0" stroke-width="11"
+            stroke-linecap="round" stroke-linejoin="round"
+            fill="none"/>
+      <!-- Y arms -->
+      <path d="M110 54 L92 12"  stroke="white" stroke-width="11" stroke-linecap="round"/>
+      <path d="M110 54 L128 12" stroke="white" stroke-width="11" stroke-linecap="round"/>
+      <!-- Y stem -->
+      <path d="M110 54 L110 86" stroke="white" stroke-width="11" stroke-linecap="round"/>
+    </svg>
+
+    <div class="txt-wrap right" id="right-wrap">
+      <span id="right-txt">Yousufi</span>
+    </div>
+  </div>
+
+  <div class="bar" id="bar">
+    <div class="subtitle" id="subtitle">Software Developer</div>
+  </div>
+</div>
+
+<script>
+/* ── Starfield ── */
+const canvas = document.getElementById('stars');
+const ctx    = canvas.getContext('2d');
+
+function resize() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const STAR_COUNT = 100;
+const stars = Array.from({ length: STAR_COUNT }, () => ({
+  x:     Math.random(),
+  y:     Math.random(),
+  r:     Math.random() * 1.3 + 0.2,
+  o:     Math.random() * 0.5 + 0.1,
+  delta: (Math.random() * 0.004 + 0.001) * (Math.random() < 0.5 ? 1 : -1)
+}));
+
+(function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => {
+    s.o += s.delta;
+    if (s.o > 0.65 || s.o < 0.08) s.delta *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${s.o.toFixed(2)})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(drawStars);
+})();
+
+/* ── Logo animation ── */
+const leftWrap  = document.getElementById('left-wrap');
+const rightWrap = document.getElementById('right-wrap');
+const barEl     = document.getElementById('bar');
+const markEl    = document.getElementById('ay-mark');
+const subtitle  = document.getElementById('subtitle');
+const barAfter  = barEl; // shimmer via class toggle
+
+// Easing
+function easeInOutCubic(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+function lerp(a, b, t) { return a + (b - a) * t; }
+function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
+
+const CYCLE    = 4800;   // ms per full loop
+const PHASES = {
+  hold:     [0,    0.16],
+  expand:   [0.16, 0.36],
+  show:     [0.36, 0.66],
+  collapse: [0.66, 0.84],
+  pause:    [0.84, 1.00]
+};
+
+let leftTarget = 0, rightTarget = 0, barTarget = 0;
+let started = false;
+
+function getTargets() {
+  // Measure real rendered widths after fonts are loaded
+  // Temporarily make them visible to measure
+  leftWrap.style.width  = 'auto';
+  rightWrap.style.width = 'auto';
+
+  const lSpan = document.getElementById('left-txt');
+  const rSpan = document.getElementById('right-txt');
+
+  leftTarget  = lSpan.scrollWidth  + parseInt(getComputedStyle(lSpan).paddingRight  || 0) + 4;
+  rightTarget = rSpan.scrollWidth  + parseInt(getComputedStyle(rSpan).paddingLeft   || 0) + 4;
+
+  const markW = markEl.getBoundingClientRect().width;
+  barTarget   = leftTarget + rightTarget + markW;
+
+  // Reset
+  leftWrap.style.width  = '0';
+  rightWrap.style.width = '0';
+
+  started = true;
+}
+
+function getPhase(now) {
+  const t = (now % CYCLE) / CYCLE;
+  for (const [name, [start, end]] of Object.entries(PHASES)) {
+    if (t >= start && t < end) {
+      return { name, prog: (t - start) / (end - start) };
+    }
+  }
+  return { name: 'pause', prog: 1 };
+}
+
+let shimmerOn = false;
+
+function tick(now) {
+  if (!started) { requestAnimationFrame(tick); return; }
+
+  const { name, prog } = getPhase(now);
+  const e = easeInOutCubic(clamp(prog, 0, 1));
+
+  let lw = 0, rw = 0, bw = 0, glow = 0.25, subO = 0;
+
+  if (name === 'hold' || name === 'pause') {
+    lw = 0; rw = 0; bw = 0; glow = 0.25; subO = 0;
+  } else if (name === 'expand') {
+    lw   = lerp(0, leftTarget,  e);
+    rw   = lerp(0, rightTarget, e);
+    bw   = lerp(0, barTarget,   e);
+    glow = lerp(0.25, 0.85, e);
+    subO = lerp(0, 0, e);
+  } else if (name === 'show') {
+    lw = leftTarget; rw = rightTarget; bw = barTarget;
+    glow = 0.85;
+    subO = lerp(0, 0.9, Math.min(prog * 3, 1));
+  } else if (name === 'collapse') {
+    lw   = lerp(leftTarget,  0, e);
+    rw   = lerp(rightTarget, 0, e);
+    bw   = lerp(barTarget,   0, e);
+    glow = lerp(0.85, 0.25, e);
+    subO = lerp(0.9, 0, e);
+  }
+
+  leftWrap.style.width  = lw + 'px';
+  rightWrap.style.width = rw + 'px';
+  barEl.style.width     = bw + 'px';
+  barEl.style.opacity   = bw > 1 ? '1' : '0';
+  subtitle.style.opacity = subO.toFixed(2);
+
+  const glowPx = (8 + glow * 28).toFixed(1);
+  markEl.style.filter = `drop-shadow(0 0 ${glowPx}px rgba(74,184,192,${glow.toFixed(2)}))`;
+
+  // Toggle shimmer animation
+  if (name === 'show' && !shimmerOn) {
+    barEl.style.setProperty('--shimmer', 'running');
+    barEl.querySelectorAll('*').forEach(el => {});
+    const pseudo = barEl;
+    pseudo.classList.add('shimmer-active');
+    shimmerOn = true;
+  } else if (name !== 'show' && shimmerOn) {
+    barEl.classList.remove('shimmer-active');
+    shimmerOn = false;
+  }
+
+  requestAnimationFrame(tick);
+}
+
+// Wait for fonts then measure and start
+document.fonts.ready.then(() => {
+  // Small delay to ensure layout is stable
+  setTimeout(() => {
+    getTargets();
+    requestAnimationFrame(tick);
+  }, 100);
+});
+
+// Re-measure on resize
+window.addEventListener('resize', () => {
+  if (started) {
+    setTimeout(getTargets, 50);
+  }
+});
+</script>
+
+<style>
+.shimmer-active::after {
+  animation-play-state: running !important;
+}
+</style>
+
+</body>
+</html>

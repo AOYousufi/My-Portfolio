@@ -115,8 +115,11 @@ function Home() {
           <div className="about-photo">
             <img
               src={profilePic}
-              alt="Ahmad Ozair Yousufi"
+              alt="Ahmad Ozair Yousufi — portrait"
               className="about-img"
+              loading="lazy"
+              width="400"
+              height="400"
             />
           </div>
           <div className="about-text">

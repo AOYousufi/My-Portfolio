@@ -1,0 +1,121 @@
+.ls-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #090c18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.ls-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ls-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.ls-orb-1 {
+  width: min(60vw, 600px);
+  height: min(60vw, 600px);
+  top: -10%; right: -5%;
+  background: radial-gradient(circle, rgba(37,99,170,0.14) 0%, transparent 70%);
+}
+.ls-orb-2 {
+  width: min(50vw, 500px);
+  height: min(50vw, 500px);
+  bottom: -10%; left: -5%;
+  background: radial-gradient(circle, rgba(88,28,160,0.11) 0%, transparent 70%);
+}
+.ls-orb-3 {
+  width: min(30vw, 300px);
+  height: min(30vw, 300px);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(74,184,192,0.06) 0%, transparent 70%);
+}
+
+.ls-scene {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ls-wrap {
+  overflow: hidden;
+  width: 0;
+  display: flex;
+  align-items: center;
+}
+.ls-left  { justify-content: flex-end; }
+.ls-right { justify-content: flex-start; }
+
+.ls-wrap span {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(22px, 4.5vw, 58px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: #ffffff;
+}
+.ls-right span { color: #4ab8c0; padding-left: clamp(6px, 1vw, 12px); }
+.ls-left  span { padding-right: clamp(6px, 1vw, 12px); }
+
+.ls-mark {
+  flex-shrink: 0;
+  width:  clamp(52px, 8vw, 96px);
+  height: clamp(48px, 7.5vw, 90px);
+  filter: drop-shadow(0 0 12px rgba(74,184,192,0.4));
+}
+
+.ls-bar {
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  margin-top: clamp(10px, 1.5vw, 16px);
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, #4ab8c0, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.ls-shimmer {
+  display: none;
+  position: absolute;
+  top: -3px;
+  width: 60px;
+  height: 8px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.85), transparent);
+  border-radius: 4px;
+}
+
+.ls-subtitle {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(9px, 1.2vw, 12px);
+  font-weight: 800;
+  letter-spacing: clamp(3px, 0.8vw, 8px);
+  color: rgba(74,184,192,0.65);
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  margin-top: clamp(10px, 1.5vw, 16px);
+}

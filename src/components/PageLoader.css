@@ -1,0 +1,61 @@
+.pl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8888;
+  background: rgba(9, 12, 24, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pl-in 0.1s ease forwards;
+}
+
+.pl-overlay.pl-exit {
+  animation: pl-out 0.22s ease forwards !important;
+  pointer-events: none;
+}
+
+@keyframes pl-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pl-out { to   { opacity: 0; } }
+
+/* Teal sweep bar at the very top of the viewport */
+.pl-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4ab8c0, rgba(74,184,192,0.4));
+  box-shadow: 0 0 10px rgba(74,184,192,0.6);
+  animation: pl-bar 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pl-bar {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* AY mark — scale in with glow pulse */
+.pl-mark {
+  width: clamp(56px, 8vw, 88px);
+  height: auto;
+  animation: pl-pulse 0.4s ease forwards;
+}
+
+@keyframes pl-pulse {
+  0%   {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 8px rgba(74,184,192,0.2));
+    transform: scale(0.9);
+  }
+  55%  {
+    opacity: 1;
+    filter: drop-shadow(0 0 28px rgba(74,184,192,1));
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(74,184,192,0.5));
+    transform: scale(1);
+  }
+}
