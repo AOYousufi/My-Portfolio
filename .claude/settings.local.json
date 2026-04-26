@@ -10,7 +10,8 @@
       "Bash(pip3 install *)",
       "Bash(python3 -m pip install cairosvg pillow --quiet)",
       "Bash(apt-get install *)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "Bash(npx eslint *)"
     ]
   }
 }
