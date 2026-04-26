@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(convert --version)",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL ok'\\)\")",
+      "Bash(python3 -c \"import cairosvg; print\\('cairosvg ok'\\)\")",
+      "Bash(python3 -m pip list)",
+      "Bash(node -e \"try{require\\('sharp'\\);console.log\\('sharp'\\)}catch\\(e\\){}\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -m pip install cairosvg pillow --quiet)",
+      "Bash(apt-get install *)",
+      "Bash(node *)"
     ]
   }
 }

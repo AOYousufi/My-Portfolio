@@ -39,16 +39,16 @@
 
 /* ─── Brand Logo ─────────────────────────────────────────────────────────── */
 .navbar-brand img {
-  height: 52px;
+  height: 40px;
   width: auto;
   display: block;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(79, 142, 255, 0.35));
+  filter: drop-shadow(0 0 6px rgba(74,184,192,0.35));
   transition: filter var(--ease), transform var(--ease);
 }
 
 .navbar-brand img:hover {
-  filter: drop-shadow(0 0 12px rgba(79, 142, 255, 0.65));
+  filter: drop-shadow(0 0 14px rgba(74,184,192,0.7));
   transform: scale(1.04);
 }
 

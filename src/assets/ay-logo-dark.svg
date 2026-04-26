@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#090c18" rx="24"/>
+  <!-- A strokes -->
+  <path d="M32 158 L72 32 L112 158" stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Teal hook -->
+  <path d="M32 158 Q32 175 50 175 Q68 175 68 158" stroke="#4ab8c0" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Y arms -->
+  <path d="M158 102 L136 36"  stroke="white" stroke-width="14" stroke-linecap="round"/>
+  <path d="M158 102 L180 36"  stroke="white" stroke-width="14" stroke-linecap="round"/>
+  <!-- Y stem -->
+  <path d="M158 102 L158 158" stroke="white" stroke-width="14" stroke-linecap="round"/>
+</svg>
