@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import AYLogo from '../assets/ay-logo.svg'
+import { useTheme } from '../context/ThemeContext'
 
 const NAV_LINKS = [
   { label: 'Home',      to: '/',               exact: true  },
