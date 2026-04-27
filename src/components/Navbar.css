@@ -247,3 +247,27 @@
 @media (min-width: 769px) {
   .nav-mobile-only { display: none; }
 }
+
+/* ─── Theme toggle button ────────────────────────────────────────────────── */
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color var(--ease), border-color var(--ease), background var(--ease), transform var(--ease);
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus-visible {
+  color: var(--accent-blue);
+  border-color: rgba(79, 142, 255, 0.28);
+  background: rgba(79, 142, 255, 0.08);
+  transform: translateY(-2px) rotate(12deg);
+  outline: none;
+}

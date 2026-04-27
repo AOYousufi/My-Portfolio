@@ -212,7 +212,7 @@ export default function BoredWidget() {
   const [entries, setEntries] = useState([])
   const [input, setInput] = useState('')
   const [cmdHistory, setCmdHistory] = useState([])
-  const [histIdx, setHistIdx] = useState(-1)
+  const [, setHistIdx] = useState(-1)
 
   const bodyRef = useRef(null)
   const inputRef = useRef(null)
