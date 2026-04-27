@@ -5,10 +5,12 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom'
+import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import LoadingScreen from './components/LoadingScreen'
 import PageLoader from './components/PageLoader'
+import BoredWidget from './components/BoredWidget/BoredWidget'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import VirtualExhibition from './pages/VirtualExhibition'
@@ -19,14 +21,12 @@ import WorkExperience from './pages/WorkExperience'
 import Contact from './pages/Contact'
 import './App.css'
 
-// Renders all routes and shows PageLoader on every navigation after the first
 function InnerApp() {
   const location = useLocation()
   const [showPageLoader, setShowPageLoader] = useState(false)
   const prevPath = useRef(null)
 
   useEffect(() => {
-    // Skip on initial mount — only trigger for actual navigations
     if (prevPath.current === null) {
       prevPath.current = location.pathname
       return
@@ -46,63 +46,14 @@ function InnerApp() {
         />
       )}
       <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <section id="home">
-              <Home />
-            </section>
-          }
-        />
-        <Route
-          path="/projects"
-          element={
-            <section id="projects">
-              <Projects />
-            </section>
-          }
-        />
-        <Route
-          path="/projects/virtual-exhibition"
-          element={
-            <section id="virtual-exhibition">
-              <VirtualExhibition />
-            </section>
-          }
-        />
-        <Route
-          path="/projects/nc-news"
-          element={
-            <section id="nc-news">
-              <NCNews />
-            </section>
-          }
-        />
-        <Route
-          path="/projects/my-plants"
-          element={
-            <section id="my-plants">
-              <MyPlants />
-            </section>
-          }
-        />
-        <Route
-          path="/education"
-          element={
-            <section id="education">
-              <Education />
-            </section>
-          }
-        />
-        <Route
-          path="/work-experience"
-          element={
-            <section id="work-experience">
-              <WorkExperience />
-            </section>
-          }
-        />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/"                        element={<section id="home"><Home /></section>} />
+        <Route path="/projects"                element={<section id="projects"><Projects /></section>} />
+        <Route path="/projects/virtual-exhibition" element={<section id="virtual-exhibition"><VirtualExhibition /></section>} />
+        <Route path="/projects/nc-news"        element={<section id="nc-news"><NCNews /></section>} />
+        <Route path="/projects/my-plants"      element={<section id="my-plants"><MyPlants /></section>} />
+        <Route path="/education"               element={<section id="education"><Education /></section>} />
+        <Route path="/work-experience"         element={<section id="work-experience"><WorkExperience /></section>} />
+        <Route path="/contact"                 element={<Contact />} />
       </Routes>
     </>
   )
@@ -119,21 +70,22 @@ function App() {
   }
 
   return (
-    <Router>
-      {loading ? (
-        // Nothing else renders while the intro plays — GSAP animations start
-        // fresh on the home page the moment the overlay is gone
-        <LoadingScreen onComplete={handleLoadComplete} />
-      ) : (
-        <div className="app-wrapper">
-          <Navbar />
-          <main className="main-content">
-            <InnerApp />
-          </main>
-          <Footer />
-        </div>
-      )}
-    </Router>
+    <ThemeProvider>
+      <Router>
+        {loading ? (
+          <LoadingScreen onComplete={handleLoadComplete} />
+        ) : (
+          <div className="app-wrapper">
+            <Navbar />
+            <main className="main-content">
+              <InnerApp />
+            </main>
+            <Footer />
+            <BoredWidget />
+          </div>
+        )}
+      </Router>
+    </ThemeProvider>
   )
 }
 
