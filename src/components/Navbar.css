@@ -1,29 +1,30 @@
 /* ─── Navbar Shell ───────────────────────────────────────────────────────── */
 .navbar {
-  background: rgba(5, 5, 16, 0.82);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(5, 5, 16, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
+  transition: background var(--ease-slow), border-color var(--ease-slow), box-shadow var(--ease-slow);
 
-  /* Slide-in entrance on page load */
   animation: navEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   @keyframes navEnter {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
   }
+}
+
+/* Scrolled state — stronger glass + subtle shadow */
+.navbar.is-scrolled {
+  background: rgba(5, 5, 16, 0.96);
+  border-bottom-color: rgba(79, 142, 255, 0.14);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
 }
 
 .navbar-container {
@@ -43,16 +44,16 @@
   width: auto;
   display: block;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(74,184,192,0.35));
+  filter: drop-shadow(0 0 6px rgba(74, 184, 192, 0.35));
   transition: filter var(--ease), transform var(--ease);
 }
 
 .navbar-brand img:hover {
-  filter: drop-shadow(0 0 14px rgba(74,184,192,0.7));
+  filter: drop-shadow(0 0 14px rgba(74, 184, 192, 0.7));
   transform: scale(1.04);
 }
 
-/* ─── Nav Links ──────────────────────────────────────────────────────────── */
+/* ─── Nav Links list ─────────────────────────────────────────────────────── */
 .navbar-links {
   list-style: none;
   display: flex;
@@ -60,6 +61,7 @@
   gap: 4px;
 }
 
+/* ─── Text nav links ─────────────────────────────────────────────────────── */
 .nav-link {
   position: relative;
   display: inline-block;
@@ -69,6 +71,7 @@
   font-weight: 500;
   border-radius: 6px;
   transition: color var(--ease), background var(--ease);
+  text-decoration: none;
 }
 
 .nav-link:hover {
@@ -76,7 +79,6 @@
   background: rgba(79, 142, 255, 0.08);
 }
 
-/* Active link */
 .nav-link--active {
   color: var(--accent-blue);
 }
@@ -90,6 +92,62 @@
   height: 2px;
   border-radius: 2px;
   background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+}
+
+/* ─── Icon-only external links (desktop) ────────────────────────────────── */
+.nav-icon-item {
+  display: list-item;
+}
+
+.nav-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  transition: color var(--ease), border-color var(--ease), background var(--ease), transform var(--ease);
+}
+
+.nav-icon-link:hover,
+.nav-icon-link:focus-visible {
+  color: var(--accent-blue);
+  border-color: rgba(79, 142, 255, 0.28);
+  background: rgba(79, 142, 255, 0.08);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* ─── Hire Me CTA pill ───────────────────────────────────────────────────── */
+.nav-hire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-violet) 100%);
+  border: none;
+  transition: transform var(--ease), box-shadow var(--ease), filter var(--ease);
+  text-decoration: none;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+
+.nav-hire:hover,
+.nav-hire:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(79, 142, 255, 0.5);
+  filter: brightness(1.1);
+  outline: none;
+}
+
+.nav-hire--active {
+  box-shadow: 0 0 22px rgba(79, 142, 255, 0.35);
 }
 
 /* ─── Hamburger ──────────────────────────────────────────────────────────── */
@@ -125,23 +183,16 @@
   background: var(--accent-blue);
 }
 
-/* Hamburger → X animation */
-.menu-toggle.is-open .menu-bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.menu-toggle.is-open .menu-bar:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.menu-toggle.is-open .menu-bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.menu-toggle.is-open .menu-bar:nth-child(1) { transform: translateY(7px) rotate(45deg);  }
+.menu-toggle.is-open .menu-bar:nth-child(2) { opacity: 0; transform: scaleX(0);          }
+.menu-toggle.is-open .menu-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ─── Mobile Menu ────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
+  .menu-toggle { display: flex; }
+
+  /* Hide desktop-only icon items on mobile */
+  .nav-icon-item { display: none; }
 
   .navbar-links {
     position: absolute;
@@ -181,4 +232,18 @@
     left: 16px;
     right: 16px;
   }
+
+  .nav-hire {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+  }
+}
+
+/* Desktop: hide mobile-only text links */
+@media (min-width: 769px) {
+  .nav-mobile-only { display: none; }
 }
