@@ -265,17 +265,6 @@ My-Portfolio/
 
 <br clear="right"/>
 
----
-
-## 📊 GitHub Stats
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=AOYousufi&show_icons=true&theme=tokyonight&bg_color=050510&border_color=4f8eff&title_color=4f8eff&icon_color=00d4ff&text_color=f0f0ff&ring_color=7c3aed&hide_border=false&count_private=true" height="170"/>
-&nbsp;&nbsp;
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=AOYousufi&theme=tokyonight&background=050510&border=4f8eff&ring=7c3aed&fire=00d4ff&currStreakLabel=4f8eff&sideLabels=8888aa&dates=8888aa" height="170"/>
-
-</div>
 
 ---
 
