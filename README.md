@@ -1,6 +1,7 @@
 
 <div align="center">
 
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:050510,50:4f8eff,100:00d4ff&height=200&section=header&text=Ahmad%20Ozair%20Yousufi&fontSize=52&fontColor=f0f0ff&fontAlignY=38&desc=Full-Stack%20Developer%20%7C%20React%20%7C%20UI%20Craftsman&descAlignY=58&descSize=18&animation=fadeIn" width="100%"/>
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Syne&weight=700&size=22&pause=1200&color=4F8EFF&center=true&vCenter=true&width=600&lines=Building+interfaces+that+feel+alive.;GSAP+animations+%2B+React+19.;From+concept+to+pixel-perfect+reality.;Northcoders+bootcamp+graduate.;BSc+Software+Development+%40+Staffordshire.)](https://git.io/typing-svg)
