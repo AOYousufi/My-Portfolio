@@ -1,3 +1,4 @@
+
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:050510,50:4f8eff,100:00d4ff&height=200&section=header&text=Ahmad%20Ozair%20Yousufi&fontSize=52&fontColor=f0f0ff&fontAlignY=38&desc=Full-Stack%20Developer%20%7C%20React%20%7C%20UI%20Craftsman&descAlignY=58&descSize=18&animation=fadeIn" width="100%"/>
