@@ -108,7 +108,6 @@ function Navbar() {
             </li>
           ))}
 
-          {/* Theme toggle */}
           <li>
             <button
               className="nav-icon-link theme-toggle-btn"
@@ -119,7 +118,6 @@ function Navbar() {
             </button>
           </li>
 
-          {/* Icon-only external links — desktop */}
           <li className="nav-icon-item">
             <a
               href="https://github.com/AOYousufi"
@@ -143,7 +141,6 @@ function Navbar() {
             </a>
           </li>
 
-          {/* Mobile-only text links */}
           <li className="nav-mobile-only">
             <a
               href="https://github.com/AOYousufi"
@@ -165,7 +162,6 @@ function Navbar() {
             </a>
           </li>
 
-          {/* Hire Me CTA */}
           <li>
             <Link
               to="/contact"

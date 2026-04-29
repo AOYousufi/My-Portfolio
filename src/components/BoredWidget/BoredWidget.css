@@ -1,6 +1,3 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   BORED WIDGET — fixed bottom-right, always dark (it's a terminal)
-══════════════════════════════════════════════════════════════════════════ */
 .bored-widget {
   position: fixed;
   bottom: 28px;
@@ -11,7 +8,6 @@
   align-items: flex-end;
 }
 
-/* ─── Trigger bubble ─────────────────────────────────────────────────────── */
 .bored-trigger {
   position: relative;
   display: inline-flex;
@@ -61,7 +57,6 @@
   letter-spacing: 0.01em;
 }
 
-/* Pulsing ring behind the trigger */
 .bored-pulse {
   position: absolute;
   inset: -3px;
@@ -80,9 +75,6 @@
   .bored-pulse { animation: none; }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
-   TERMINAL WINDOW
-══════════════════════════════════════════════════════════════════════════ */
 .terminal-window {
   width: min(480px, 96vw);
   max-height: min(520px, 85dvh);
@@ -111,7 +103,6 @@
   .terminal-window { animation: none; }
 }
 
-/* ─── Title bar ──────────────────────────────────────────────────────────── */
 .terminal-titlebar {
   display: flex;
   align-items: center;
@@ -153,11 +144,10 @@
   font-size: 0.72rem;
   color: rgba(255, 255, 255, 0.35);
   letter-spacing: 0.02em;
-  margin-right: 54px; /* balance the dots */
+  margin-right: 54px; 
   pointer-events: none;
 }
 
-/* ─── Output body ────────────────────────────────────────────────────────── */
 .terminal-body {
   flex: 1;
   overflow-y: auto;
@@ -172,7 +162,6 @@
 .terminal-body::-webkit-scrollbar-track { background: transparent; }
 .terminal-body::-webkit-scrollbar-thumb { background: rgba(79, 142, 255, 0.3); border-radius: 4px; }
 
-/* ─── Output lines ───────────────────────────────────────────────────────── */
 .t-line {
   white-space: pre;
   user-select: text;
@@ -195,14 +184,12 @@
   color: rgba(255, 100, 100, 0.9);
 }
 
-/* Prompt prefix in output */
 .t-prompt {
   color: #4f8eff;
   font-weight: 700;
   user-select: none;
 }
 
-/* ─── Input row ──────────────────────────────────────────────────────────── */
 .terminal-input-row {
   display: flex;
   align-items: center;
@@ -230,7 +217,6 @@
   font-style: italic;
 }
 
-/* ─── Mobile adjustments ─────────────────────────────────────────────────── */
 @media (max-width: 540px) {
   .bored-widget {
     bottom: 16px;
