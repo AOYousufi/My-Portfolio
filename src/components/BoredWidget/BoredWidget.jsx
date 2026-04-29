@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import './BoredWidget.css'
 
-/* ── Static content ────────────────────────────────────────────────────── */
-
 const WELCOME = [
   '╔══════════════════════════════════════════╗',
   '║   AY-TERMINAL  v1.0.0                   ║',
@@ -49,8 +47,6 @@ function mkBar(pct) {
   const n = Math.round(pct / 10)
   return '█'.repeat(n) + '░'.repeat(10 - n)
 }
-
-/* ── Command registry ──────────────────────────────────────────────────── */
 
 const COMMANDS = {
   help: () => [
@@ -139,8 +135,6 @@ const COMMANDS = {
   },
 }
 
-/* ── Command processor ─────────────────────────────────────────────────── */
-
 function processCommand(raw) {
   const input = raw.trim().toLowerCase()
   if (!input) return { type: 'noop' }
@@ -168,7 +162,6 @@ function processCommand(raw) {
     }
   }
 
-  // Typo helpers
   if (input === 'ls' || input === 'dir') {
     return {
       type: 'output',
@@ -205,8 +198,6 @@ function processCommand(raw) {
   }
 }
 
-/* ── Component ─────────────────────────────────────────────────────────── */
-
 export default function BoredWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [entries, setEntries] = useState([])
@@ -217,21 +208,18 @@ export default function BoredWidget() {
   const bodyRef = useRef(null)
   const inputRef = useRef(null)
 
-  // Auto-scroll output
   useEffect(() => {
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current.scrollHeight
     }
   }, [entries])
 
-  // Focus input when opened
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 80)
     }
   }, [isOpen])
 
-  // Escape closes
   useEffect(() => {
     if (!isOpen) return
     const handler = (e) => { if (e.key === 'Escape') setIsOpen(false) }
@@ -295,7 +283,6 @@ export default function BoredWidget() {
 
   return (
     <div className="bored-widget">
-      {/* ── Trigger bubble ─────────────────────────────────────────── */}
       {!isOpen && (
         <button
           className="bored-trigger"
@@ -308,7 +295,6 @@ export default function BoredWidget() {
         </button>
       )}
 
-      {/* ── Terminal window ─────────────────────────────────────────── */}
       {isOpen && (
         <div
           className="terminal-window"
@@ -316,7 +302,6 @@ export default function BoredWidget() {
           aria-label="Interactive developer terminal"
           aria-modal="false"
         >
-          {/* macOS-style title bar */}
           <div className="terminal-titlebar" aria-hidden="true">
             <div className="terminal-dots">
               <button
@@ -338,16 +323,13 @@ export default function BoredWidget() {
             </span>
           </div>
 
-          {/* Output / history */}
           <div className="terminal-body" ref={bodyRef}>
-            {/* Welcome banner */}
             {WELCOME.map((line, i) => (
               <div key={`w${i}`} className="t-line t-line--banner">
                 {line || ' '}
               </div>
             ))}
 
-            {/* Command entries */}
             {entries.map((entry, i) => (
               <div key={i}>
                 {entry.kind === 'in' && (
@@ -369,7 +351,6 @@ export default function BoredWidget() {
             ))}
           </div>
 
-          {/* Input row */}
           <div className="terminal-input-row">
             <span className="t-prompt" aria-hidden="true">visitor@portfolio:~$</span>
             <input

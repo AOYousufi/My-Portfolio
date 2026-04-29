@@ -31,7 +31,6 @@ function ProjectCard({ project, index, reducedMotion }) {
         `perspective(900px) rotateX(${s.rotX}deg) rotateY(${s.rotY}deg)`
     }
 
-    // JS-based parallax: layers shift in tilt direction, simulating depth
     if (headerRef.current) {
       headerRef.current.style.transform =
         `translate(${s.rotY * 0.6}px, ${-s.rotX * 0.6}px)`

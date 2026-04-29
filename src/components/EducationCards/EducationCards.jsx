@@ -93,7 +93,6 @@ function TimelineSection({ entries, reducedMotion, baseIndex = 0 }) {
           className="edu-entry"
           style={{ '--card-accent': entry.accent }}
         >
-          {/* Pulsing node on the spine */}
           <div className="edu-node" aria-hidden="true">
             <div className="edu-node-core" />
             <div className="edu-node-ring" />
