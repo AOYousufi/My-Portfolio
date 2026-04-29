@@ -13,7 +13,6 @@ export default function LoadingScreen({ onComplete }) {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    // ── Starfield ──
     const canvas = canvasRef.current
     const ctx    = canvas.getContext('2d')
     let cw = 0, ch = 0
@@ -47,9 +46,8 @@ export default function LoadingScreen({ onComplete }) {
     }
     drawStars()
 
-    // ── Animation ──
-    const CYCLE    = 2400   // half the original — ~2.2 s total including fade
-    const RUNS     = 0      // exit in the first pass (no second cycle)
+    const CYCLE    = 2400
+    const RUNS     = 0
     let   runCount = 0
     let   startTime = null
 
@@ -80,15 +78,12 @@ export default function LoadingScreen({ onComplete }) {
 
       let lv = 0, rv = 0, bv = 0, gw = 0.25, so = 0
 
-      if (cycleT < 0.16) {
-        // hold — AY mark only
-      } else if (cycleT < 0.36) {
+      if (cycleT >= 0.16 && cycleT < 0.36) {
         const e = eio((cycleT - 0.16) / 0.20)
         lv = lerp(0, lt, e); rv = lerp(0, rt, e)
         bv = lerp(0, bt, e); gw = lerp(0.25, 0.85, e)
         shimOn = false
-      } else {
-        // Hold full name until exit — no collapse, goes straight to homepage
+      } else if (cycleT >= 0.36) {
         lv = lt; rv = rt; bv = bt; gw = 0.85
         so = Math.min(clamp((cycleT - 0.36) / 0.10, 0, 1), 1) * 0.9
         shimOn = cycleT < 0.65

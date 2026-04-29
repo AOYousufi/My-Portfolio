@@ -20,7 +20,6 @@ function Footer() {
       <div className="footer-top-accent" aria-hidden="true" />
 
       <div className="footer-inner">
-        {/* ── Col 1: Brand ─────────────────────────────────────── */}
         <div className="footer-brand">
           <Link to="/" aria-label="Ahmad Ozair Yousufi — Home" className="footer-logo-link">
             <img src={AYLogo} alt="AY" height="36" width="auto" />
@@ -34,7 +33,6 @@ function Footer() {
           </div>
         </div>
 
-        {/* ── Col 2: Navigation ────────────────────────────────── */}
         <nav className="footer-nav" aria-label="Footer navigation">
           <h3 className="footer-col-heading">Navigation</h3>
           <ul className="footer-nav-list" role="list">
@@ -46,7 +44,6 @@ function Footer() {
           </ul>
         </nav>
 
-        {/* ── Col 3: Connect ───────────────────────────────────── */}
         <div className="footer-connect">
           <h3 className="footer-col-heading">Connect</h3>
           <div className="footer-social">
@@ -88,7 +85,6 @@ function Footer() {
         </div>
       </div>
 
-      {/* ── Bottom bar ───────────────────────────────────────────── */}
       <div className="footer-bottom">
         <p className="footer-copy">
           © {year} Ahmad Ozair Yousufi. All rights reserved.
