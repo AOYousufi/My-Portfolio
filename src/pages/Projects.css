@@ -14,14 +14,12 @@
   margin-bottom: 3rem;
 }
 
-/* ─── Grid ───────────────────────────────────────────────────────────────── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.5rem;
 }
 
-/* ─── Card ───────────────────────────────────────────────────────────────── */
 .project-card {
   display: flex;
   flex-direction: column;
@@ -61,7 +59,6 @@
   color: var(--text-muted);
 }
 
-/* ─── Links (always-visible row at card bottom) ──────────────────────────── */
 .project-card-links {
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +102,6 @@
   background: rgba(0, 212, 255, 0.07);
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .projects-section {
     padding: 4rem 1.25rem 5rem;

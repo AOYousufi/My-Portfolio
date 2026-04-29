@@ -14,7 +14,6 @@
   margin-bottom: 3rem;
 }
 
-/* ─── Grid ───────────────────────────────────────────────────────────────── */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -22,7 +21,6 @@
   align-items: start;
 }
 
-/* ─── Shared card base ───────────────────────────────────────────────────── */
 .contact-info,
 .contact-form {
   padding: 2rem;
@@ -37,7 +35,6 @@
   color: #fff;
 }
 
-/* ─── Info card ──────────────────────────────────────────────────────────── */
 .contact-email-link {
   font-size: 0.9rem;
   font-weight: 500;
@@ -110,7 +107,6 @@
   background: rgba(79, 142, 255, 0.08);
 }
 
-/* ─── Form ───────────────────────────────────────────────────────────────── */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -159,7 +155,6 @@
   cursor: pointer;
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 800px) {
   .contact-grid {
     grid-template-columns: 1fr;
