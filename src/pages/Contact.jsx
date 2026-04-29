@@ -56,7 +56,6 @@ function Contact() {
       </p>
 
       <div className="contact-grid">
-        {/* ─── Info card ─────────────────────────────────────────────── */}
         <div className="contact-info glass-card">
           <h2 className="contact-info-heading">Direct Email</h2>
           <a href={`mailto:${EMAIL}`} className="contact-email-link">
@@ -95,7 +94,6 @@ function Contact() {
           </div>
         </div>
 
-        {/* ─── Form card ─────────────────────────────────────────────── */}
         <form className="contact-form glass-card" onSubmit={handleSubmit} noValidate>
           <h2 className="contact-info-heading">Send a Message</h2>
 
