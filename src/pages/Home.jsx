@@ -85,7 +85,6 @@ function Home() {
   return (
     <div ref={containerRef}>
 
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="hero-section" aria-label="Introduction">
         <div className="hero-orbs" aria-hidden="true">
           <span className="orb orb-1" />
@@ -96,7 +95,6 @@ function Home() {
 
         <div className="hero-content">
 
-          {/* Left — Text */}
           <div className="hero-text">
             <div className="hero-eyebrow">
               <span className="hero-status-dot" aria-hidden="true" />
@@ -161,7 +159,6 @@ function Home() {
             </div>
           </div>
 
-          {/* Right — Photo */}
           <div className="hero-visual" aria-hidden="true">
             <div className="profile-frame">
               <div className="profile-ring-glow" />
@@ -188,7 +185,6 @@ function Home() {
         </div>
       </section>
 
-      {/* ── About ────────────────────────────────────────────────────── */}
       <section className="about-section" aria-label="About me">
         <div className="home-section-bg" aria-hidden="true" />
 
@@ -230,7 +226,6 @@ function Home() {
         </div>
       </section>
 
-      {/* ── Skills ───────────────────────────────────────────────────── */}
       <section className="skills-section" aria-label="Tech stack">
         <div className="home-section-bg" aria-hidden="true" />
 
