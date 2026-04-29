@@ -1,11 +1,9 @@
-/* ─── CSS Custom Property Registration (border shimmer) ─────────────────── */
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
 }
 
-/* ─── Section ────────────────────────────────────────────────────────────── */
 .projects-section {
   position: relative;
   max-width: 1200px;
@@ -26,7 +24,6 @@
   z-index: 0;
 }
 
-/* ─── Heading ────────────────────────────────────────────────────────────── */
 .projects-heading {
   position: relative;
   z-index: 1;
@@ -58,7 +55,6 @@
   margin: 0;
 }
 
-/* ─── Grid ───────────────────────────────────────────────────────────────── */
 .projects-grid {
   position: relative;
   z-index: 1;
@@ -67,7 +63,6 @@
   gap: 24px;
 }
 
-/* ─── Keyframes ──────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes cardEntrance {
     from {
@@ -96,7 +91,6 @@
   }
 }
 
-/* ─── Card Base ──────────────────────────────────────────────────────────── */
 .project-card {
   position: relative;
   display: flex;
@@ -110,16 +104,13 @@
   cursor: pointer;
   will-change: transform;
 
-  /* Entrance: start hidden, animations begin paused */
   opacity: 0;
 
-  /* Transition only for non-JS-controlled props */
   transition:
     box-shadow 0.4s ease,
     border-color 0.4s ease;
 }
 
-/* ─── Entrance + Float animations (reduced-motion guard) ─────────────────── */
 @media (prefers-reduced-motion: no-preference) {
   .project-card {
     animation:
@@ -136,12 +127,11 @@
   }
 
   .project-card.card-visible:hover {
-    /* pause float; tilt takes over via JS inline style */
+    
     animation-play-state: running, paused;
   }
 }
 
-/* Reduced-motion entrance: simple opacity fade */
 @media (prefers-reduced-motion: reduce) {
   .project-card.card-visible {
     opacity: 1;
@@ -149,7 +139,6 @@
   }
 }
 
-/* ─── Hover outer glow ───────────────────────────────────────────────────── */
 .project-card:hover {
   border-color: rgba(74, 184, 192, 0.2);
   box-shadow:
@@ -158,7 +147,6 @@
     0 0 80px rgba(74, 184, 192, 0.08);
 }
 
-/* Per-card accent glow on hover */
 .project-card:hover {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--card-accent) 30%, transparent),
@@ -167,7 +155,6 @@
   border-color: color-mix(in srgb, var(--card-accent) 20%, transparent);
 }
 
-/* ─── Spotlight (cursor-following inner radial glow) ────────────────────── */
 .card-spotlight {
   position: absolute;
   inset: 0;
@@ -182,7 +169,6 @@
   opacity: 1;
 }
 
-/* ─── Border shimmer (conic gradient sweep) ──────────────────────────────── */
 .card-border-glow {
   position: absolute;
   inset: 0;
@@ -196,7 +182,7 @@
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 0;
-  /* Mask: show only the 1px "border" area, hide the interior */
+  
   mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -222,14 +208,13 @@
   }
 }
 
-/* ─── Card Header ────────────────────────────────────────────────────────── */
 .card-header {
   position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* translateZ(20px) equivalent simulated via JS translate */
+  
   transform-style: preserve-3d;
   transform: translateZ(20px);
 }
@@ -238,7 +223,7 @@
   font-size: 36px;
   line-height: 1;
   display: block;
-  /* colour set via inline style from accent prop */
+  
 }
 
 .card-badge {
@@ -254,7 +239,6 @@
   padding: 4px 10px;
 }
 
-/* ─── Card Body ──────────────────────────────────────────────────────────── */
 .card-body {
   position: relative;
   z-index: 2;
@@ -290,7 +274,6 @@
   margin: 0;
 }
 
-/* ─── Card Footer ────────────────────────────────────────────────────────── */
 .card-footer {
   position: relative;
   z-index: 2;
@@ -301,7 +284,6 @@
   border-top: 0.5px solid rgba(255, 255, 255, 0.07);
 }
 
-/* ─── Stack tags ─────────────────────────────────────────────────────────── */
 .card-stack {
   display: flex;
   flex-wrap: wrap;
@@ -324,7 +306,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ─── Card links ─────────────────────────────────────────────────────────── */
 .card-links {
   display: flex;
   gap: 1rem;
@@ -354,7 +335,6 @@
   color: var(--card-accent);
 }
 
-/* ─── Large background number watermark ─────────────────────────────────── */
 .card-number {
   position: absolute;
   bottom: -10px;
@@ -369,7 +349,6 @@
   z-index: 0;
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────── */
 @media (min-width: 600px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -391,7 +370,6 @@
     grid-template-columns: 1fr;
   }
 
-  /* No tilt on touch — keep float and entrance only */
   .project-card {
     cursor: default;
   }

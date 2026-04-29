@@ -45,7 +45,6 @@ function EducationCard({ entry, index, reducedMotion }) {
         `translate(${s.rotY * 0.35}px, ${-s.rotX * 0.35}px)`
     }
 
-    // Holographic foil: angle tracks tilt direction, intensity tracks magnitude
     if (holoRef.current) {
       const angle = Math.atan2(s.rotY, -s.rotX) * (180 / Math.PI) + 135
       const mag   = Math.min(Math.sqrt(s.rotX ** 2 + s.rotY ** 2) / 12, 1)
@@ -175,12 +174,10 @@ function EducationCard({ entry, index, reducedMotion }) {
       onMouseLeave={onLeave}
       onClick={onClick}
     >
-      {/* Depth layers */}
       <div ref={spotRef} className="card-spotlight" />
       <div className="card-border-glow" />
       <div ref={holoRef} className="card-hologram" />
 
-      {/* Giant initial watermark */}
       <div className="edu-initial" aria-hidden="true">{initial}</div>
 
       <header ref={headerRef} className="edu-card-header">

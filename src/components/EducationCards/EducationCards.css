@@ -1,11 +1,9 @@
-/* ─── CSS Custom Property Registration ──────────────────────────────────── */
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
 }
 
-/* ─── Section ────────────────────────────────────────────────────────────── */
 .education-section {
   position: relative;
   max-width: 860px;
@@ -13,7 +11,6 @@
   padding: 5rem 2rem 6rem;
 }
 
-/* Shared grid background reused from ProjectCards */
 .education-section .projects-grid-bg {
   position: absolute;
   inset: 0;
@@ -27,7 +24,6 @@
   z-index: 0;
 }
 
-/* ─── Heading (mirrors Projects section exactly) ─────────────────────────── */
 .edu-heading {
   position: relative;
   z-index: 1;
@@ -71,14 +67,12 @@
   z-index: 1;
 }
 
-/* ─── Timeline spine ─────────────────────────────────────────────────────── */
 .edu-timeline {
   position: relative;
   z-index: 1;
   padding-left: 3rem;
 }
 
-/* Static spine base */
 .edu-timeline::before {
   content: '';
   position: absolute;
@@ -114,7 +108,6 @@
   }
 }
 
-/* Travelling light on the spine */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes spineFlow {
     0%   { top:  0%; opacity: 0; }
@@ -144,7 +137,6 @@
   }
 }
 
-/* ─── Timeline entry wrapper ─────────────────────────────────────────────── */
 .edu-entry {
   position: relative;
   margin-bottom: 2rem;
@@ -154,7 +146,6 @@
   margin-bottom: 0;
 }
 
-/* ─── Timeline node (pulsing dot) ────────────────────────────────────────── */
 .edu-node {
   position: absolute;
   left: -38px;
@@ -201,7 +192,6 @@
   }
 }
 
-/* ─── Keyframes for card animations ─────────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes cardEntrance {
     from { opacity: 0; transform: translateX(32px) translateY(16px); }
@@ -243,7 +233,6 @@
   }
 }
 
-/* ─── Card base ──────────────────────────────────────────────────────────── */
 .edu-card {
   position: relative;
   display: flex;
@@ -281,7 +270,6 @@
     animation-play-state: running, paused;
   }
 
-  /* "Current" card breathes with a gentle pulsing glow */
   .edu-card.card-visible[data-status='current'] {
     animation:
       cardEntrance 0.6s ease forwards,
@@ -309,7 +297,6 @@
   }
 }
 
-/* ─── Hover glow (per-card accent colour) ───────────────────────────────── */
 .edu-card:hover {
   border-color: color-mix(in srgb, var(--card-accent) 25%, transparent);
   box-shadow:
@@ -318,7 +305,6 @@
     0 0 80px color-mix(in srgb, var(--card-accent) 08%, transparent);
 }
 
-/* ─── Spotlight (cursor inner glow) ─────────────────────────────────────── */
 .card-spotlight {
   position: absolute;
   inset: 0;
@@ -333,7 +319,6 @@
   opacity: 1;
 }
 
-/* ─── Border shimmer ─────────────────────────────────────────────────────── */
 .card-border-glow {
   position: absolute;
   inset: 0;
@@ -372,7 +357,6 @@
   }
 }
 
-/* ─── Holographic foil overlay ───────────────────────────────────────────── */
 .card-hologram {
   position: absolute;
   inset: 0;
@@ -388,11 +372,10 @@
     rgba(244, 114, 182, 0.06) 21%,
     rgba(74,  184, 192, 0.05) 28%
   );
-  /* Silky GPU composite without interfering with blend modes */
+  
   isolation: isolate;
 }
 
-/* ─── Institution initial watermark ─────────────────────────────────────── */
 .edu-initial {
   position: absolute;
   right: 16px;
@@ -408,7 +391,6 @@
   letter-spacing: -4px;
 }
 
-/* ─── Card header ────────────────────────────────────────────────────────── */
 .edu-card-header {
   position: relative;
   z-index: 2;
@@ -470,7 +452,6 @@
   border: 0.5px solid rgba(245, 158, 11, 0.25);
 }
 
-/* Pulsing green dot on "current" badge */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes livePulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
@@ -506,7 +487,6 @@
   white-space: nowrap;
 }
 
-/* ─── Card body ──────────────────────────────────────────────────────────── */
 .edu-card-body {
   position: relative;
   z-index: 2;
@@ -523,7 +503,7 @@
   color: #ffffff;
   margin: 0;
   line-height: 1.2;
-  /* Subtle glow matching card accent on hover */
+  
   transition: text-shadow 0.4s ease;
 }
 
@@ -546,7 +526,6 @@
   margin: 0;
 }
 
-/* ─── Skills ─────────────────────────────────────────────────────────────── */
 .edu-skills {
   display: flex;
   flex-wrap: wrap;
@@ -570,7 +549,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ─── Card footer + progress bar ─────────────────────────────────────────── */
 .edu-card-footer {
   position: relative;
   z-index: 2;
@@ -612,7 +590,6 @@
     animation-delay: calc(var(--entrance-delay, 0s) + 0.9s);
   }
 
-  /* Moving shimmer on the progress bar for the "current" card */
   .progress-shimmer {
     position: absolute;
     top: 0;
@@ -644,7 +621,6 @@
   letter-spacing: 0.03em;
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 599px) {
   .education-section {
     padding: 4rem 1.25rem 5rem;
