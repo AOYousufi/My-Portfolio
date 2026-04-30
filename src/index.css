@@ -265,6 +265,114 @@ button {
   background: radial-gradient(circle at center, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
 }
 
+/* ── Work Experience light mode ── */
+
+[data-theme="light"] .work-grid-bg {
+  background-image:
+    linear-gradient(rgba(79, 142, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 142, 255, 0.06) 1px, transparent 1px);
+}
+
+[data-theme="light"] .work-title {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .work-card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .work-company-name {
+  color: #0c0c1e;
+}
+
+[data-theme="light"] .work-type-chip {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .work-location-text {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .work-bullets {
+  border-top-color: rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .work-bullets li {
+  color: rgba(0, 0, 0, 0.52);
+}
+
+[data-theme="light"] .work-card:hover .work-bullets li {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+[data-theme="light"] .work-initial {
+  color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .work-node-core {
+  border-color: #f2f4ff;
+}
+
+/* ── Contact light mode ── */
+
+[data-theme="light"] .contact-grid-bg {
+  background-image:
+    linear-gradient(rgba(79, 142, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 142, 255, 0.06) 1px, transparent 1px);
+}
+
+[data-theme="light"] .contact-panel {
+  background: #ffffff;
+  border-color: rgba(79, 142, 255, 0.15);
+}
+
+[data-theme="light"] .contact-info-heading {
+  color: #0c0c1e;
+}
+
+[data-theme="light"] .contact-divider {
+  background: rgba(79, 142, 255, 0.1);
+}
+
+[data-theme="light"] .contact-tips-heading {
+  color: #52527a;
+}
+
+[data-theme="light"] .contact-tips li {
+  color: #52527a;
+}
+
+[data-theme="light"] .contact-social-link {
+  color: #52527a;
+  border-color: rgba(79, 142, 255, 0.15);
+}
+
+[data-theme="light"] .contact-social-link:hover {
+  color: var(--accent-blue);
+  border-color: rgba(79, 142, 255, 0.4);
+  background: rgba(79, 142, 255, 0.06);
+}
+
+[data-theme="light"] .form-label {
+  color: #52527a;
+}
+
+[data-theme="light"] .form-input {
+  background: rgba(79, 142, 255, 0.04);
+  border-color: rgba(79, 142, 255, 0.18);
+  color: #0c0c1e;
+}
+
+[data-theme="light"] .form-input::placeholder {
+  color: rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="light"] .form-input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(79, 142, 255, 0.12);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

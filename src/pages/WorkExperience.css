@@ -42,7 +42,7 @@
 .work-title-line {
   width: 60px;
   height: 2px;
-  background: var(--accent-violet);
+  background: linear-gradient(90deg, #5b8fff, #a78bfa);
   margin-bottom: 0.85rem;
   border-radius: 2px;
 }
@@ -54,6 +54,8 @@
   color: rgba(255, 255, 255, 0.35);
   margin: 0;
 }
+
+/* ── Timeline ── */
 
 .work-timeline {
   position: relative;
@@ -124,6 +126,8 @@
   }
 }
 
+/* ── Entry & Node ── */
+
 .work-entry {
   position: relative;
   margin-bottom: 2rem;
@@ -179,6 +183,8 @@
   }
 }
 
+/* ── Keyframes ── */
+
 @media (prefers-reduced-motion: no-preference) {
   @keyframes workCardEntrance {
     from { opacity: 0; transform: translateX(32px) translateY(16px); }
@@ -194,6 +200,8 @@
     to { --angle: 360deg; }
   }
 }
+
+/* ── Card ── */
 
 .work-card {
   position: relative;
@@ -247,6 +255,8 @@
     0 0 80px color-mix(in srgb, var(--card-accent) 08%, transparent);
 }
 
+/* ── Spotlight ── */
+
 .work-spotlight {
   position: absolute;
   inset: 0;
@@ -260,6 +270,8 @@
 .work-card:hover .work-spotlight {
   opacity: 1;
 }
+
+/* ── Border glow ── */
 
 .work-border-glow {
   position: absolute;
@@ -299,6 +311,28 @@
   }
 }
 
+/* ── Hologram ── */
+
+.work-hologram {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    var(--holo-angle, 135deg),
+    rgba(74,  184, 192, 0.05),
+    rgba(91,  143, 255, 0.09) 7%,
+    rgba(167, 139, 250, 0.07) 14%,
+    rgba(244, 114, 182, 0.06) 21%,
+    rgba(74,  184, 192, 0.05) 28%
+  );
+  isolation: isolate;
+}
+
+/* ── Initial watermark ── */
+
 .work-initial {
   position: absolute;
   right: 16px;
@@ -313,6 +347,8 @@
   z-index: 0;
   letter-spacing: -4px;
 }
+
+/* ── Card header ── */
 
 .work-card-header {
   position: relative;
@@ -353,6 +389,8 @@
   color: rgba(255, 255, 255, 0.3);
   white-space: nowrap;
 }
+
+/* ── Card body ── */
 
 .work-card-body {
   position: relative;
@@ -406,7 +444,7 @@
   position: relative;
   padding-left: 1.2rem;
   font-size: 0.9rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: rgba(255, 255, 255, 0.5);
   transition: color 0.3s ease;
 }
@@ -423,6 +461,8 @@
 .work-card:hover .work-bullets li {
   color: rgba(255, 255, 255, 0.65);
 }
+
+/* ── Responsive ── */
 
 @media (max-width: 599px) {
   .work-section {

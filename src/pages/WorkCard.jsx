@@ -12,6 +12,7 @@ function WorkCard({ item, index, reducedMotion }) {
 
   const cardRef   = useRef(null)
   const spotRef   = useRef(null)
+  const holoRef   = useRef(null)
   const headerRef = useRef(null)
   const bodyRef   = useRef(null)
   const rafRef    = useRef(null)
@@ -38,6 +39,12 @@ function WorkCard({ item, index, reducedMotion }) {
       bodyRef.current.style.transform =
         `translate(${s.rotY * 0.35}px, ${-s.rotX * 0.35}px)`
     }
+    if (holoRef.current) {
+      const angle = Math.atan2(s.rotY, -s.rotX) * (180 / Math.PI) + 135
+      const mag   = Math.min(Math.sqrt(s.rotX ** 2 + s.rotY ** 2) / 12, 1)
+      holoRef.current.style.setProperty('--holo-angle', `${angle}deg`)
+      holoRef.current.style.opacity = (mag * 0.75).toString()
+    }
 
     const still =
       !hovered.current &&
@@ -45,9 +52,10 @@ function WorkCard({ item, index, reducedMotion }) {
       Math.abs(s.rotY) < 0.05
 
     if (still) {
-      if (cardRef.current)  cardRef.current.style.transform  = ''
+      if (cardRef.current)   cardRef.current.style.transform   = ''
       if (headerRef.current) headerRef.current.style.transform = ''
-      if (bodyRef.current)  bodyRef.current.style.transform  = ''
+      if (bodyRef.current)   bodyRef.current.style.transform   = ''
+      if (holoRef.current)   holoRef.current.style.opacity     = '0'
       rafRef.current = null
     } else {
       rafRef.current = requestAnimationFrame(animate)
@@ -157,6 +165,7 @@ function WorkCard({ item, index, reducedMotion }) {
     >
       <div ref={spotRef} className="work-spotlight" />
       <div className="work-border-glow" />
+      <div ref={holoRef} className="work-hologram" />
 
       <div className="work-initial" aria-hidden="true">{initial}</div>
 
