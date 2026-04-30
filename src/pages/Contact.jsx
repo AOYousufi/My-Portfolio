@@ -1,62 +1,88 @@
-import { useState, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "../utils/gsap";
-import { useReducedMotion } from "../hooks/useReducedMotion";
-import "./Contact.css";
+import { useState, useRef, useEffect, useCallback } from 'react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
+import './Contact.css'
 
-const EMAIL = "ozairyousufi1400@gmail.com";
+const EMAIL = 'ozairyousufi1400@gmail.com'
+
+const INFO_RGB  = '0,212,255'
+const FORM_RGB  = '79,142,255'
 
 function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const containerRef = useRef(null);
-  const reducedMotion = useReducedMotion();
+  const [name, setName]       = useState('')
+  const [email, setEmail]     = useState('')
+  const [message, setMessage] = useState('')
+
+  const sectionRef  = useRef(null)
+  const infoSpotRef = useRef(null)
+  const formSpotRef = useRef(null)
+  const reducedMotion = useReducedMotion()
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          section.classList.add('section-visible')
+          section.querySelectorAll('.contact-panel').forEach((panel) => {
+            panel.classList.add('card-visible')
+          })
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.05 }
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
+
+  const makeSpotMove = useCallback((spotRef, rgb) => (e) => {
+    if (reducedMotion) return
+    const panel = e.currentTarget
+    const rect = panel.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    if (spotRef.current) {
+      spotRef.current.style.background =
+        `radial-gradient(circle at ${x}% ${y}%, rgba(${rgb},0.13) 0%, transparent 60%)`
+    }
+  }, [reducedMotion])
+
+  const makeSpotLeave = useCallback((spotRef) => () => {
+    if (spotRef.current) spotRef.current.style.background = ''
+  }, [])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
-    const body = encodeURIComponent(
+    e.preventDefault()
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
+    const body    = encodeURIComponent(
       `Hi Ahmad,\n\n${message}\n\nBest regards,\n${name}\n${email}`
-    );
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-  };
-
-  useGSAP(
-    () => {
-      if (reducedMotion) return;
-
-      gsap.from(".contact-page-title", {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        ease: "power3.out",
-        clearProps: "transform,opacity",
-        scrollTrigger: { trigger: ".contact-section", start: "top 88%", once: true },
-      });
-
-      gsap.from(".contact-info, .contact-form", {
-        opacity: 0,
-        y: 40,
-        stagger: 0.15,
-        duration: 0.65,
-        ease: "power3.out",
-        clearProps: "transform,opacity",
-        scrollTrigger: { trigger: ".contact-grid", start: "top 88%", once: true },
-      });
-    },
-    { scope: containerRef }
-  );
+    )
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+  }
 
   return (
-    <section className="contact-section" ref={containerRef}>
-      <h1 className="contact-page-title section-title">Get In Touch</h1>
-      <p className="contact-subtitle">
-        Open to opportunities, collaborations, and interesting conversations.
-      </p>
+    <section className="contact-section" ref={sectionRef}>
+      <div className="contact-grid-bg" aria-hidden="true" />
+
+      <div className="contact-heading">
+        <h1 className="contact-title">Get In Touch</h1>
+        <div className="contact-title-line" aria-hidden="true" />
+        <p className="contact-eyebrow">Let&apos;s build something together</p>
+      </div>
 
       <div className="contact-grid">
-        <div className="contact-info glass-card">
+        <div
+          className="contact-panel contact-info"
+          style={{ '--card-accent': '#00d4ff', '--entrance-delay': '0s' }}
+          onMouseMove={makeSpotMove(infoSpotRef, INFO_RGB)}
+          onMouseLeave={makeSpotLeave(infoSpotRef)}
+        >
+          <div ref={infoSpotRef} className="contact-spotlight" />
+          <div className="contact-border-glow" />
+
           <h2 className="contact-info-heading">Direct Email</h2>
           <a href={`mailto:${EMAIL}`} className="contact-email-link">
             {EMAIL}
@@ -94,7 +120,17 @@ function Contact() {
           </div>
         </div>
 
-        <form className="contact-form glass-card" onSubmit={handleSubmit} noValidate>
+        <form
+          className="contact-panel contact-form"
+          style={{ '--card-accent': '#4f8eff', '--entrance-delay': '0.15s' }}
+          onMouseMove={makeSpotMove(formSpotRef, FORM_RGB)}
+          onMouseLeave={makeSpotLeave(formSpotRef)}
+          onSubmit={handleSubmit}
+          noValidate
+        >
+          <div ref={formSpotRef} className="contact-spotlight" />
+          <div className="contact-border-glow" />
+
           <h2 className="contact-info-heading">Send a Message</h2>
 
           <div className="form-group">
@@ -142,7 +178,7 @@ function Contact() {
         </form>
       </div>
     </section>
-  );
+  )
 }
 
-export default Contact;
+export default Contact
