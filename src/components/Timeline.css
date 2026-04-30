@@ -1,22 +1,14 @@
 .timeline-page {
+  position: relative;
   max-width: 860px;
   margin: 0 auto;
   padding: 5rem 2rem 6rem;
 }
 
-.timeline-page-title {
-  margin-bottom: 0.5rem;
-}
-
-.timeline-page-subtitle {
-  color: var(--text-muted);
-  font-size: 1rem;
-  margin-bottom: 3.5rem;
-}
-
 .timeline {
   position: relative;
-  padding-left: 2.5rem; 
+  z-index: 1;
+  padding-left: 2.5rem;
 }
 
 .timeline::before {
@@ -46,7 +38,7 @@
 
 .timeline-dot {
   position: absolute;
-  left: -38px; 
+  left: -38px;
   top: 1.35rem;
   width: 14px;
   height: 14px;
@@ -83,11 +75,13 @@
 }
 
 .timeline-section-heading {
+  position: relative;
+  z-index: 1;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   margin: 2.5rem 0 1.5rem;
-  padding-left: 0; 
+  padding-left: 0;
 }
 
 @media (max-width: 640px) {

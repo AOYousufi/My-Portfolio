@@ -179,14 +179,18 @@ button {
 [data-theme="light"] .about-title,
 [data-theme="light"] .skills-title,
 [data-theme="light"] .projects-title,
-[data-theme="light"] .edu-title {
+[data-theme="light"] .edu-title,
+[data-theme="light"] .work-title,
+[data-theme="light"] .contact-title {
   color: var(--text-primary);
 }
 
 [data-theme="light"] .projects-eyebrow,
 [data-theme="light"] .edu-eyebrow,
 [data-theme="light"] .about-eyebrow,
-[data-theme="light"] .skills-eyebrow {
+[data-theme="light"] .skills-eyebrow,
+[data-theme="light"] .work-eyebrow,
+[data-theme="light"] .contact-eyebrow {
   color: rgba(0, 0, 0, 0.35);
 }
 
