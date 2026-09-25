@@ -34,7 +34,7 @@ const WORK = [
   },
   {
     role: 'Website Developer',
-    company: 'Unitemps — Staffordshire University',
+    company: 'Unitemps — University of Staffordshire',
     location: 'Stoke-on-Trent, UK',
     period: 'Feb 2025 – Mar 2025',
     type: 'Contract',
