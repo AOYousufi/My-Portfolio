@@ -90,7 +90,7 @@ const COMMANDS = {
     '',
     '  ┌────────────────────────────────────────┐',
     '  │  NC-News           Full-Stack · React  │',
-    '  │  Virtual Exhibition Front End · APIs   │',
+    '  │  Virtual Exhibition Full-Stack · APIs  │',
     '  │  My Plants         React Native        │',
         '  └────────────────────────────────────────┘',
     '  Visit /projects for demos & source code.',
