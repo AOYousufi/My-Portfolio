@@ -15,20 +15,20 @@ function NCNews() {
 
       <div className="project-detail-body glass-card">
         <p>
-          Built a full-stack news app featuring article browsing, voting,
-          commenting, and user authentication using React on the front-end and
-          Express/Node.js with PostgreSQL on the back-end.
+          Built a full-stack news app with article browsing, voting, comments,
+          filtering, sorting and pagination using React on the frontend and
+          Express/Node.js with PostgreSQL on the backend.
         </p>
         <p>
           <strong>Technologies:</strong> React, Node.js, Express, PostgreSQL
         </p>
         <p>
-          <strong>Skills gained:</strong> Full-stack development, RESTful API integration, database management
+          <strong>Skills gained:</strong> Full-stack development, REST API design, PostgreSQL, integration testing
         </p>
 
         <div className="project-detail-links">
           <a
-            href="https://github.com/AOYousufi/nc-news"
+            href="https://github.com/AOYousufi/NC-News-BE"
             target="_blank"
             rel="noopener noreferrer"
             className="project-detail-btn"
