@@ -9,9 +9,9 @@ const PROJECTS = [
     title: 'NC-News',
     subtitle: 'Full-Stack News Platform',
     description:
-      'Full-stack news platform featuring article browsing, upvoting, nested comments, and user authentication with a PostgreSQL backend and Jest/Supertest test suite.',
+      'Full-stack news platform with article browsing, voting, comments, filtering, sorting and pagination backed by PostgreSQL and a Jest/Supertest test suite.',
     stack: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Jest'],
-    github: 'https://github.com/AOYousufi/nc-news',
+    github: 'https://github.com/AOYousufi/NC-News-BE',
     live: 'https://nc-news-sultan.netlify.app/',
     accent: '#4ab8c0',
     icon: '◈',
@@ -37,7 +37,7 @@ const PROJECTS = [
     description:
       'Collaborative React Native plant-care app with user login, smart watering reminders, and plant tracking powered by a scalable MongoDB API.',
     stack: ['React Native', 'Express', 'MongoDB', 'Expo'],
-    github: 'https://github.com/AOYousufi/my-plants',
+    github: 'https://github.com/AOYousufi/my-plants-FE',
     live: null,
     accent: '#a78bfa',
     icon: '◎',
