@@ -15,9 +15,9 @@ function VirtualExhibition() {
 
       <div className="project-detail-body glass-card">
         <p>
-          Developed a responsive web app using JavaScript, React, Node.js, and
-          Express. Integrated Harvard &amp; V&amp;A museum APIs with advanced
-          filtering and pagination, focusing on performance and accessibility.
+          Collaboratively developed a responsive web app using JavaScript,
+          React, Node.js and Express. Integrated the Harvard Art Museums and
+          V&amp;A APIs with filtering and pagination across large artwork datasets.
         </p>
         <p>
           <strong>Technologies:</strong> JavaScript, React, Node.js, Express, REST APIs
