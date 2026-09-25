@@ -5,6 +5,20 @@ import './WorkExperience.css'
 
 const WORK = [
   {
+    role: 'QA Tester',
+    company: 'Next 15',
+    location: 'London, UK',
+    period: 'Aug 2026 – Sep 2026',
+    type: 'Temporary',
+    accent: '#4ab8c0',
+    initial: 'N',
+    bullets: [
+      'Performed manual and visual QA on website updates and new pages during product launch cycles for a major global technology client.',
+      'Checked content, imagery, layouts and browser behaviour across multiple international regions and screen sizes.',
+      'Reported and tracked defects in Jira and communicated findings clearly with the wider QA team under tight release deadlines.',
+    ],
+  },
+  {
     role: 'Freelance Consultant',
     company: 'Tech Returners',
     location: 'Remote',
