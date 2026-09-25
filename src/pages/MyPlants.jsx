@@ -28,7 +28,7 @@ function MyPlants() {
 
         <div className="project-detail-links">
           <a
-            href="https://github.com/AOYousufi/my-plants-FE"
+            href="https://github.com/AOYousufi/my-plants-FE-FE"
             target="_blank"
             rel="noopener noreferrer"
             className="project-detail-btn"
