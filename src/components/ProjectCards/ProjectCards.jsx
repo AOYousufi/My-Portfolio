@@ -43,19 +43,6 @@ const PROJECTS = [
     icon: '◎',
     category: 'Mobile',
   },
-  {
-    id: 4,
-    title: 'Tech Returners — Launchpad',
-    subtitle: 'Client Product · Industry Audience',
-    description:
-      'Bespoke internal software product for Tech Returners Launchpad. Gathered requirements, designed system architecture, and built a React/Node/Express application presented live to an industry audience.',
-    stack: ['React', 'Node.js', 'Express', 'REST API'],
-    github: null,
-    live: null,
-    accent: '#f472b6',
-    icon: '◇',
-    category: 'Client Project',
-  },
 ]
 
 function ProjectCards() {
