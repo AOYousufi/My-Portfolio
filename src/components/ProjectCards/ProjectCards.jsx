@@ -22,13 +22,13 @@ const PROJECTS = [
     title: 'Virtual Exhibition',
     subtitle: 'Museum API Integration',
     description:
-      'Responsive web app integrating Harvard & V&A museum APIs with advanced filtering, pagination, and performant data rendering across a bespoke gallery UI.',
+      'Collaborative web app integrating Harvard & V&A museum APIs with filtering, pagination and curated exhibition features across a React interface.',
     stack: ['React', 'Node.js', 'Express', 'REST APIs', 'CSS3'],
     github: 'https://github.com/AOYousufi/Virtual-Exhibition',
     live: 'https://mueseumexhibition.netlify.app/',
     accent: '#5b8fff',
     icon: '◉',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     id: 3,
