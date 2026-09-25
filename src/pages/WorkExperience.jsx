@@ -8,7 +8,7 @@ const WORK = [
     role: 'QA Tester',
     company: 'Next 15',
     location: 'London, UK',
-    period: 'Aug 2026 – Sep 2026',
+    period: 'Aug 2026 – Oct 2026',
     type: 'Temporary',
     accent: '#4ab8c0',
     initial: 'N',
