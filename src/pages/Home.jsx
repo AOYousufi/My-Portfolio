@@ -10,6 +10,7 @@ import profilePic from "../assets/IMG_7669.jpg";
 const PHRASES = [
   "Junior Software Engineer",
   "React & Node.js Developer",
+  "QA Tester",
   "Full-Stack Builder",
   "Problem Solver",
 ];
@@ -22,6 +23,10 @@ const SKILL_GROUPS = [
   {
     label: "Backend",
     skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"],
+  },
+  {
+    label: "Website QA",
+    skills: ["Manual Testing", "Visual QA", "Regional Content Checks", "Bug Reporting", "Jira", "Slack"],
   },
   {
     label: "Mobile & Tools",
@@ -197,17 +202,17 @@ function Home() {
         <div className="about-body">
           <div className="about-text">
             <p>
-              I&apos;m Ahmad, a passionate Junior Software Engineer based in the
-              UK. Studying Software Development BSc&nbsp;(Hons) at Staffordshire
-              University, I bring hands-on experience in JavaScript, React,
-              Node.js, and SQL — with projects spanning full-stack web and mobile
-              apps.
+              I&apos;m Ahmad, a Software Development BSc&nbsp;(Hons) student at
+              Staffordshire University and a Northcoders graduate. I build web
+              and mobile apps using JavaScript, React, Node.js and SQL, and
+              I&apos;m looking for a software development placement.
             </p>
             <p>
-              My background in business gave me leadership, problem-solving, and
-              adaptability — skills I now channel into code. I thrive in Agile
-              environments, ship clean and tested solutions, and believe great
-              software is built through collaboration and continuous learning.
+              Alongside my studies, I work as a QA Tester at Next 15 for a global
+              technology client. I carry out visual checks across three websites
+              for more than 21 countries, report issues through Jira and Slack,
+              and communicate findings with the team. This work has strengthened
+              how I check content and layouts and explain problems clearly.
             </p>
             <div className="about-links">
               <Link to="/education"      className="btn-secondary btn-sm">Education</Link>
