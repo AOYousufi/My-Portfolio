@@ -1,87 +1,53 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:050510,50:4f8eff,100:00d4ff&height=200&section=header&text=Ahmad%20Ozair%20Yousufi&fontSize=52&fontColor=f0f0ff&fontAlignY=38&desc=Full-Stack%20Developer%20%7C%20React%20%7C%20Node.js&descAlignY=58&descSize=18&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:050510,50:4f8eff,100:00d4ff&height=200&section=header&text=Ahmad%20Ozair%20Yousufi&fontSize=52&fontColor=f0f0ff&fontAlignY=38&desc=Software%20Development%20Student%20%7C%20QA%20Tester%20%7C%20Full-Stack%20Developer&descAlignY=58&descSize=16&animation=fadeIn" width="100%"/>
 
-<br/>
-
-[![Portfolio](https://img.shields.io/badge/🌐_Live_Portfolio-ahmadyousufi.dev-4f8eff?style=for-the-badge\&labelColor=050510)](https://ahmadyousufi.dev/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge\&logo=linkedin\&logoColor=white\&labelColor=050510)](https://www.linkedin.com/in/ahmad-ozair-yousufi/)
-[![GitHub](https://img.shields.io/badge/GitHub-AOYousufi-7c3aed?style=for-the-badge\&logo=github\&logoColor=white\&labelColor=050510)](https://github.com/AOYousufi)
-[![Email](https://img.shields.io/badge/Email-Say_Hello-00d4ff?style=for-the-badge\&logo=gmail\&logoColor=white\&labelColor=050510)](mailto:ozairyousufi1400@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Live_Portfolio-ahmadyousufi.dev-4f8eff?style=for-the-badge&labelColor=050510)](https://ahmadyousufi.dev/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=050510)](https://www.linkedin.com/in/ahmad-ozair-yousufi-08b469326)
+[![GitHub](https://img.shields.io/badge/GitHub-AOYousufi-7c3aed?style=for-the-badge&logo=github&logoColor=white&labelColor=050510)](https://github.com/AOYousufi)
 
 </div>
 
----
+## About
 
-## ✨ Overview
+This is my personal portfolio. I'm a **Software Development student**, **QA Tester** and **full-stack developer** currently looking for a **2027 UK software engineering placement**.
 
-This is my personal portfolio, built to showcase **full-stack development skills**, with a focus on clean architecture, performance, and user experience.
+I study BSc (Hons) Software Development with Placement Year at the **University of Staffordshire** and completed the Northcoders Full-Stack Software Development bootcamp.
 
-The goal is simple:
+Alongside development, I have commercial QA experience supporting website updates and product launches for a major global technology client.
 
-* Build fast, responsive interfaces
-* Structure code clearly and maintainably
-* Demonstrate real-world development practices
+## Tech
 
----
+- **Frontend:** React, JavaScript, HTML, CSS, Vite
+- **Backend:** Node.js, Express, REST APIs
+- **Databases:** PostgreSQL, MongoDB, SQL
+- **Mobile:** React Native, Expo
+- **Testing & tools:** Jest, Supertest, Git, GitHub, Jira
 
-## 🚀 Tech Stack
+## Featured projects
 
-* **Frontend:** React, Vite, JavaScript, HTML, CSS
-* **Backend:** Node.js, Express
-* **Database:** PostgreSQL
-* **Animation:** GSAP
-* **Tooling:** Git, ESLint
+### NC News
+Full-stack news application with a React frontend and a Node.js, Express and PostgreSQL backend. Includes filtering, sorting, pagination, voting, comments and integration testing.
 
----
+- [Backend](https://github.com/AOYousufi/NC-News-BE)
+- [Frontend](https://github.com/AOYousufi/NC-news-FE)
+- [Live site](https://nc-news-sultan.netlify.app/)
 
-## 🧠 Backend Capabilities
+### Virtual Exhibition
+Collaborative React application integrating the Harvard Art Museums and Victoria & Albert Museum APIs, with search, filtering, pagination and saved exhibitions.
 
-* REST API development with Node.js & Express
-* PostgreSQL schema design and querying
-* Filtering, sorting, and pagination
-* Error handling and validation
-* Test-driven development (Jest & Supertest)
+- [Frontend](https://github.com/AOYousufi/Virtual-Exhibition)
+- [Backend](https://github.com/AOYousufi/SE-Exhibiton-BE)
+- [Live site](https://mueseumexhibition.netlify.app/)
 
----
+### My Plants
+Collaborative React Native plant-care app with a Node.js, Express and MongoDB backend. Includes plant identification, collections, watering tracking and notifications.
 
-## 🏗️ Architecture
+- [Frontend](https://github.com/AOYousufi/my-plants-FE)
+- [Backend](https://github.com/AOYousufi/my-plants-BE)
+- [Project demo](https://northcoders.com/project-phase/my-plants-app)
 
-* Component-based frontend using React
-* Route-based structure with React Router
-* Centralised animation setup (GSAP)
-* Separation of concerns across UI, logic, and data
-
----
-
-## 📂 Featured Projects
-
-### 📰 NC News (Full Stack)
-
-* Built a REST API using Node.js, Express, and PostgreSQL
-* Implemented filtering, sorting, and pagination
-* Tested with Jest and Supertest
-* Connected frontend client with dynamic data
-
----
-
-### 🖼️ Virtual Exhibition
-
-* Interactive frontend application with dynamic rendering
-* Focus on responsive design and smooth animations
-* Structured components and reusable UI patterns
-
----
-
-### 🌱 My Plants
-
-* Frontend-focused project with state management
-* Clean UI and component organisation
-* Emphasis on usability and structure
-
----
-
-## 🛠️ Local Development
+## Run locally
 
 ```bash
 git clone https://github.com/AOYousufi/My-Portfolio.git
@@ -90,39 +56,8 @@ npm install
 npm run dev
 ```
 
----
+## Contact
 
-## 📁 Project Structure
-
-```
-src/
-├── components/
-├── pages/
-├── hooks/
-├── utils/
-└── index.css
-```
-
----
-
-## 🧑‍💼 About Me
-
-* BSc Software Development — Staffordshire University
-* Full-Stack Bootcamp — Northcoders
-* Based in Staffordshire, UK
-
-I’m focused on becoming a strong full-stack developer, with particular interest in backend systems and scalable applications.
-
----
-
-## 📬 Contact
-
-* Email: [ozairyousufi1400@gmail.com](mailto:ozairyousufi1400@gmail.com)
-* Portfolio: https://ahmadyousufi.dev
-* LinkedIn: https://www.linkedin.com/in/ahmad-ozair-yousufi/
-
----
-
-## ⭐
-
-If you find this useful or take inspiration from it, feel free to star the repo.
+- [LinkedIn](https://www.linkedin.com/in/ahmad-ozair-yousufi-08b469326)
+- [GitHub](https://github.com/AOYousufi)
+- [Portfolio](https://ahmadyousufi.dev/)
