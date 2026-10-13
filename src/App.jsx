@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   BrowserRouter,
   Routes,
@@ -33,6 +33,7 @@ const PAGES = {
 
 function RouteEffects() {
   const { pathname } = useLocation()
+  const initialRoute = useRef(true)
 
   useEffect(() => {
     const project = PROJECTS.find((item) => item.path === pathname)
@@ -57,6 +58,11 @@ function RouteEffects() {
     if (ogDescription) ogDescription.setAttribute('content', page.description)
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    if (initialRoute.current) {
+      initialRoute.current = false
+    } else {
+      document.getElementById('main-content')?.focus({ preventScroll: true })
+    }
   }, [pathname])
 
   return null
