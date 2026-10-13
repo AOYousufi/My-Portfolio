@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Apply the saved theme before styles render to prevent a light/dark flash. -->
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem('ay-theme') === 'light' ? 'light' : 'dark';
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
 
     <!-- Primary SEO -->
     <title>Ahmad Ozair Yousufi | Software Development Student & QA Tester</title>
