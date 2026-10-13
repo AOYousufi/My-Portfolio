@@ -107,3 +107,33 @@ for (const route of ['/', '/projects', '/education', '/contact']) {
     })), null, 2)).toEqual([])
   })
 }
+
+test('light theme stays accessible across key pages', async ({ page }) => {
+  await page.goto('/projects')
+  await page.getByRole('button', { name: 'Switch to light mode' }).click()
+  for (const route of ['/projects', '/education', '/contact']) {
+    await page.goto(route)
+    const result = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze()
+    const serious = result.violations.filter((item) => ['serious', 'critical'].includes(item.impact))
+    expect(serious, JSON.stringify({
+      route,
+      failures: serious.map((item) => ({
+        rule: item.id, targets: item.nodes.map((node) => node.target)
+      })),
+    }, null, 2)).toEqual([])
+  }
+})
+
+test('mobile contact layout is accessible', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/contact')
+  const result = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze()
+  const serious = result.violations.filter((item) => ['serious', 'critical'].includes(item.impact))
+  expect(serious, JSON.stringify(serious.map((item) => ({
+    rule: item.id, targets: item.nodes.map((node) => node.target),
+  })), null, 2)).toEqual([])
+})
