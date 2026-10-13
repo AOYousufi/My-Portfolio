@@ -56,9 +56,9 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name.trim()}`)
     const body    = encodeURIComponent(
-      `Hi Ahmad,\n\n${message}\n\nBest regards,\n${name}\n${email}`
+      `Hi Ahmad,\n\n${message.trim()}\n\nBest regards,\n${name.trim()}\n${email.trim()}`
     )
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
   }
@@ -70,7 +70,7 @@ function Contact() {
       <div className="contact-heading">
         <h1 className="contact-title">Get In Touch</h1>
         <div className="contact-title-line" aria-hidden="true" />
-        <p className="contact-eyebrow">Let&apos;s build something together</p>
+        <p className="contact-eyebrow">Placements, engineering and project opportunities</p>
       </div>
 
       <div className="contact-grid">
@@ -92,10 +92,10 @@ function Contact() {
 
           <h3 className="contact-tips-heading">What to include</h3>
           <ul className="contact-tips">
-            <li>Project summary &amp; goals</li>
-            <li>Timeline &amp; budget range</li>
-            <li>Tech stack preferences</li>
-            <li>Any relevant links or assets</li>
+            <li>Software engineering placement opportunities</li>
+            <li>QA and web development roles</li>
+            <li>Project enquiries and collaborations</li>
+            <li>Any useful links or context</li>
           </ul>
 
           <div className="contact-divider" />
@@ -126,7 +126,6 @@ function Contact() {
           onMouseMove={makeSpotMove(formSpotRef, FORM_RGB)}
           onMouseLeave={makeSpotLeave(formSpotRef)}
           onSubmit={handleSubmit}
-          noValidate
         >
           <div ref={formSpotRef} className="contact-spotlight" />
           <div className="contact-border-glow" />
@@ -138,6 +137,8 @@ function Contact() {
             <input
               id="contact-name"
               type="text"
+              autoComplete="name"
+              maxLength={100}
               className="form-input"
               placeholder="Your name"
               value={name}
@@ -151,6 +152,8 @@ function Contact() {
             <input
               id="contact-email"
               type="email"
+              autoComplete="email"
+              maxLength={254}
               className="form-input"
               placeholder="you@example.com"
               value={email}
@@ -166,6 +169,8 @@ function Contact() {
               className="form-input form-textarea"
               placeholder="Tell me about your project or opportunity…"
               rows={5}
+              minLength={10}
+              maxLength={3000}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
@@ -173,8 +178,9 @@ function Contact() {
           </div>
 
           <button type="submit" className="btn-primary contact-submit">
-            Open in Email Client →
+            Draft email in my email app →
           </button>
+          <p className="contact-form-note">This opens your email application. Please press Send there to deliver your message. You can also email me directly using the address on this page.</p>
         </form>
       </div>
     </section>
