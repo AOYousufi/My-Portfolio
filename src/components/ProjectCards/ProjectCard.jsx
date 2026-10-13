@@ -42,14 +42,15 @@ function ProjectCard({ project, index, reducedMotion }) {
     }
 
     const atRest =
-      !isHovered.current &&
-      Math.abs(s.rotX) < 0.05 &&
-      Math.abs(s.rotY) < 0.05
+      Math.abs(s.targetX - s.rotX) < 0.05 &&
+      Math.abs(s.targetY - s.rotY) < 0.05
 
     if (atRest) {
-      if (cardRef.current) cardRef.current.style.transform = ''
-      if (headerRef.current) headerRef.current.style.transform = ''
-      if (bodyRef.current) bodyRef.current.style.transform = ''
+      if (!isHovered.current) {
+        if (cardRef.current) cardRef.current.style.transform = ''
+        if (headerRef.current) headerRef.current.style.transform = ''
+        if (bodyRef.current) bodyRef.current.style.transform = ''
+      }
       rafRef.current = null
     } else {
       rafRef.current = requestAnimationFrame(animate)
