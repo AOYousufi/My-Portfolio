@@ -1,63 +1,70 @@
-<div align="center">
+# Ahmad Ozair Yousufi | Developer portfolio
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:050510,50:4f8eff,100:00d4ff&height=200&section=header&text=Ahmad%20Ozair%20Yousufi&fontSize=52&fontColor=f0f0ff&fontAlignY=38&desc=Software%20Development%20Student%20%7C%20QA%20Tester%20%7C%20Full-Stack%20Developer&descAlignY=58&descSize=16&animation=fadeIn" width="100%"/>
+**Live:** https://ahmadyousufi.dev/  
+**GitHub:** https://github.com/AOYousufi  
+**LinkedIn:** https://www.linkedin.com/in/ahmad-ozair-yousufi-08b469326
 
-[![Portfolio](https://img.shields.io/badge/Live_Portfolio-ahmadyousufi.dev-4f8eff?style=for-the-badge&labelColor=050510)](https://ahmadyousufi.dev/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=050510)](https://www.linkedin.com/in/ahmad-ozair-yousufi-08b469326)
-[![GitHub](https://img.shields.io/badge/GitHub-AOYousufi-7c3aed?style=for-the-badge&logo=github&logoColor=white&labelColor=050510)](https://github.com/AOYousufi)
+A responsive React portfolio presenting my work in software development and commercial QA testing. I'm studying BSc (Hons) Software Development with a placement year at the University of Staffordshire and seeking a **2027 UK software engineering placement**.
 
-</div>
+## What you'll find
 
-## About
+- **Home:** introduction, current placement goal, strengths and technology stack.
+- **Projects:** three featured applications with consistent project cards and case studies.
+- **Education:** degree study and technical training.
+- **Work Experience:** commercial QA and other roles.
+- **Contact:** an email-client-based enquiry form, plus direct email and profile links.
+- **Interactive terminal:** optional Easter egg for visitors.
 
-This is my personal portfolio. I'm a **Software Development student**, **QA Tester** and **full-stack developer** currently looking for a **2027 UK software engineering placement**.
+### Projects
 
-I study BSc (Hons) Software Development with Placement Year at the **University of Staffordshire** and completed the Northcoders Full-Stack Software Development bootcamp.
+| Project | Description | Code | Demo |
+| --- | --- | --- | --- |
+| NC News | React + Express + PostgreSQL publishing and discussion app, with accounts, moderation, notifications and automated QA | [Frontend](https://github.com/AOYousufi/NC-news-FE) / [Backend](https://github.com/AOYousufi/NC-News-BE) | [Live app](https://nc-news-sultan.netlify.app/) |
+| Virtual Exhibition | Collaborative museum discovery app integrating Harvard and V&A collection APIs | [Frontend](https://github.com/AOYousufi/Virtual-Exhibition) / [Backend](https://github.com/AOYousufi/SE-Exhibiton-BE) | [Live app](https://mueseumexhibition.netlify.app/) |
+| My Plants | Collaborative React Native plant care app backed by Express and MongoDB | [Mobile](https://github.com/AOYousufi/my-plants-FE) / [Backend](https://github.com/AOYousufi/my-plants-BE) | Mobile repository |
 
-Alongside development, I have commercial QA experience supporting website updates and product launches for a major global technology client.
+Each project has a case study under `/projects/:projectId`. The cards and detail pages share the same data file, `src/data/projects.js`, so URLs and descriptions stay consistent.
 
-## Tech
+## Stack
 
-- **Frontend:** React, JavaScript, HTML, CSS, Vite
-- **Backend:** Node.js, Express, REST APIs
-- **Databases:** PostgreSQL, MongoDB, SQL
-- **Mobile:** React Native, Expo
-- **Testing & tools:** Jest, Supertest, Git, GitHub, Jira
+React 19, React Router 7, Vite 6, JavaScript, CSS, GSAP, and Node.js for build and QA scripts. This portfolio is a **static frontend** and does not require a database or server API.
 
-## Featured projects
+## Develop locally
 
-### NC News
-Full-stack news application with a React frontend and a Node.js, Express and PostgreSQL backend. Includes filtering, sorting, pagination, voting, comments and integration testing.
-
-- [Backend](https://github.com/AOYousufi/NC-News-BE)
-- [Frontend](https://github.com/AOYousufi/NC-news-FE)
-- [Live site](https://nc-news-sultan.netlify.app/)
-
-### Virtual Exhibition
-Collaborative React application integrating the Harvard Art Museums and Victoria & Albert Museum APIs, with search, filtering, pagination and saved exhibitions.
-
-- [Frontend](https://github.com/AOYousufi/Virtual-Exhibition)
-- [Backend](https://github.com/AOYousufi/SE-Exhibiton-BE)
-- [Live site](https://mueseumexhibition.netlify.app/)
-
-### My Plants
-Collaborative React Native plant-care app with a Node.js, Express and MongoDB backend. Includes plant identification, collections, watering tracking and notifications.
-
-- [Frontend](https://github.com/AOYousufi/my-plants-FE)
-- [Backend](https://github.com/AOYousufi/my-plants-BE)
-- [Project demo](https://northcoders.com/project-phase/my-plants-app)
-
-## Run locally
+Requires Node.js 22 or a compatible current release.
 
 ```bash
 git clone https://github.com/AOYousufi/My-Portfolio.git
 cd My-Portfolio
-npm install
+npm ci
 npm run dev
 ```
 
-## Contact
+### Quality checks
 
-- [LinkedIn](https://www.linkedin.com/in/ahmad-ozair-yousufi-08b469326)
-- [GitHub](https://github.com/AOYousufi)
-- [Portfolio](https://ahmadyousufi.dev/)
+```bash
+npm run lint
+npm run build
+npm run budget
+npm run test:smoke
+```
+
+GitHub Actions runs all four checks on pushes to `main` and on pull requests. The asset budget currently limits compressed JavaScript + CSS to 200 KiB and each image asset to 600 KiB.
+
+Smoke tests check route coverage, project metadata consistency, required internal links, sitemap coverage and the contact form's browser validation. These checks do **not** replace a full cross-browser, accessibility or live-deployment audit.
+
+## Deployment
+
+The Vite output goes into `dist/`. The `public/_redirects` file ensures direct links to React routes work when served by Netlify. `public/_headers` adds browser security headers and immutable caching for hashed assets.
+
+The contact form opens the visitor's configured email application. **It does not send a message directly from the browser**; visitors must press Send in their email app.
+
+## Updating the portfolio
+
+- Change project information in `src/data/projects.js`.
+- Add or change routes and page titles in `src/App.jsx`.
+- Keep `public/sitemap.xml` in sync with canonical routes.
+- Run `npm run lint && npm run build && npm run budget && npm run test:smoke` before deploying.
+
+---
+Contact: [ozairyousufi1400@gmail.com](mailto:ozairyousufi1400@gmail.com)
