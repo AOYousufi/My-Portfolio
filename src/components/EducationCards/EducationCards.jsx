@@ -140,7 +140,7 @@ function EducationCards() {
       <div className="projects-grid-bg" aria-hidden="true" />
 
       <div className="edu-heading">
-        <h2 className="edu-title">Education</h2>
+        <h1 className="edu-title">Education</h1>
         <div className="edu-title-line" aria-hidden="true" />
         <p className="edu-eyebrow">My academic journey</p>
       </div>
