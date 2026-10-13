@@ -229,3 +229,5 @@
 @media (prefers-reduced-motion: reduce) {
   .footer-avail-dot { animation: none; }
 }
+
+[data-theme="light"] .footer-availability { color: #195780; }
