@@ -75,7 +75,7 @@
 }
 
 .nav-link--active {
-  color: var(--accent-blue);
+  color: #86b5ff;
 }
 
 .nav-link--active::after {
