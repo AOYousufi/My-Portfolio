@@ -608,3 +608,46 @@ button {
 [data-theme="light"] .navbar.is-scrolled {
   background: var(--nav-surface);
 }
+
+/* Accent colours are toned down for readability on shaded light cards. */
+[data-theme="light"] .card-badge,
+[data-theme="light"] .card-subtitle,
+[data-theme="light"] .edu-period-badge,
+[data-theme="light"] .edu-degree,
+[data-theme="light"] .work-period-badge,
+[data-theme="light"] .work-role-text {
+  color: color-mix(in srgb, var(--card-accent) 35%, #172941);
+  opacity: 1;
+}
+
+[data-theme="light"] .edu-status--current {
+  color: #236642;
+  background: rgba(39, 129, 78, 0.11);
+  border-color: rgba(39, 129, 78, 0.32);
+}
+
+[data-theme="light"] .edu-status--partial {
+  color: #845000;
+  background: rgba(133, 86, 0, 0.11);
+  border-color: rgba(133, 86, 0, 0.28);
+}
+
+[data-theme="light"] .work-bullets li::before,
+[data-theme="light"] .contact-tips li::before {
+  color: var(--accent-blue);
+}
+
+[data-theme="light"] .navbar-brand img,
+[data-theme="light"] .footer-logo-link img {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(18%) saturate(1700%) hue-rotate(170deg);
+}
+
+[data-theme="light"] .bored-trigger {
+  background: #243B5C;
+  border-color: #607EA6;
+  color: #F4F8FF;
+}
+
+[data-theme="light"] .bored-trigger .bored-icon {
+  color: #B6DFFA;
+}
