@@ -56,7 +56,20 @@ test('mobile menu works without horizontal overflow', async ({ page }) => {
     page: document.documentElement.scrollWidth,
     viewport: window.innerWidth,
   }))
-  expect(width.page).toBeLessThanOrEqual(width.viewport + 2)
+  const overflowElements = await page.evaluate(() => {
+    const viewport = window.innerWidth
+    return [...document.querySelectorAll('body *')]
+      .map((element) => ({ element, rect: element.getBoundingClientRect() }))
+      .filter(({ rect }) => rect.width && rect.right > viewport + 2)
+      .slice(0, 12)
+      .map(({ element, rect }) => ({
+        element: element.tagName.toLowerCase(),
+        className: typeof element.className === 'string' ? element.className.slice(0, 100) : '',
+        right: Math.round(rect.right),
+        left: Math.round(rect.left),
+      }))
+  })
+  expect(width.page, JSON.stringify(overflowElements, null, 2)).toBeLessThanOrEqual(width.viewport + 2)
 })
 
 test('light theme persists between routes and refreshes', async ({ page }) => {
