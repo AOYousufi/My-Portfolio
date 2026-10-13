@@ -33,20 +33,7 @@ const FLAVOR_ERRORS = [
   "Hint: maybe a career in management instead?",
 ]
 
-const SKILL_BARS = [
-  { name: 'React      ', pct: 85 },
-  { name: 'JavaScript ', pct: 88 },
-  { name: 'Jest       ', pct: 75 },
-  { name: 'Node.js    ', pct: 82 },
-  { name: 'PostgreSQL ', pct: 72 },
-  { name: 'CSS3       ', pct: 85 },
-  { name: 'Git        ', pct: 80 },
-]
-
-function mkBar(pct) {
-  const n = Math.round(pct / 10)
-  return '█'.repeat(n) + '░'.repeat(10 - n)
-}
+const SKILLS = ['React', 'JavaScript', 'Jest', 'Node.js', 'PostgreSQL', 'CSS', 'Git']
 
 const COMMANDS = {
   help: () => [
@@ -54,7 +41,7 @@ const COMMANDS = {
     '│  Commands                                    │',
     '├──────────────────────────────────────────────┤',
     '│  whoami      About Ahmad                     │',
-    '│  skills      Skill proficiency chart         │',
+    '│  skills      Tools and technologies         │',
     '│  projects    Project highlights              │',
     '│  joke        A (probably bad) dev joke       │',
     '│  sudo hire   ...just try it 😏              │',
@@ -81,15 +68,15 @@ const COMMANDS = {
 
   skills: () => [
     '',
-    '  ── Proficiency ──────────────────────────',
-    ...SKILL_BARS.map(s => `  ${s.name}  [${mkBar(s.pct)}]  ${s.pct}%`),
+    '  ── Technologies I use ─────────────────',
+    ...SKILLS.map(skill => `  • ${skill}`),
     '',
   ],
 
   projects: () => [
     '',
     '  ┌────────────────────────────────────────┐',
-    '  │  NC-News           Full-Stack · React  │',
+    '  │  NC News           Full-Stack · React  │',
     '  │  Virtual Exhibition Full-Stack · APIs  │',
     '  │  My Plants         React Native        │',
         '  └────────────────────────────────────────┘',
@@ -105,7 +92,7 @@ const COMMANDS = {
   ping: () => [
     '',
     '  PONG! 🏓',
-    '  Latency: 1ms  ·  Status: alive  ·  Vibes: immaculate',
+    '  Simulated response — this command does not make a network request.',
     '',
   ],
 
@@ -214,9 +201,9 @@ export default function BoredWidget() {
   }, [entries])
 
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 80)
-    }
+    if (!isOpen) return undefined
+    const timeout = setTimeout(() => inputRef.current?.focus(), 80)
+    return () => clearTimeout(timeout)
   }, [isOpen])
 
   useEffect(() => {
@@ -301,7 +288,7 @@ export default function BoredWidget() {
           aria-label="Interactive developer terminal"
           aria-modal="false"
         >
-          <div className="terminal-titlebar" aria-hidden="true">
+          <div className="terminal-titlebar">
             <div className="terminal-dots">
               <button
                 className="terminal-dot dot-red"
