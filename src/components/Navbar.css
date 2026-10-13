@@ -65,7 +65,7 @@
   font-size: 0.9rem;
   font-weight: 500;
   border-radius: 6px;
-  transition: color var(--ease), background var(--ease);
+  transition: background var(--ease);
   text-decoration: none;
 }
 
