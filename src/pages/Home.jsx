@@ -105,7 +105,7 @@ function Home() {
               Ahmad Ozair<br />Yousufi
             </h1>
 
-            <h2 className="hero-role" aria-live="polite">
+            <h2 className="hero-role" aria-label={PHRASES.join(", ")}>
               {reducedMotion ? PHRASES[0] : typeText}
               <span className="tw-cursor" aria-hidden="true">|</span>
             </h2>
@@ -170,6 +170,8 @@ function Home() {
                   className="profile-img"
                   width="300"
                   height="300"
+                  decoding="async"
+                  fetchPriority="high"
                 />
               </div>
               <div className="profile-status-badge">
