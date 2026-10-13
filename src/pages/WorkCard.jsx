@@ -47,15 +47,16 @@ function WorkCard({ item, index, reducedMotion }) {
     }
 
     const still =
-      !hovered.current &&
-      Math.abs(s.rotX) < 0.05 &&
-      Math.abs(s.rotY) < 0.05
+      Math.abs(s.tx - s.rotX) < 0.05 &&
+      Math.abs(s.ty - s.rotY) < 0.05
 
     if (still) {
-      if (cardRef.current)   cardRef.current.style.transform   = ''
-      if (headerRef.current) headerRef.current.style.transform = ''
-      if (bodyRef.current)   bodyRef.current.style.transform   = ''
-      if (holoRef.current)   holoRef.current.style.opacity     = '0'
+      if (!hovered.current) {
+        if (cardRef.current)   cardRef.current.style.transform   = ''
+        if (headerRef.current) headerRef.current.style.transform = ''
+        if (bodyRef.current)   bodyRef.current.style.transform   = ''
+        if (holoRef.current)   holoRef.current.style.opacity     = '0'
+      }
       rafRef.current = null
     } else {
       rafRef.current = requestAnimationFrame(animate)
