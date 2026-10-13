@@ -1,90 +1,90 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
   useLocation,
 } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
+import { PROJECTS } from './data/projects'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import LoadingScreen from './components/LoadingScreen'
-import PageLoader from './components/PageLoader'
 import BoredWidget from './components/BoredWidget/BoredWidget'
+import ProjectDetail from './components/ProjectDetail'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
-import VirtualExhibition from './pages/VirtualExhibition'
-import NCNews from './pages/NCNews'
-import MyPlants from './pages/MyPlants'
 import Education from './pages/Education'
 import WorkExperience from './pages/WorkExperience'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 import './App.css'
 
-function InnerApp() {
-  const location = useLocation()
-  const [showPageLoader, setShowPageLoader] = useState(false)
-  const prevPath = useRef(null)
+const SITE_NAME = 'Ahmad Ozair Yousufi'
+const SITE_URL = 'https://ahmadyousufi.dev'
+const DEFAULT_DESCRIPTION = 'Software Development student and QA Tester with full-stack project experience. Seeking a 2027 UK software engineering placement.'
+
+const PAGES = {
+  '/': { title: 'Software Developer & QA Tester', description: DEFAULT_DESCRIPTION },
+  '/projects': { title: 'Projects', description: 'Explore React, Node.js, PostgreSQL and React Native projects by Ahmad Ozair Yousufi.' },
+  '/education': { title: 'Education', description: 'Software development education, training and technical skills.' },
+  '/work-experience': { title: 'Work Experience', description: 'Commercial QA testing and earlier work experience.' },
+  '/contact': { title: 'Contact', description: 'Contact Ahmad Ozair Yousufi about a software engineering placement or development opportunity.' },
+}
+
+function RouteEffects() {
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    if (prevPath.current === null) {
-      prevPath.current = location.pathname
-      return
-    }
-    if (location.pathname !== prevPath.current) {
-      prevPath.current = location.pathname
-      setShowPageLoader(true)
-    }
-  }, [location.pathname])
+    const project = PROJECTS.find((item) => item.path === pathname)
+    const page = project
+      ? { title: project.title, description: project.description }
+      : PAGES[pathname] || { title: 'Page Not Found', description: DEFAULT_DESCRIPTION }
+    const url = SITE_URL + pathname
 
-  return (
-    <>
-      {showPageLoader && (
-        <PageLoader
-          key={location.pathname}
-          onComplete={() => setShowPageLoader(false)}
-        />
-      )}
-      <Routes location={location} key={location.pathname}>
-        <Route path="/"                        element={<section id="home"><Home /></section>} />
-        <Route path="/projects"                element={<section id="projects"><Projects /></section>} />
-        <Route path="/projects/virtual-exhibition" element={<section id="virtual-exhibition"><VirtualExhibition /></section>} />
-        <Route path="/projects/nc-news"        element={<section id="nc-news"><NCNews /></section>} />
-        <Route path="/projects/my-plants"      element={<section id="my-plants"><MyPlants /></section>} />
-        <Route path="/education"               element={<section id="education"><Education /></section>} />
-        <Route path="/work-experience"         element={<section id="work-experience"><WorkExperience /></section>} />
-        <Route path="/contact"                 element={<Contact />} />
-      </Routes>
-    </>
-  )
+    document.title = `${page.title} | ${SITE_NAME}`
+
+    const description = document.querySelector('meta[name="description"]')
+    if (description) description.setAttribute('content', page.description)
+
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) canonical.setAttribute('href', url)
+
+    const ogUrl = document.querySelector('meta[property="og:url"]')
+    if (ogUrl) ogUrl.setAttribute('content', url)
+    const ogTitle = document.querySelector('meta[property="og:title"]')
+    if (ogTitle) ogTitle.setAttribute('content', document.title)
+    const ogDescription = document.querySelector('meta[property="og:description"]')
+    if (ogDescription) ogDescription.setAttribute('content', page.description)
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname])
+
+  return null
 }
 
 function App() {
-  const [loading, setLoading] = useState(
-    () => !sessionStorage.getItem('ay-intro-seen')
-  )
-
-  const handleLoadComplete = () => {
-    sessionStorage.setItem('ay-intro-seen', 'true')
-    setLoading(false)
-  }
-
   return (
     <ThemeProvider>
-      <Router>
-        {loading ? (
-          <LoadingScreen onComplete={handleLoadComplete} />
-        ) : (
-          <div className="app-wrapper">
-            <Navbar />
-            <main className="main-content">
-              <InnerApp />
-            </main>
-            <Footer />
-            <BoredWidget />
-          </div>
-        )}
-      </Router>
+      <BrowserRouter>
+        <RouteEffects />
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <div className="app-wrapper">
+          <Navbar />
+          <main id="main-content" className="main-content" tabIndex={-1}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:projectId" element={<ProjectDetail />} />
+              <Route path="/education" element={<Education />} />
+              <Route path="/work-experience" element={<WorkExperience />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+          <BoredWidget />
+        </div>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
