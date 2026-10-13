@@ -113,23 +113,15 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .project-card {
-    animation:
-      cardEntrance 0.6s ease forwards,
-      cardFloat 5s ease-in-out infinite alternate;
-    animation-delay:
-      var(--entrance-delay, 0s),
-      calc(var(--entrance-delay, 0s) + 0.7s - var(--float-delay, 0s));
-    animation-play-state: paused, paused;
+    animation: cardEntrance 0.6s ease forwards;
+    animation-delay: var(--entrance-delay, 0s);
+    animation-play-state: paused;
   }
 
   .project-card.card-visible {
-    animation-play-state: running, running;
+    animation-play-state: running;
   }
 
-  .project-card.card-visible:hover {
-    
-    animation-play-state: running, paused;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
