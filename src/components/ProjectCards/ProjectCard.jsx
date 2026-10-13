@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef, useEffect, useCallback } from 'react'
 
 function hexToRgb(hex) {
@@ -8,7 +9,7 @@ function hexToRgb(hex) {
 }
 
 function ProjectCard({ project, index, reducedMotion }) {
-  const { title, subtitle, description, stack, github, live, accent, icon, category } = project
+  const { title, subtitle, description, stack, github, live, path, accent, icon, category } = project
 
   const cardRef = useRef(null)
   const spotlightRef = useRef(null)
@@ -192,13 +193,20 @@ function ProjectCard({ project, index, reducedMotion }) {
           ))}
         </div>
         <div className="card-links">
+          <Link
+            className="card-link card-link-case-study"
+            to={path}
+            aria-label={`Read ${title} case study`}
+          >
+            Case study →
+          </Link>
           {github && (
             <a
               className="card-link"
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              title={`View ${title} on GitHub`}
+              aria-label={`View ${title} source on GitHub (opens in a new tab)`}
               onClick={e => e.stopPropagation()}
             >
               GitHub →
@@ -210,7 +218,7 @@ function ProjectCard({ project, index, reducedMotion }) {
               href={live}
               target="_blank"
               rel="noopener noreferrer"
-              title={`View ${title} live demo`}
+              aria-label={`View ${title} live project (opens in a new tab)`}
               onClick={e => e.stopPropagation()}
             >
               Live ↗
