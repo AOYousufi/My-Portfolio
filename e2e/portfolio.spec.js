@@ -137,3 +137,26 @@ test('mobile contact layout is accessible', async ({ page }) => {
     rule: item.id, targets: item.nodes.map((node) => node.target),
   })), null, 2)).toEqual([])
 })
+
+test('light theme uses shaded surfaces rather than white-on-white', async ({ page }) => {
+  await page.goto('/projects')
+  await page.getByRole('button', { name: 'Switch to light mode' }).click()
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
+  const colors = await page.evaluate(() => {
+    const css = getComputedStyle(document.documentElement)
+    const get = (selector) => getComputedStyle(document.querySelector(selector))
+    return {
+      page: css.getPropertyValue('--bg-base').trim().toLowerCase(),
+      card: get('.project-card').backgroundColor,
+      navbar: get('.navbar').backgroundColor,
+      footer: get('.footer').backgroundColor,
+      cardText: get('.card-title').color
+    }
+  })
+  expect(colors.page).not.toBe('#ffffff')
+  expect(colors.card).not.toBe('rgb(255, 255, 255)')
+  expect(colors.navbar).not.toBe('rgb(255, 255, 255)')
+  expect(colors.footer).not.toBe('rgb(255, 255, 255)')
+  expect(colors.card).not.toBe(colors.navbar)
+  expect(colors.cardText).not.toBe(colors.card)
+})
