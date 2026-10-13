@@ -49,9 +49,17 @@ npm run budget
 npm run test:smoke
 ```
 
-GitHub Actions runs all four checks on pushes to `main` and on pull requests. The asset budget currently limits compressed JavaScript + CSS to 200 KiB and each image asset to 600 KiB.
+GitHub Actions runs these four quality checks on pushes to `main` and pull requests. A separate Chromium browser job also tests direct route loading, mobile navigation and overflow, contact validation, theme persistence and automated axe-core accessibility rules. The asset budget limits compressed JavaScript + CSS to 200 KiB and each image asset to 600 KiB.
 
-Smoke tests check route coverage, project metadata consistency, required internal links, sitemap coverage and the contact form's browser validation. These checks do **not** replace a full cross-browser, accessibility or live-deployment audit.
+Smoke tests check route coverage, project metadata consistency, project source URL structure, sitemap coverage and contact form attributes. Browser tests exercise actual navigation and apply WCAG A/AA axe rules, failing for serious or critical violations. CI checks Chromium only; Safari/Firefox and the exact live deployment still require separate verification.
+
+To run the same browser suite locally after `npm run build`:
+
+```bash
+npm install --no-save --no-package-lock --ignore-scripts @playwright/test@1.56.1 @axe-core/playwright@4.11.0
+npx playwright install chromium
+npx playwright test
+```
 
 ## Deployment
 
