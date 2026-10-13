@@ -261,4 +261,5 @@
 }
 
 [data-theme="light"] .nav-link { color: #4a5568; }
-[data-theme="light"] .nav-link--active { color: #2457be; }
+[data-theme="light"] .nav-link--active { color: #163b86; }
+@media (prefers-reduced-motion: reduce) { .navbar { animation: none; } }
