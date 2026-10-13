@@ -61,7 +61,7 @@
   position: relative;
   display: inline-block;
   padding: 6px 12px;
-  color: var(--text-muted);
+  color: #a9b3cc;
   font-size: 0.9rem;
   font-weight: 500;
   border-radius: 6px;
@@ -259,3 +259,6 @@
   transform: translateY(-2px) rotate(12deg);
   outline: none;
 }
+
+[data-theme="light"] .nav-link { color: #4a5568; }
+[data-theme="light"] .nav-link--active { color: #2457be; }
