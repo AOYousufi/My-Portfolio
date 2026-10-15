@@ -24,6 +24,10 @@ const SKILL_GROUPS = [
     skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "SQL", "REST APIs"],
   },
   {
+    label: "Website QA",
+    skills: ["Manual Testing", "Visual QA", "Regional Content Checks", "Bug Reporting", "Jira", "Slack"],
+  },
+  {
     label: "Mobile, Testing & Tools",
     skills: ["React Native", "Jest", "Supertest", "Git", "GitHub", "Jira"],
   },
@@ -205,7 +209,7 @@ function Home() {
               using JavaScript, React, React Native, Node.js, Express and SQL.
             </p>
             <p>
-              Alongside university, I&apos;ve worked as a QA Tester supporting
+              Alongside university, I&apos;ve worked as a QA Tester at Next 15 supporting
               website updates and product launches for a major global technology
               client. That experience strengthened my attention to detail,
               communication, teamwork and understanding of how software behaves

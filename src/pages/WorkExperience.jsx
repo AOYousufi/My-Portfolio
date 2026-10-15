@@ -14,8 +14,8 @@ const WORK = [
     initial: 'N',
     bullets: [
       'Performed manual and visual QA on website updates and new pages during product launch cycles for a major global technology client.',
-      'Checked content, imagery, layouts and browser behaviour across multiple international regions and screen sizes.',
-      'Reported and tracked defects in Jira and communicated findings clearly with the wider QA team under tight release deadlines.',
+      'Checked content, imagery, layouts and browser behaviour across three websites for more than 21 countries and different screen sizes, including Safari-specific issues.',
+      'Reported and tracked defects in Jira and communicated findings through Slack with the wider QA team under tight release deadlines.',
     ],
   },
   {
