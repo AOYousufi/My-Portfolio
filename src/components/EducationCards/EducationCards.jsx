@@ -6,14 +6,14 @@ import './EducationCards.css'
 const EDUCATION = [
   {
     id: 1,
-    institution: 'Staffordshire University',
-    degree: 'Software Development BSc (Hons)',
-    period: 'Sep 2024 – Jun 2028',
-    duration: '4 years',
+    institution: 'University of Staffordshire',
+    degree: 'BSc (Hons) Software Development with Placement Year',
+    period: 'Sep 2024 – Jun 2029',
+    duration: '5 years',
     status: 'current',
-    progress: 25,
+    progress: 40,
     description:
-      'Comprehensive degree covering full-stack development, data structures, algorithms, web & mobile, software architecture, and database systems. Building strong foundations through practical labs and Agile group projects.',
+      'Software Development degree with an integrated foundation year and planned placement year, covering programming, algorithms, databases, networking, cloud, software architecture and application development.',
     skills: ['Full Stack', 'Algorithms', 'Data Structures', 'Agile', 'Architecture'],
     accent: '#4ab8c0',
     initial: 'S',
@@ -22,7 +22,7 @@ const EDUCATION = [
   {
     id: 2,
     institution: 'Northcoders',
-    degree: 'Junior Software Developer Bootcamp',
+    degree: 'Full-Stack Software Development Bootcamp',
     period: 'Jun 2024 – Aug 2024',
     duration: '3 months',
     status: 'completed',
@@ -140,7 +140,7 @@ function EducationCards() {
       <div className="projects-grid-bg" aria-hidden="true" />
 
       <div className="edu-heading">
-        <h2 className="edu-title">Education</h2>
+        <h1 className="edu-title">Education</h1>
         <div className="edu-title-line" aria-hidden="true" />
         <p className="edu-eyebrow">My academic journey</p>
       </div>

@@ -193,17 +193,17 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes cardEntrance {
+  @keyframes educationCardEntrance {
     from { opacity: 0; transform: translateX(32px) translateY(16px); }
     to   { opacity: 1; transform: translateX(0)    translateY(0); }
   }
 
-  @keyframes cardFloat {
+  @keyframes educationCardFloat {
     0%, 100% { transform: perspective(900px) translateY(0px)  rotateY(0deg); }
     50%       { transform: perspective(900px) translateY(-6px) rotateY(0.8deg); }
   }
 
-  @keyframes borderSpin {
+  @keyframes educationBorderSpin {
     to { --angle: 360deg; }
   }
 
@@ -254,8 +254,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .edu-card {
     animation:
-      cardEntrance 0.6s ease forwards,
-      cardFloat 5.5s ease-in-out infinite alternate;
+      educationCardEntrance 0.6s ease forwards,
+      educationCardFloat 5.5s ease-in-out infinite alternate;
     animation-delay:
       var(--entrance-delay, 0s),
       calc(var(--entrance-delay, 0s) + 0.7s - var(--float-delay, 0s));
@@ -272,8 +272,8 @@
 
   .edu-card.card-visible[data-status='current'] {
     animation:
-      cardEntrance 0.6s ease forwards,
-      cardFloat 5.5s ease-in-out infinite alternate,
+      educationCardEntrance 0.6s ease forwards,
+      educationCardFloat 5.5s ease-in-out infinite alternate,
       currentGlow 3s ease-in-out infinite;
     animation-delay:
       var(--entrance-delay, 0s),
@@ -347,7 +347,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .edu-card:hover .card-border-glow {
     opacity: 0.8;
-    animation: borderSpin 3s linear infinite;
+    animation: educationBorderSpin 3s linear infinite;
   }
 }
 

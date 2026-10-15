@@ -53,7 +53,7 @@
   font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-muted);
   margin: 0;
 }
 
@@ -347,4 +347,20 @@
   .contact-section {
     padding: 4rem 1.25rem 5rem;
   }
+}
+
+.contact-form-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 0.6rem;
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+  border-color: #d77b7b;
+}
+
+.form-input:focus-visible {
+  outline: 3px solid #85c8ff;
+  outline-offset: 2px;
 }

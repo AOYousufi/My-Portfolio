@@ -64,6 +64,15 @@ function Navbar() {
   useEffect(() => { setOpen(false) }, [pathname])
 
   useEffect(() => {
+    if (!open) return undefined
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [open])
+
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -71,7 +80,7 @@ function Navbar() {
 
   return (
     <header className={`navbar${scrolled ? ' is-scrolled' : ''}`}>
-      <nav className="navbar-container">
+      <nav className="navbar-container" aria-label="Primary navigation">
 
         <div className="navbar-brand">
           <Link to="/" aria-label="Ahmad Ozair Yousufi — Home">
@@ -81,7 +90,7 @@ function Navbar() {
 
         <button
           className={`menu-toggle${open ? ' is-open' : ''}`}
-          aria-label="Toggle navigation menu"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
           aria-controls="primary-navigation"
           onClick={() => setOpen((v) => !v)}
@@ -167,7 +176,7 @@ function Navbar() {
               to="/contact"
               className={`nav-hire${isActive(pathname, '/contact', false) ? ' nav-hire--active' : ''}`}
             >
-              Hire Me
+              Contact Me
             </Link>
           </li>
         </ul>

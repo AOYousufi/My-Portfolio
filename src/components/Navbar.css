@@ -8,16 +8,8 @@
   width: 100%;
   z-index: 1000;
   transition: background var(--ease-slow), border-color var(--ease-slow), box-shadow var(--ease-slow);
-
-  animation: navEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes navEnter {
-    from { transform: translateY(-100%); opacity: 0; }
-    to   { transform: translateY(0);     opacity: 1; }
-  }
-}
 
 .navbar.is-scrolled {
   background: rgba(5, 5, 16, 0.96);
@@ -61,11 +53,11 @@
   position: relative;
   display: inline-block;
   padding: 6px 12px;
-  color: var(--text-muted);
+  color: #a9b3cc;
   font-size: 0.9rem;
   font-weight: 500;
   border-radius: 6px;
-  transition: color var(--ease), background var(--ease);
+  transition: background var(--ease);
   text-decoration: none;
 }
 
@@ -75,7 +67,7 @@
 }
 
 .nav-link--active {
-  color: var(--accent-blue);
+  color: #86b5ff;
 }
 
 .nav-link--active::after {
@@ -259,3 +251,10 @@
   transform: translateY(-2px) rotate(12deg);
   outline: none;
 }
+
+[data-theme="light"] .nav-link { color: #4a5568; }
+[data-theme="light"] .nav-link--active { color: #163b86; }
+
+/* Keep navigation instantly readable when a saved theme is restored. */
+.navbar { animation: none; }
+

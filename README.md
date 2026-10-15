@@ -1,128 +1,78 @@
-<div align="center">
+# Ahmad Ozair Yousufi | Developer portfolio
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:050510,50:4f8eff,100:00d4ff&height=200&section=header&text=Ahmad%20Ozair%20Yousufi&fontSize=52&fontColor=f0f0ff&fontAlignY=38&desc=Full-Stack%20Developer%20%7C%20React%20%7C%20Node.js&descAlignY=58&descSize=18&animation=fadeIn" width="100%"/>
+**Live:** https://ahmadyousufi.dev/  
+**GitHub:** https://github.com/AOYousufi  
+**LinkedIn:** https://www.linkedin.com/in/ahmad-ozair-yousufi-08b469326
 
-<br/>
+A responsive React portfolio presenting my work in software development and commercial QA testing. I'm studying BSc (Hons) Software Development with a placement year at the University of Staffordshire and seeking a **2027 UK software engineering placement**.
 
-[![Portfolio](https://img.shields.io/badge/🌐_Live_Portfolio-ahmadyousufi.dev-4f8eff?style=for-the-badge\&labelColor=050510)](https://ahmadyousufi.dev/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge\&logo=linkedin\&logoColor=white\&labelColor=050510)](https://www.linkedin.com/in/ahmad-ozair-yousufi/)
-[![GitHub](https://img.shields.io/badge/GitHub-AOYousufi-7c3aed?style=for-the-badge\&logo=github\&logoColor=white\&labelColor=050510)](https://github.com/AOYousufi)
-[![Email](https://img.shields.io/badge/Email-Say_Hello-00d4ff?style=for-the-badge\&logo=gmail\&logoColor=white\&labelColor=050510)](mailto:ozairyousufi1400@gmail.com)
+## What you'll find
 
-</div>
+- **Home:** introduction, current placement goal, strengths and technology stack.
+- **Projects:** three featured applications with consistent project cards and case studies.
+- **Education:** degree study and technical training.
+- **Work Experience:** commercial QA and other roles.
+- **Contact:** an email-client-based enquiry form, plus direct email and profile links.
+- **Interactive terminal:** optional Easter egg for visitors.
 
----
+### Projects
 
-## ✨ Overview
+| Project | Description | Code | Demo |
+| --- | --- | --- | --- |
+| NC News | React + Express + PostgreSQL publishing and discussion app, with accounts, moderation, notifications and automated QA | [Frontend](https://github.com/AOYousufi/NC-news-FE) / [Backend](https://github.com/AOYousufi/NC-News-BE) | [Live app](https://nc-news-sultan.netlify.app/) |
+| Virtual Exhibition | Collaborative museum discovery app integrating Harvard and V&A collection APIs | [Frontend](https://github.com/AOYousufi/Virtual-Exhibition) / [Backend](https://github.com/AOYousufi/SE-Exhibiton-BE) | [Live app](https://mueseumexhibition.netlify.app/) |
+| My Plants | Collaborative React Native plant care app backed by Express and MongoDB | [Mobile](https://github.com/AOYousufi/my-plants-FE) / [Backend](https://github.com/AOYousufi/my-plants-BE) | Mobile repository |
 
-This is my personal portfolio, built to showcase **full-stack development skills**, with a focus on clean architecture, performance, and user experience.
+Each project has a case study under `/projects/:projectId`. The cards and detail pages share the same data file, `src/data/projects.js`, so URLs and descriptions stay consistent.
 
-The goal is simple:
+## Stack
 
-* Build fast, responsive interfaces
-* Structure code clearly and maintainably
-* Demonstrate real-world development practices
+React 19, React Router 7, Vite 6, JavaScript, CSS, GSAP, and Node.js for build and QA scripts. This portfolio is a **static frontend** and does not require a database or server API.
 
----
+## Develop locally
 
-## 🚀 Tech Stack
-
-* **Frontend:** React, Vite, JavaScript, HTML, CSS
-* **Backend:** Node.js, Express
-* **Database:** PostgreSQL
-* **Animation:** GSAP
-* **Tooling:** Git, ESLint
-
----
-
-## 🧠 Backend Capabilities
-
-* REST API development with Node.js & Express
-* PostgreSQL schema design and querying
-* Filtering, sorting, and pagination
-* Error handling and validation
-* Test-driven development (Jest & Supertest)
-
----
-
-## 🏗️ Architecture
-
-* Component-based frontend using React
-* Route-based structure with React Router
-* Centralised animation setup (GSAP)
-* Separation of concerns across UI, logic, and data
-
----
-
-## 📂 Featured Projects
-
-### 📰 NC News (Full Stack)
-
-* Built a REST API using Node.js, Express, and PostgreSQL
-* Implemented filtering, sorting, and pagination
-* Tested with Jest and Supertest
-* Connected frontend client with dynamic data
-
----
-
-### 🖼️ Virtual Exhibition
-
-* Interactive frontend application with dynamic rendering
-* Focus on responsive design and smooth animations
-* Structured components and reusable UI patterns
-
----
-
-### 🌱 My Plants
-
-* Frontend-focused project with state management
-* Clean UI and component organisation
-* Emphasis on usability and structure
-
----
-
-## 🛠️ Local Development
+Requires Node.js 22 or a compatible current release.
 
 ```bash
 git clone https://github.com/AOYousufi/My-Portfolio.git
 cd My-Portfolio
-npm install
+npm ci
 npm run dev
 ```
 
----
+### Quality checks
 
-## 📁 Project Structure
-
-```
-src/
-├── components/
-├── pages/
-├── hooks/
-├── utils/
-└── index.css
+```bash
+npm run lint
+npm run build
+npm run budget
+npm run test:smoke
 ```
 
+GitHub Actions runs these four quality checks on pushes to `main` and pull requests. A separate Chromium browser job also tests direct route loading, mobile navigation and overflow, contact validation, theme persistence and automated axe-core accessibility rules. The asset budget limits compressed JavaScript + CSS to 200 KiB and each image asset to 600 KiB.
+
+Smoke tests check route coverage, project metadata consistency, project source URL structure, sitemap coverage and contact form attributes. Browser tests exercise actual navigation and apply WCAG A/AA axe rules, failing for serious or critical violations. CI checks Chromium only; Safari/Firefox and the exact live deployment still require separate verification.
+
+To run the same browser suite locally after `npm run build`:
+
+```bash
+npm install --no-save --no-package-lock --ignore-scripts @playwright/test@1.56.1 @axe-core/playwright@4.11.0
+npx playwright install chromium
+npx playwright test
+```
+
+## Deployment
+
+The Vite output goes into `dist/`. The `public/_redirects` file ensures direct links to React routes work when served by Netlify. `public/_headers` adds browser security headers and immutable caching for hashed assets.
+
+The contact form opens the visitor's configured email application. **It does not send a message directly from the browser**; visitors must press Send in their email app.
+
+## Updating the portfolio
+
+- Change project information in `src/data/projects.js`.
+- Add or change routes and page titles in `src/App.jsx`.
+- Keep `public/sitemap.xml` in sync with canonical routes.
+- Run `npm run lint && npm run build && npm run budget && npm run test:smoke` before deploying.
+
 ---
-
-## 🧑‍💼 About Me
-
-* BSc Software Development — Staffordshire University
-* Full-Stack Bootcamp — Northcoders
-* Based in Staffordshire, UK
-
-I’m focused on becoming a strong full-stack developer, with particular interest in backend systems and scalable applications.
-
----
-
-## 📬 Contact
-
-* Email: [ozairyousufi1400@gmail.com](mailto:ozairyousufi1400@gmail.com)
-* Portfolio: https://ahmadyousufi.dev
-* LinkedIn: https://www.linkedin.com/in/ahmad-ozair-yousufi/
-
----
-
-## ⭐
-
-If you find this useful or take inspiration from it, feel free to star the repo.
+Contact: [ozairyousufi1400@gmail.com](mailto:ozairyousufi1400@gmail.com)

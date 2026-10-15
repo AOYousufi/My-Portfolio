@@ -64,7 +64,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes cardEntrance {
+  @keyframes projectCardEntrance {
     from {
       opacity: 0;
       transform: translateY(40px);
@@ -75,7 +75,7 @@
     }
   }
 
-  @keyframes cardFloat {
+  @keyframes projectCardFloat {
     0%, 100% {
       transform: perspective(900px) translateY(0px) rotateY(0deg);
     }
@@ -84,7 +84,7 @@
     }
   }
 
-  @keyframes borderSpin {
+  @keyframes projectBorderSpin {
     to {
       --angle: 360deg;
     }
@@ -101,7 +101,7 @@
   border: 0.5px solid rgba(255, 255, 255, 0.07);
   border-radius: 20px;
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
   will-change: transform;
 
   opacity: 0;
@@ -113,23 +113,15 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .project-card {
-    animation:
-      cardEntrance 0.6s ease forwards,
-      cardFloat 5s ease-in-out infinite alternate;
-    animation-delay:
-      var(--entrance-delay, 0s),
-      calc(var(--entrance-delay, 0s) + 0.7s - var(--float-delay, 0s));
-    animation-play-state: paused, paused;
+    animation: projectCardEntrance 0.6s ease forwards;
+    animation-delay: var(--entrance-delay, 0s);
+    animation-play-state: paused;
   }
 
   .project-card.card-visible {
-    animation-play-state: running, running;
+    animation-play-state: running;
   }
 
-  .project-card.card-visible:hover {
-    
-    animation-play-state: running, paused;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -198,7 +190,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .project-card:hover .card-border-glow {
     opacity: 0.8;
-    animation: borderSpin 3s linear infinite;
+    animation: projectBorderSpin 3s linear infinite;
   }
 }
 
@@ -308,7 +300,8 @@
 
 .card-links {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   align-items: center;
 }
 
@@ -357,7 +350,7 @@
 
 @media (min-width: 1200px) {
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -367,10 +360,26 @@
   }
 
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .project-card {
+    min-width: 0;
+    width: 100%;
     cursor: default;
   }
 }
+
+.card-link-case-study {
+  color: #c1e8ff;
+  font-weight: 800;
+}
+
+.card-link:focus-visible {
+  color: var(--card-accent);
+  outline: 2px solid #85c8ff;
+  outline-offset: 4px;
+}
+
+[data-theme="light"] .card-link-case-study { color: #2457be; }
+[data-theme="light"] .projects-eyebrow { color: #4a5568; }

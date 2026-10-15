@@ -8,37 +8,36 @@ import "./Home.css";
 import profilePic from "../assets/IMG_7669.jpg";
 
 const PHRASES = [
-  "Junior Software Engineer",
-  "React & Node.js Developer",
+  "Software Development Student",
   "QA Tester",
-  "Full-Stack Builder",
-  "Problem Solver",
+  "Full-Stack Developer",
+  "Backend-Focused Developer",
 ];
 
 const SKILL_GROUPS = [
   {
     label: "Frontend",
-    skills: ["React", "JavaScript", "TypeScript", "HTML5", "CSS3"],
+    skills: ["React", "JavaScript", "HTML5", "CSS3", "Vite"],
   },
   {
-    label: "Backend",
-    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"],
+    label: "Backend & Data",
+    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "SQL", "REST APIs"],
   },
   {
     label: "Website QA",
     skills: ["Manual Testing", "Visual QA", "Regional Content Checks", "Bug Reporting", "Jira", "Slack"],
   },
   {
-    label: "Mobile & Tools",
-    skills: ["React Native", "Git", "Jest", "Vite"],
+    label: "Mobile, Testing & Tools",
+    skills: ["React Native", "Jest", "Supertest", "Git", "GitHub", "Jira"],
   },
 ];
 
 const STATS = [
-  { value: "4+",        label: "Projects Built"  },
-  { value: "Full-Stack", label: "Specialisation" },
-  { value: "BSc",       label: "Software Dev"    },
-  { value: "UK",        label: "Based"           },
+  { value: "3",    label: "Featured Projects" },
+  { value: "QA",   label: "Commercial Experience" },
+  { value: "BSc",  label: "Software Development" },
+  { value: "2027", label: "Placement Target" },
 ];
 
 function Home() {
@@ -103,22 +102,22 @@ function Home() {
           <div className="hero-text">
             <div className="hero-eyebrow">
               <span className="hero-status-dot" aria-hidden="true" />
-              Available for opportunities
+              Seeking 2027 UK placement
             </div>
 
             <h1 className="hero-name">
               Ahmad Ozair<br />Yousufi
             </h1>
 
-            <h2 className="hero-role" aria-live="polite">
+            <h2 className="hero-role" aria-label={PHRASES.join(", ")}>
               {reducedMotion ? PHRASES[0] : typeText}
               <span className="tw-cursor" aria-hidden="true">|</span>
             </h2>
 
             <p className="hero-bio">
-              Full-stack developer building clean, tested, and performant web
-              &amp; mobile applications. Currently studying Software Development
-              BSc at Staffordshire University.
+              Software Development student with full-stack development and
+              commercial QA experience. Currently studying at the University of
+              Staffordshire and seeking a 2027 software engineering placement.
             </p>
 
             <div className="hero-cta">
@@ -175,11 +174,13 @@ function Home() {
                   className="profile-img"
                   width="300"
                   height="300"
+                  decoding="async"
+                  fetchPriority="high"
                 />
               </div>
               <div className="profile-status-badge">
                 <span className="profile-status-dot" />
-                Open to work
+                2027 placement
               </div>
             </div>
           </div>
@@ -202,17 +203,17 @@ function Home() {
         <div className="about-body">
           <div className="about-text">
             <p>
-              I&apos;m Ahmad, a Software Development BSc&nbsp;(Hons) student at
-              Staffordshire University and a Northcoders graduate. I build web
-              and mobile apps using JavaScript, React, Node.js and SQL, and
-              I&apos;m looking for a software development placement.
+              I&apos;m Ahmad, a Software Development student at the University of
+              Staffordshire with hands-on experience across full-stack development
+              and commercial QA testing. I&apos;ve built web and mobile projects
+              using JavaScript, React, React Native, Node.js, Express and SQL.
             </p>
             <p>
-              Alongside my studies, I work as a QA Tester at Next 15 for a global
-              technology client. I carry out visual checks across three websites
-              for more than 21 countries, report issues through Jira and Slack,
-              and communicate findings with the team. This work has strengthened
-              how I check content and layouts and explain problems clearly.
+              Alongside university, I&apos;ve worked as a QA Tester at Next 15 supporting
+              website updates and product launches for a major global technology
+              client. That experience strengthened my attention to detail,
+              communication, teamwork and understanding of how software behaves
+              in real release environments.
             </p>
             <div className="about-links">
               <Link to="/education"      className="btn-secondary btn-sm">Education</Link>

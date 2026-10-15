@@ -8,15 +8,14 @@ const WORK = [
     role: 'QA Tester',
     company: 'Next 15',
     location: 'London, UK',
-    period: 'Aug 2026 – Present',
+    period: 'Aug 2026 – Oct 2026',
     type: 'Temporary',
     accent: '#4ab8c0',
     initial: 'N',
     bullets: [
-      'Perform manual visual QA across three websites for more than 21 countries for a global technology client.',
-      'Check regional page content, imagery and layouts, identifying missing assets, visual inconsistencies and browser-specific issues.',
-      'Report issues through Jira and Slack and communicate findings with the QA team.',
-      'Review content updates and check presentation at different screen sizes, including identifying Safari-specific issues.',
+      'Performed manual and visual QA on website updates and new pages during product launch cycles for a major global technology client.',
+      'Checked content, imagery, layouts and browser behaviour across three websites for more than 21 countries and different screen sizes, including Safari-specific issues.',
+      'Reported and tracked defects in Jira and communicated findings through Slack with the wider QA team under tight release deadlines.',
     ],
   },
   {
@@ -35,7 +34,7 @@ const WORK = [
   },
   {
     role: 'Website Developer',
-    company: 'Unitemps — Staffordshire University',
+    company: 'Unitemps — University of Staffordshire',
     location: 'Stoke-on-Trent, UK',
     period: 'Feb 2025 – Mar 2025',
     type: 'Contract',
