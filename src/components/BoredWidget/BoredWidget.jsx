@@ -8,6 +8,7 @@ const WELCOME = [
   '╚══════════════════════════════════════════╝',
   '',
   '  👋  Hey there! Type help to get started.',
+  '  Tip: Ctrl+Space autocompletes; Tab moves to the next control.',
   '',
 ]
 
@@ -193,6 +194,8 @@ export default function BoredWidget() {
 
   const bodyRef = useRef(null)
   const inputRef = useRef(null)
+  const triggerRef = useRef(null)
+  const hasOpenedRef = useRef(false)
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -213,7 +216,12 @@ export default function BoredWidget() {
     return () => window.removeEventListener('keydown', handler)
   }, [isOpen])
 
+  useEffect(() => {
+    if (!isOpen && hasOpenedRef.current) triggerRef.current?.focus()
+  }, [isOpen])
+
   function openTerminal() {
+    hasOpenedRef.current = true
     setEntries([])
     setInput('')
     setCmdHistory([])
@@ -259,7 +267,7 @@ export default function BoredWidget() {
         setInput(next === -1 ? '' : cmdHistory[next])
         return next
       })
-    } else if (e.key === 'Tab') {
+    } else if (e.ctrlKey && e.key === ' ') {
       e.preventDefault()
       const partial = input.trim().toLowerCase()
       const match = Object.keys(COMMANDS).find(k => k.startsWith(partial))
@@ -271,6 +279,7 @@ export default function BoredWidget() {
     <div className="bored-widget">
       {!isOpen && (
         <button
+          ref={triggerRef}
           className="bored-trigger"
           onClick={openTerminal}
           aria-label="Open interactive terminal Easter egg"
