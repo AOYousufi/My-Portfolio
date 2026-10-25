@@ -9,6 +9,7 @@
 }
 
 .bored-trigger {
+  /* Keep the interactive hit target stationary and predictable. */
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -26,16 +27,6 @@
   cursor: pointer;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(79, 142, 255, 0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  animation: triggerFloat 3s ease-in-out infinite alternate;
-}
-
-@keyframes triggerFloat {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-6px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bored-trigger { animation: none; }
 }
 
 .bored-trigger:hover,
