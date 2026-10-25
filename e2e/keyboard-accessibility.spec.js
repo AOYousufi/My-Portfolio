@@ -31,7 +31,8 @@ test('Escape closes the mobile menu and returns focus to its toggle', async ({ p
 test('terminal permits Tab navigation and restores focus after Escape', async ({ page }) => {
   await page.goto('/')
   const trigger = page.getByRole('button', { name: 'Open interactive terminal Easter egg' })
-  await trigger.click()
+  await trigger.focus()
+  await page.keyboard.press('Enter')
   const terminal = page.getByRole('dialog', { name: 'Interactive developer terminal' })
   await expect(terminal).toBeVisible()
   const input = page.getByRole('textbox', { name: 'Type a terminal command' })
