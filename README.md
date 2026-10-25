@@ -43,15 +43,14 @@ npm run dev
 ### Quality checks
 
 ```bash
-npm run lint
-npm run build
-npm run budget
-npm run test:smoke
+npm run verify
 ```
 
-GitHub Actions runs these four quality checks on pushes to `main` and pull requests. A separate Chromium browser job also tests direct route loading, mobile navigation and overflow, contact validation, theme persistence and automated axe-core accessibility rules. The asset budget limits compressed JavaScript + CSS to 200 KiB and each image asset to 600 KiB.
+The `verify` command runs linting, a production build, asset budget checks, fast smoke tests and release-artifact tests against `dist/`. You can run `npm run test:smoke` without building; `npm run test:release` requires a fresh build.
 
-Smoke tests check route coverage, project metadata consistency, project source URL structure, sitemap coverage and contact form attributes. Browser tests exercise actual navigation and apply WCAG A/AA axe rules, failing for serious or critical violations. CI checks Chromium only; Safari/Firefox and the exact live deployment still require separate verification.
+GitHub Actions gates browser testing on a successful quality job on pushes to `main` and pull requests. The Chromium browser suite also tests direct route loading, mobile navigation and overflow, contact validation, theme persistence, keyboard focus, skip links, case-study metadata, and automated axe-core accessibility rules. The asset budget limits compressed JavaScript + CSS to 200 KiB and each image asset to 600 KiB.
+
+Smoke tests check route coverage, project metadata consistency, project source URL structure, sitemap coverage and contact form attributes. Release tests verify the compiled bundle, public route fallback, sitemap, robots and deployed security/caching headers. Browser tests exercise actual navigation and apply WCAG A/AA axe rules, failing for serious or critical violations. CI checks Chromium only; Safari/Firefox and the exact live deployment still require separate verification.
 
 To run the same browser suite locally after `npm run build`:
 
@@ -72,7 +71,8 @@ The contact form opens the visitor's configured email application. **It does not
 - Change project information in `src/data/projects.js`.
 - Add or change routes and page titles in `src/App.jsx`.
 - Keep `public/sitemap.xml` in sync with canonical routes.
-- Run `npm run lint && npm run build && npm run budget && npm run test:smoke` before deploying.
+- Run `npm run verify` and the Chromium browser suite before opening a release PR.
+- Follow [the release checklist](docs/RELEASE_CHECKLIST.md) for PR review, deploy verification and rollback.
 
 ---
 Contact: [ozairyousufi1400@gmail.com](mailto:ozairyousufi1400@gmail.com)
