@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import AYLogo from '../assets/ay-logo.svg'
@@ -58,6 +58,7 @@ function MoonIcon() {
 function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const menuToggleRef = useRef(null)
   const { pathname } = useLocation()
   const { theme, toggleTheme } = useTheme()
 
@@ -66,7 +67,10 @@ function Navbar() {
   useEffect(() => {
     if (!open) return undefined
     const onKeyDown = (event) => {
-      if (event.key === 'Escape') setOpen(false)
+      if (event.key === 'Escape') {
+        setOpen(false)
+        menuToggleRef.current?.focus()
+      }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
@@ -89,6 +93,7 @@ function Navbar() {
         </div>
 
         <button
+          ref={menuToggleRef}
           className={`menu-toggle${open ? ' is-open' : ''}`}
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
