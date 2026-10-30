@@ -37,6 +37,7 @@ function RouteEffects() {
 
   useEffect(() => {
     const project = PROJECTS.find((item) => item.path === pathname)
+    const isKnownRoute = Boolean(project || PAGES[pathname])
     const page = project
       ? { title: project.title, description: project.description }
       : PAGES[pathname] || { title: 'Page Not Found', description: DEFAULT_DESCRIPTION }
@@ -47,6 +48,9 @@ function RouteEffects() {
     const description = document.querySelector('meta[name="description"]')
     if (description) description.setAttribute('content', page.description)
 
+    const robots = document.querySelector('meta[name="robots"]')
+    if (robots) robots.setAttribute('content', isKnownRoute ? 'index, follow' : 'noindex, follow')
+
     const canonical = document.querySelector('link[rel="canonical"]')
     if (canonical) canonical.setAttribute('href', url)
 
@@ -56,6 +60,13 @@ function RouteEffects() {
     if (ogTitle) ogTitle.setAttribute('content', document.title)
     const ogDescription = document.querySelector('meta[property="og:description"]')
     if (ogDescription) ogDescription.setAttribute('content', page.description)
+
+    const twitterUrl = document.querySelector('meta[name="twitter:url"]')
+    if (twitterUrl) twitterUrl.setAttribute('content', url)
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]')
+    if (twitterTitle) twitterTitle.setAttribute('content', document.title)
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]')
+    if (twitterDescription) twitterDescription.setAttribute('content', page.description)
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     if (initialRoute.current) {

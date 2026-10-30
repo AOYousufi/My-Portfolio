@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { CONTACT_EMAIL, buildContactMailto } from '../utils/contactEmail'
 import './Contact.css'
-
-const EMAIL = 'ozairyousufi1400@gmail.com'
 
 const INFO_RGB  = '0,212,255'
 const FORM_RGB  = '79,142,255'
@@ -56,11 +55,7 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name.trim()}`)
-    const body    = encodeURIComponent(
-      `Hi Ahmad,\n\n${message.trim()}\n\nBest regards,\n${name.trim()}\n${email.trim()}`
-    )
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+    window.location.href = buildContactMailto({ name, email, message })
   }
 
   return (
@@ -84,8 +79,8 @@ function Contact() {
           <div className="contact-border-glow" />
 
           <h2 className="contact-info-heading">Direct Email</h2>
-          <a href={`mailto:${EMAIL}`} className="contact-email-link">
-            {EMAIL}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="contact-email-link">
+            {CONTACT_EMAIL}
           </a>
 
           <div className="contact-divider" />
