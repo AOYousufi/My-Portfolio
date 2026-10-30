@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:smoke": "node --test tests/portfolio-smoke.test.mjs",
+    "test:smoke": "node --test tests/portfolio-smoke.test.mjs tests/contact-mailto.test.mjs",
     "budget": "node scripts/check-build-budget.mjs",
     "test:release": "node --test tests/production-build.test.mjs",
     "verify": "npm run lint && npm run build && npm run budget && npm run test:smoke && npm run test:release"
