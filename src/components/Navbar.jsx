@@ -12,7 +12,7 @@ const NAV_LINKS = [
 ]
 
 function isActive(pathname, to, exact) {
-  return exact ? pathname === to : pathname.startsWith(to)
+  return exact ? pathname === to : pathname === to || pathname.startsWith(`${to}/`)
 }
 
 function GitHubIcon() {
