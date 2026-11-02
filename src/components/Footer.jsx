@@ -13,7 +13,10 @@ const FOOTER_LINKS = [
 function Footer() {
   const year = new Date().getFullYear()
 
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const scrollTop = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' })
+  }
 
   return (
     <footer className="footer">
