@@ -79,3 +79,29 @@ test('case study page updates title and canonical metadata', async ({ page }) =>
   await expect(page.locator('link[rel="canonical"]'))
     .toHaveAttribute('href', 'https://ahmadyousufi.dev/projects')
 })
+
+test('navigation highlights only the current route or its children', async ({ page }) => {
+  await page.goto('/projects/nc-news')
+  const projectsLink = page.locator('#primary-navigation').getByRole('link', { name: 'Projects' })
+  await expect(projectsLink).toHaveAttribute('aria-current', 'page')
+
+  await page.goto('/projects-archive')
+  await expect(projectsLink).not.toHaveAttribute('aria-current', 'page')
+})
+
+test('back-to-top respects the reduced motion setting', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/')
+  await page.evaluate(() => {
+    window.__scrollOptions = []
+    window.scrollTo = (options) => { window.__scrollOptions.push(options) }
+  })
+
+  const backToTop = page.getByRole('button', { name: 'Scroll back to top' })
+  await backToTop.click()
+  expect(await page.evaluate(() => window.__scrollOptions.at(-1)?.behavior)).toBe('auto')
+
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  await backToTop.click()
+  expect(await page.evaluate(() => window.__scrollOptions.at(-1)?.behavior)).toBe('smooth')
+})
