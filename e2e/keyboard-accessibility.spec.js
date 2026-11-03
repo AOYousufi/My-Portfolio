@@ -105,3 +105,21 @@ test('back-to-top respects the reduced motion setting', async ({ page }) => {
   await backToTop.click()
   expect(await page.evaluate(() => window.__scrollOptions.at(-1)?.behavior)).toBe('smooth')
 })
+
+test('trailing slash URLs retain canonical SEO metadata and missing pages are noindexed', async ({ page }) => {
+  await page.goto('/projects/nc-news/')
+  await expect(page).toHaveTitle('NC News | Ahmad Ozair Yousufi')
+  await expect(page.locator('link[rel="canonical"]'))
+    .toHaveAttribute('href', 'https://ahmadyousufi.dev/projects/nc-news')
+  await expect(page.locator('meta[name="robots"]'))
+    .toHaveAttribute('content', 'index, follow')
+
+  await page.goto('/a-page-that-does-not-exist/')
+  await expect(page.getByRole('heading', { level: 1, name: /page isn't here/i })).toBeVisible()
+  await expect(page.locator('meta[name="robots"]'))
+    .toHaveAttribute('content', 'noindex, follow')
+
+  await page.getByRole('link', { name: 'Back home' }).click()
+  await expect(page.locator('meta[name="robots"]'))
+    .toHaveAttribute('content', 'index, follow')
+})
