@@ -36,16 +36,20 @@ function RouteEffects() {
   const initialRoute = useRef(true)
 
   useEffect(() => {
-    const project = PROJECTS.find((item) => item.path === pathname)
+    const normalizedPath = pathname.replace(/\/+$/, '') || '/'
+    const project = PROJECTS.find((item) => item.path === normalizedPath)
     const page = project
       ? { title: project.title, description: project.description }
-      : PAGES[pathname] || { title: 'Page Not Found', description: DEFAULT_DESCRIPTION }
-    const url = SITE_URL + pathname
+      : PAGES[normalizedPath] || { title: 'Page Not Found', description: DEFAULT_DESCRIPTION }
+    const url = SITE_URL + normalizedPath
 
     document.title = `${page.title} | ${SITE_NAME}`
 
     const description = document.querySelector('meta[name="description"]')
     if (description) description.setAttribute('content', page.description)
+
+    const robots = document.querySelector('meta[name="robots"]')
+    if (robots) robots.setAttribute('content', project || PAGES[normalizedPath] ? 'index, follow' : 'noindex, follow')
 
     const canonical = document.querySelector('link[rel="canonical"]')
     if (canonical) canonical.setAttribute('href', url)
