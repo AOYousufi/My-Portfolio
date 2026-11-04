@@ -44,6 +44,32 @@ test('email form retains required validation and explains mailto', async ({ page
   expect(await email.evaluate((input) => input.checkValidity())).toBe(false)
 })
 
+
+test('contact form rejects whitespace-only names and messages', async ({ page }) => {
+  await page.goto('/contact')
+  const name = page.getByLabel('Name', { exact: true })
+  const email = page.getByLabel('Email', { exact: true })
+  const message = page.getByLabel('Message', { exact: true })
+  const submit = page.getByRole('button', { name: /Draft email in my email app/ })
+
+  await name.fill('   ')
+  await email.fill('visitor@example.com')
+  await message.fill('I have a placement opportunity.')
+  await submit.click()
+  expect(await name.evaluate((input) => input.validity.customError)).toBe(true)
+  await expect(page).toHaveURL(/\/contact$/)
+
+  await name.fill('Portfolio Visitor')
+  expect(await name.evaluate((input) => input.validity.customError)).toBe(false)
+  await message.fill('           ')
+  await submit.click()
+  expect(await message.evaluate((input) => input.validity.customError)).toBe(true)
+  await expect(page).toHaveURL(/\/contact$/)
+
+  await message.fill('A real message about a placement.')
+  expect(await message.evaluate((input) => input.validity.customError)).toBe(false)
+})
+
 test('mobile menu works without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/')
