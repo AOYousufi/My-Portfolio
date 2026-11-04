@@ -15,6 +15,8 @@ function Contact() {
   const sectionRef  = useRef(null)
   const infoSpotRef = useRef(null)
   const formSpotRef = useRef(null)
+  const nameInputRef = useRef(null)
+  const messageInputRef = useRef(null)
   const reducedMotion = useReducedMotion()
 
   useEffect(() => {
@@ -56,9 +58,23 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name.trim()}`)
+    const cleanName = name.trim()
+    const cleanMessage = message.trim()
+
+    if (!cleanName) {
+      nameInputRef.current?.setCustomValidity('Please enter your name.')
+      nameInputRef.current?.reportValidity()
+      return
+    }
+    if (cleanMessage.length < 10) {
+      messageInputRef.current?.setCustomValidity('Please write at least 10 characters.')
+      messageInputRef.current?.reportValidity()
+      return
+    }
+
+    const subject = encodeURIComponent(`Portfolio enquiry from ${cleanName}`)
     const body    = encodeURIComponent(
-      `Hi Ahmad,\n\n${message.trim()}\n\nBest regards,\n${name.trim()}\n${email.trim()}`
+      `Hi Ahmad,\n\n${cleanMessage}\n\nBest regards,\n${cleanName}\n${email.trim()}`
     )
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
   }
@@ -136,13 +152,17 @@ function Contact() {
             <label htmlFor="contact-name" className="form-label">Name</label>
             <input
               id="contact-name"
+              ref={nameInputRef}
               type="text"
               autoComplete="name"
               maxLength={100}
               className="form-input"
               placeholder="Your name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                e.currentTarget.setCustomValidity('')
+                setName(e.target.value)
+              }}
               required
             />
           </div>
@@ -166,13 +186,17 @@ function Contact() {
             <label htmlFor="contact-message" className="form-label">Message</label>
             <textarea
               id="contact-message"
+              ref={messageInputRef}
               className="form-input form-textarea"
               placeholder="Tell me about your project or opportunity…"
               rows={5}
               minLength={10}
               maxLength={3000}
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                e.currentTarget.setCustomValidity('')
+                setMessage(e.target.value)
+              }}
               required
             />
           </div>
