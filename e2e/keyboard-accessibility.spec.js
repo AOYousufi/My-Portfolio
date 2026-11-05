@@ -49,6 +49,25 @@ test('terminal permits Tab navigation and restores focus after Escape', async ({
   await expect(trigger).toBeFocused()
 })
 
+test('terminal output is announced as a live log and clears correctly', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Open interactive terminal Easter egg' }).click()
+
+  const output = page.getByRole('log', { name: 'Terminal output' })
+  const input = page.getByRole('textbox', { name: 'Type a terminal command' })
+  await expect(output).toHaveAttribute('aria-live', 'polite')
+  await expect(output).toHaveAttribute('aria-relevant', 'additions')
+  await expect(output).toBeEmpty()
+
+  await input.fill('ping')
+  await input.press('Enter')
+  await expect(output).toContainText('PONG!')
+
+  await input.fill('clear')
+  await input.press('Enter')
+  await expect(output).toBeEmpty()
+})
+
 test('project details and work history meet serious WCAG A/AA checks', async ({ page }) => {
   for (const route of ['/projects/nc-news', '/work-experience']) {
     await page.goto(route)
