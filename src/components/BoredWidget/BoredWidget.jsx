@@ -325,25 +325,27 @@ export default function BoredWidget() {
               </div>
             ))}
 
-            {entries.map((entry, i) => (
-              <div key={i}>
-                {entry.kind === 'in' && (
-                  <div className="t-line t-line--in">
-                    <span className="t-prompt" aria-hidden="true">visitor@portfolio:~$</span>
-                    {' '}{entry.text}
-                  </div>
-                )}
-                {entry.kind !== 'in' &&
-                  entry.lines.map((line, j) => (
-                    <div
-                      key={j}
-                      className={`t-line t-line--${entry.kind}`}
-                    >
-                      {line || ' '}
+            <div role="log" aria-label="Terminal output" aria-live="polite" aria-relevant="additions">
+              {entries.map((entry, i) => (
+                <div key={i}>
+                  {entry.kind === 'in' && (
+                    <div className="t-line t-line--in">
+                      <span className="t-prompt" aria-hidden="true">visitor@portfolio:~$</span>
+                      {' '}{entry.text}
                     </div>
-                  ))}
-              </div>
-            ))}
+                  )}
+                  {entry.kind !== 'in' &&
+                    entry.lines.map((line, j) => (
+                      <div
+                        key={j}
+                        className={`t-line t-line--${entry.kind}`}
+                      >
+                        {line || ' '}
+                      </div>
+                    ))}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="terminal-input-row">
