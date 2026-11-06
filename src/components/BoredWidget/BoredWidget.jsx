@@ -190,12 +190,13 @@ export default function BoredWidget() {
   const [entries, setEntries] = useState([])
   const [input, setInput] = useState('')
   const [cmdHistory, setCmdHistory] = useState([])
-  const [, setHistIdx] = useState(-1)
+  const [histIdx, setHistIdx] = useState(-1)
 
   const bodyRef = useRef(null)
   const inputRef = useRef(null)
   const triggerRef = useRef(null)
   const hasOpenedRef = useRef(false)
+  const historyDraftRef = useRef('')
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -225,6 +226,7 @@ export default function BoredWidget() {
     setEntries([])
     setInput('')
     setCmdHistory([])
+    historyDraftRef.current = ''
     setHistIdx(-1)
     setIsOpen(true)
   }
@@ -235,11 +237,18 @@ export default function BoredWidget() {
 
     if (result.type === 'noop') return
     if (result.type === 'exit') { setIsOpen(false); return }
-    if (result.type === 'clear') { setEntries([]); setInput(''); return }
+    if (result.type === 'clear') {
+      setEntries([])
+      setInput('')
+      historyDraftRef.current = ''
+      setHistIdx(-1)
+      return
+    }
 
     if (raw.trim()) {
       setCmdHistory(prev => [raw.trim(), ...prev])
     }
+    historyDraftRef.current = ''
     setHistIdx(-1)
     setInput('')
 
@@ -255,18 +264,17 @@ export default function BoredWidget() {
       submit()
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
-      setHistIdx(i => {
-        const next = Math.min(i + 1, cmdHistory.length - 1)
-        if (next >= 0) setInput(cmdHistory[next])
-        return next
-      })
+      if (!cmdHistory.length) return
+      if (histIdx === -1) historyDraftRef.current = input
+      const next = Math.min(histIdx + 1, cmdHistory.length - 1)
+      setHistIdx(next)
+      setInput(cmdHistory[next])
     } else if (e.key === 'ArrowDown') {
       e.preventDefault()
-      setHistIdx(i => {
-        const next = Math.max(i - 1, -1)
-        setInput(next === -1 ? '' : cmdHistory[next])
-        return next
-      })
+      if (histIdx === -1) return
+      const next = histIdx - 1
+      setHistIdx(next)
+      setInput(next === -1 ? historyDraftRef.current : cmdHistory[next])
     } else if (e.ctrlKey && e.key === ' ') {
       e.preventDefault()
       const partial = input.trim().toLowerCase()
@@ -355,7 +363,11 @@ export default function BoredWidget() {
               type="text"
               className="terminal-input"
               value={input}
-              onChange={e => { setInput(e.target.value); setHistIdx(-1) }}
+              onChange={e => {
+                setInput(e.target.value)
+                historyDraftRef.current = e.target.value
+                setHistIdx(-1)
+              }}
               onKeyDown={handleKeyDown}
               spellCheck={false}
               autoComplete="off"
