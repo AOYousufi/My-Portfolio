@@ -49,6 +49,35 @@ test('terminal permits Tab navigation and restores focus after Escape', async ({
   await expect(trigger).toBeFocused()
 })
 
+test('terminal history restores an unfinished command when navigating back down', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Open interactive terminal Easter egg' }).click()
+
+  const input = page.getByRole('textbox', { name: 'Type a terminal command' })
+  for (const command of ['ping', 'skills']) {
+    await input.fill(command)
+    await input.press('Enter')
+  }
+
+  await input.fill('unfinished draft')
+  await input.press('ArrowUp')
+  await expect(input).toHaveValue('skills')
+  await input.press('ArrowUp')
+  await expect(input).toHaveValue('ping')
+  await input.press('ArrowDown')
+  await expect(input).toHaveValue('skills')
+  await input.press('ArrowDown')
+  await expect(input).toHaveValue('unfinished draft')
+  await input.press('ArrowDown')
+  await expect(input).toHaveValue('unfinished draft')
+
+  await input.press('Escape')
+  await page.getByRole('button', { name: 'Open interactive terminal Easter egg' }).click()
+  const reopenedInput = page.getByRole('textbox', { name: 'Type a terminal command' })
+  await reopenedInput.press('ArrowUp')
+  await expect(reopenedInput).toHaveValue('')
+})
+
 test('terminal output is announced as a live log and clears correctly', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'Open interactive terminal Easter egg' }).click()
