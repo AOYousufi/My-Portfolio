@@ -108,6 +108,29 @@ test('mobile menu works without horizontal overflow', async ({ page }) => {
   expect(width.page, JSON.stringify({ overflowElements, ancestors }, null, 2)).toBeLessThanOrEqual(width.viewport + 2)
 })
 
+test('invalid stored theme falls back to dark and replaces the bad value', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('ay-theme', 'unexpected-theme'))
+  await page.goto('/')
+
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
+  await expect(page.getByRole('button', { name: 'Switch to light mode' })).toBeVisible()
+  expect(await page.evaluate(() => localStorage.getItem('ay-theme'))).toBe('dark')
+})
+
+test('theme toggle works even when local storage access is blocked', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(window, 'localStorage', {
+      configurable: true,
+      get() { throw new DOMException('Storage denied', 'SecurityError') },
+    })
+  })
+  await page.goto('/')
+
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
+  await page.getByRole('button', { name: 'Switch to light mode' }).click()
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
+})
+
 test('light theme persists between routes and refreshes', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'Switch to light mode' }).click()
